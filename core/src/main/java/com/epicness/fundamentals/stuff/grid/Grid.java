@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Grid {
 
     protected final int columns, rows;
-    private final Cell[][] cells;
+    protected final Cell[][] cells;
 
     public Grid(int columns, int rows, Sprite cellSprite) {
         this.columns = columns;

@@ -21,6 +21,7 @@ public class GameLogic extends Logic {
 
         gameInputHandler.setLogic(this);
 
+        factoryZoneScaler.setSharedLogic(sharedLogic);
         playerHandler.setSharedLogic(sharedLogic);
     }
 

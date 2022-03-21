@@ -57,6 +57,9 @@ public class FactoryZoneScaler {
             factoryZone.setScale(1f - progress);
         }
         if (progress == 1f) {
+            if (scalingDown) {
+                sharedLogic.getPauseTracker().set(false);
+            }
             showing = scalingUp;
             scalingUp = false;
             scalingDown = false;
@@ -64,6 +67,10 @@ public class FactoryZoneScaler {
     }
 
     // Structure
+    public void setSharedLogic(SharedLogic sharedLogic) {
+        this.sharedLogic = sharedLogic;
+    }
+
     public void setStuff(GameStuff stuff) {
         this.stuff = stuff;
     }
