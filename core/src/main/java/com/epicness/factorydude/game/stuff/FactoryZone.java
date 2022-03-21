@@ -1,5 +1,11 @@
 package com.epicness.factorydude.game.stuff;
 
+import static com.epicness.factorydude.game.GameConstants.HEX_GRID_CELL_SIZE;
+import static com.epicness.factorydude.game.GameConstants.HEX_GRID_COLUMNS;
+import static com.epicness.factorydude.game.GameConstants.HEX_GRID_ROWS;
+import static com.epicness.factorydude.game.GameConstants.HEX_GRID_STARTING_X;
+import static com.epicness.factorydude.game.GameConstants.HEX_GRID_STARTING_Y;
+import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 
@@ -19,9 +25,16 @@ public class FactoryZone {
         background = new Sprited(sharedAssets.getPixel());
         background.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
         background.setOriginCenter();
+        background.setColor(BLACK_CLEAR_50);
 
-        hexGrid = new HexGrid(9, 6, assets.getHex());
-        hexGrid.setCellSize(100f);
+        hexGrid = new HexGrid(HEX_GRID_COLUMNS, HEX_GRID_ROWS, assets.getHex());
+        hexGrid.setCellSize(HEX_GRID_CELL_SIZE);
+        for (int column = 0; column < hexGrid.getCells().length; column++) {
+            for (int row = 0; row < hexGrid.getCells()[column].length; row++) {
+                hexGrid.getCells()[column][row].setOriginCenter();
+            }
+        }
+        hexGrid.translate(HEX_GRID_STARTING_X, HEX_GRID_STARTING_Y);
 
         factory = new Sprited(sharedAssets.getPixel());
         factory.setPosition(200f, 200f);

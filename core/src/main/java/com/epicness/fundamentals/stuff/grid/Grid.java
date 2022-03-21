@@ -28,6 +28,14 @@ public class Grid {
         }
     }
 
+    public void translate(float xAmount, float yAmount) {
+        for (int column = 0; column < columns; column++) {
+            for (int row = 0; row < rows; row++) {
+                cells[column][row].translate(xAmount, yAmount);
+            }
+        }
+    }
+
     public void setCellSize(float size) {
         for (int column = 0; column < columns; column++) {
             for (int row = 0; row < rows; row++) {

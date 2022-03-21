@@ -1,5 +1,6 @@
 package com.epicness.factorydude.game.assets;
 
+import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.HEX_PATH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_PATH;
 
@@ -21,6 +22,7 @@ public class GameAssets extends Assets {
     @Override
     public void initializeAssets() {
         hex = new Sprite(getTexture(HEX_PATH));
+        hex.getTexture().setFilter(Linear, Linear);
         player = new Sprite(getTexture(PLAYER_PATH));
     }
 

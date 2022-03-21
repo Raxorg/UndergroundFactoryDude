@@ -67,6 +67,10 @@ public class Sprited implements Buttonable, Parallaxable {
         sprite.setOriginBasedPosition(x, y);
     }
 
+    public void translate(float xAmount, float yAmount) {
+        sprite.translate(xAmount, yAmount);
+    }
+
     public void translateY(float amount) {
         sprite.translateY(amount);
     }

@@ -21,4 +21,14 @@ public class HexGrid extends Grid {
             }
         }
     }
+
+    @Override
+    public float getWidth() {
+        return columns * 0.98f;
+    }
+
+    @Override
+    public float getHeight() {
+        return rows * 0.7f;
+    }
 }
