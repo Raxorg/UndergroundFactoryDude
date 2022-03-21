@@ -9,7 +9,8 @@ public class Tracker<A> {
     private A trackedObject;
     private final ArrayList<Listener<A>> listeners;
 
-    public Tracker() {
+    public Tracker(A objectToTrack) {
+        trackedObject = objectToTrack;
         listeners = new ArrayList<>();
     }
 

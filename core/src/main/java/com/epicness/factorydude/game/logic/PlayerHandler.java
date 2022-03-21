@@ -31,6 +31,11 @@ public class PlayerHandler {
         stuff.getPlayer().translateY(ySpeed * delta);
     }
 
+    // Structure
+    public void setSharedLogic(SharedLogic sharedLogic) {
+        this.sharedLogic = sharedLogic;
+    }
+
     public void setStuff(GameStuff stuff) {
         this.stuff = stuff;
     }

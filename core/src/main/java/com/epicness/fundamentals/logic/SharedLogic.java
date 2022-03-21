@@ -16,7 +16,7 @@ public class SharedLogic {
     public SharedLogic() {
         assetLoader = new AssetLoader();
         backgroundHandler = new BackgroundHandler();
-        pauseTracker = new Tracker<>();
+        pauseTracker = new Tracker<>(false);
         preferencesHandler = new PreferencesHandler();
         transitionHandler = new TransitionHandler();
         fader = new Fader();

@@ -20,6 +20,8 @@ public class GameLogic extends Logic {
         playerHandler = new PlayerHandler();
 
         gameInputHandler.setLogic(this);
+
+        playerHandler.setSharedLogic(sharedLogic);
     }
 
     @Override
