@@ -4,36 +4,47 @@ import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.fundamentals.input.SharedInput;
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.logic.SharedLogic;
+import com.epicness.fundamentals.logic.behaviors.AnimationUpdater;
 import com.epicness.fundamentals.stuff.Stuff;
 
 public class GameLogic extends Logic {
 
     private final FactoryZoneScaler factoryZoneScaler;
     private final GameInputHandler gameInputHandler;
-    private final PlayerHandler playerHandler;
+    private final HexHighlighter hexHighlighter;
+    private final PlayerMover playerMover;
+    private final PlayerRotator playerRotator;
+    private final AnimationUpdater playerAnimationUpdater;
 
     public GameLogic(SharedLogic sharedLogic) {
         super(sharedLogic);
 
         factoryZoneScaler = new FactoryZoneScaler();
         gameInputHandler = new GameInputHandler();
-        playerHandler = new PlayerHandler();
+        hexHighlighter = new HexHighlighter();
+        playerMover = new PlayerMover();
+        playerRotator = new PlayerRotator();
+        playerAnimationUpdater = new AnimationUpdater();
 
         gameInputHandler.setLogic(this);
+        playerRotator.setLogic(this);
 
         factoryZoneScaler.setSharedLogic(sharedLogic);
-        playerHandler.setSharedLogic(sharedLogic);
+        hexHighlighter.setSharedLogic(sharedLogic);
+        playerMover.setSharedLogic(sharedLogic);
     }
 
     @Override
     public void initialLogic() {
         gameInputHandler.setupInput();
+        playerRotator.init();
     }
 
     @Override
     public void update(float delta) {
         factoryZoneScaler.update(delta);
-        playerHandler.update(delta);
+        playerMover.update(delta);
+        playerAnimationUpdater.update(delta);
     }
 
     @Override
@@ -46,14 +57,24 @@ public class GameLogic extends Logic {
         GameStuff gameStuff = (GameStuff) stuff;
         factoryZoneScaler.setStuff(gameStuff);
         gameInputHandler.setStuff(gameStuff);
-        playerHandler.setStuff(gameStuff);
+        hexHighlighter.setStuff(gameStuff);
+        playerMover.setStuff(gameStuff);
+        playerRotator.setStuff(gameStuff);
     }
 
     public FactoryZoneScaler getFactoryZoneScaler() {
         return factoryZoneScaler;
     }
 
-    public PlayerHandler getPlayerHandler() {
-        return playerHandler;
+    public HexHighlighter getHexHighlighter() {
+        return hexHighlighter;
+    }
+
+    public PlayerMover getPlayerHandler() {
+        return playerMover;
+    }
+
+    public AnimationUpdater getPlayerAnimationUpdater() {
+        return playerAnimationUpdater;
     }
 }

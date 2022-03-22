@@ -60,4 +60,8 @@ public class FactoryZone {
         }
         factory.setScale(scale);
     }
+
+    public HexGrid getHexGrid() {
+        return hexGrid;
+    }
 }

@@ -11,6 +11,12 @@ import com.epicness.fundamentals.input.InputHandler;
 public class GameInputHandler extends InputHandler {
 
     @Override
+    public void mouseMoved(float x, float y) {
+        GameLogic logic = (GameLogic) this.logic;
+        logic.getHexHighlighter().mouseUpdate(x, y);
+    }
+
+    @Override
     public void keyDown(int keycode) {
         GameLogic logic = (GameLogic) this.logic;
         switch (keycode) {

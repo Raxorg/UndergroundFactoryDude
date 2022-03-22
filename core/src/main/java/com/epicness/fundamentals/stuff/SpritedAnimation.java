@@ -32,6 +32,13 @@ public class SpritedAnimation extends Sprited {
     }
 
     @Override
+    public void translate(float xAmount, float yAmount) {
+        for (int i = 0; i < animation.getKeyFrames().length; i++) {
+            animation.getKeyFrames()[i].translate(xAmount, yAmount);
+        }
+    }
+
+    @Override
     public void setSize(float size) {
         for (int i = 0; i < animation.getKeyFrames().length; i++) {
             animation.getKeyFrames()[i].setSize(size, size);

@@ -5,7 +5,7 @@ import static com.epicness.factorydude.game.GameConstants.PLAYER_SPEED;
 import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.fundamentals.logic.SharedLogic;
 
-public class PlayerHandler {
+public class PlayerMover {
 
     // Structure
     private SharedLogic sharedLogic;
@@ -27,8 +27,7 @@ public class PlayerHandler {
         if (sharedLogic.getPauseTracker().get()) {
             return;
         }
-        stuff.getPlayer().translateX(xSpeed * delta);
-        stuff.getPlayer().translateY(ySpeed * delta);
+        stuff.getPlayer().translate(xSpeed * delta, ySpeed * delta);
     }
 
     // Structure
