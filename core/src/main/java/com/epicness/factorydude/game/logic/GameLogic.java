@@ -12,8 +12,8 @@ public class GameLogic extends Logic {
     private final FactoryZoneScaler factoryZoneScaler;
     private final GameInputHandler gameInputHandler;
     private final HexHighlighter hexHighlighter;
+    private final PlayerAnimationSelector playerAnimationSelector;
     private final PlayerMover playerMover;
-    private final PlayerRotator playerRotator;
     private final AnimationUpdater playerAnimationUpdater;
 
     public GameLogic(SharedLogic sharedLogic) {
@@ -22,12 +22,13 @@ public class GameLogic extends Logic {
         factoryZoneScaler = new FactoryZoneScaler();
         gameInputHandler = new GameInputHandler();
         hexHighlighter = new HexHighlighter();
+        playerAnimationSelector = new PlayerAnimationSelector();
         playerMover = new PlayerMover();
-        playerRotator = new PlayerRotator();
         playerAnimationUpdater = new AnimationUpdater();
 
         gameInputHandler.setLogic(this);
-        playerRotator.setLogic(this);
+        playerAnimationSelector.setLogic(this);
+        playerMover.setLogic(this);
 
         factoryZoneScaler.setSharedLogic(sharedLogic);
         hexHighlighter.setSharedLogic(sharedLogic);
@@ -37,12 +38,13 @@ public class GameLogic extends Logic {
     @Override
     public void initialLogic() {
         gameInputHandler.setupInput();
-        playerRotator.init();
+        playerAnimationSelector.init();
     }
 
     @Override
     public void update(float delta) {
         factoryZoneScaler.update(delta);
+        playerAnimationSelector.update();
         playerMover.update(delta);
         playerAnimationUpdater.update(delta);
     }
@@ -58,8 +60,8 @@ public class GameLogic extends Logic {
         factoryZoneScaler.setStuff(gameStuff);
         gameInputHandler.setStuff(gameStuff);
         hexHighlighter.setStuff(gameStuff);
+        playerAnimationSelector.setStuff(gameStuff);
         playerMover.setStuff(gameStuff);
-        playerRotator.setStuff(gameStuff);
     }
 
     public FactoryZoneScaler getFactoryZoneScaler() {
@@ -68,6 +70,10 @@ public class GameLogic extends Logic {
 
     public HexHighlighter getHexHighlighter() {
         return hexHighlighter;
+    }
+
+    public PlayerAnimationSelector getPlayerAnimationSelector() {
+        return playerAnimationSelector;
     }
 
     public PlayerMover getPlayerHandler() {

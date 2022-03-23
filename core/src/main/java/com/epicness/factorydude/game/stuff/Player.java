@@ -40,6 +40,12 @@ public class Player {
         }
     }
 
+    public void setFlipX(boolean flipX) {
+        for (int i = 0; i < animations.length; i++) {
+            animations[i].setFlip(flipX, false);
+        }
+    }
+
     public SpritedAnimation getEastSlash() {
         return eastSlash;
     }

@@ -24,6 +24,11 @@ public class SpritedAnimation extends Sprited {
         setSprite(animation.getKeyFrame(time));
     }
 
+    public void setTime(float time) {
+        this.time = time;
+        setSprite(animation.getKeyFrame(time));
+    }
+
     @Override
     public void setPosition(float x, float y) {
         for (int i = 0; i < animation.getKeyFrames().length; i++) {
@@ -42,6 +47,13 @@ public class SpritedAnimation extends Sprited {
     public void setSize(float size) {
         for (int i = 0; i < animation.getKeyFrames().length; i++) {
             animation.getKeyFrames()[i].setSize(size, size);
+        }
+    }
+
+    @Override
+    public void setFlip(boolean flipX, boolean flipY) {
+        for (int i = 0; i < animation.getKeyFrames().length; i++) {
+            animation.getKeyFrames()[i].setFlip(flipX, flipY);
         }
     }
 

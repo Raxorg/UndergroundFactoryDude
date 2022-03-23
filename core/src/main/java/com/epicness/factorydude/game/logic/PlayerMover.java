@@ -9,6 +9,7 @@ public class PlayerMover {
 
     // Structure
     private SharedLogic sharedLogic;
+    private GameLogic logic;
     private GameStuff stuff;
     // Logic
     private float xSpeed, ySpeed;
@@ -27,12 +28,18 @@ public class PlayerMover {
         if (sharedLogic.getPauseTracker().get()) {
             return;
         }
-        stuff.getPlayer().translate(xSpeed * delta, ySpeed * delta);
+        float xAmount = xSpeed * delta, yAmount = ySpeed * delta;
+        stuff.getPlayer().translate(xAmount, yAmount);
+        logic.getPlayerAnimationSelector().translationChange(xAmount, yAmount);
     }
 
     // Structure
     public void setSharedLogic(SharedLogic sharedLogic) {
         this.sharedLogic = sharedLogic;
+    }
+
+    public void setLogic(GameLogic logic) {
+        this.logic = logic;
     }
 
     public void setStuff(GameStuff stuff) {

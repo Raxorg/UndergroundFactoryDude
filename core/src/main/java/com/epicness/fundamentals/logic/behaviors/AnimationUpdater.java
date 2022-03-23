@@ -18,4 +18,12 @@ public class AnimationUpdater {
         }
         animation.addTime(delta);
     }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public void resetAnimation() {
+        animation.setTime(0f);
+    }
 }
