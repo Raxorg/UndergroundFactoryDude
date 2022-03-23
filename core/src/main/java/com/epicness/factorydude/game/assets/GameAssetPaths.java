@@ -11,5 +11,5 @@ public class GameAssetPaths {
     public static final String PLAYER_SOUTH_WALK = "factorydude/animations/player/playerSouthWalk.png";
     // Sprites
     public static final String HEX_PATH = "factorydude/images/hex.png";
-    public static final String PLAYER_PATH = "factorydude/images/player.png";
+    public static final String FACTORY_PATH = "factorydude/images/factory.png";
 }

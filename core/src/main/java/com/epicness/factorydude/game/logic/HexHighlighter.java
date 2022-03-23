@@ -15,6 +15,8 @@ public class HexHighlighter {
     private SharedLogic sharedLogic;
     private GameLogic logic;
     private GameStuff stuff;
+    // Logic
+    private Cell selectedCell;
 
     public void mouseUpdate(float x, float y) {
         if (!sharedLogic.getPauseTracker().get()) {
@@ -25,9 +27,12 @@ public class HexHighlighter {
         for (int column = 0; column < HEX_GRID_COLUMNS; column++) {
             for (int row = 0; row < HEX_GRID_ROWS; row++) {
                 Cell cell = hexGrid.getCells()[column][row];
+                if (cell == selectedCell) {
+                    continue;
+                }
                 cell.setColor(Color.WHITE);
                 if (cell.contains(x, y) && !highlighted) {
-                    cell.setColor(Color.RED);
+                    cell.setColor(Color.CYAN);
                     highlighted = true;
                 }
             }
@@ -43,12 +48,25 @@ public class HexHighlighter {
             for (int row = 0; row < HEX_GRID_ROWS; row++) {
                 Cell cell = hexGrid.getCells()[column][row];
                 if (cell.contains(x, y)) {
-                    logic.getBuildingPanelHandler().open();
+                    logic.getBuildingPanelSlider().open();
+                    cell.setColor(Color.BLUE);
+                    if (selectedCell != null) {
+                        selectedCell.setColor(Color.WHITE);
+                    }
+                    selectedCell = cell;
                     return;
                 }
             }
         }
-        logic.getBuildingPanelHandler().close();
+        logic.getBuildingPanelSlider().close();
+        if (selectedCell != null) {
+            selectedCell.setColor(Color.WHITE);
+        }
+        selectedCell = null;
+    }
+
+    public Cell getSelectedCell() {
+        return selectedCell;
     }
 
     // Structure

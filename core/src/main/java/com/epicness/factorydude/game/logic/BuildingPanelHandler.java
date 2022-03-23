@@ -1,76 +1,53 @@
 package com.epicness.factorydude.game.logic;
 
-import static com.epicness.factorydude.game.GameConstants.BUILDING_PANEL_SLIDE_DURATION;
-import static com.epicness.factorydude.game.GameConstants.BUILDING_PANEL_WIDTH;
-
-import com.epicness.factorydude.game.stuff.BuildingPanel;
+import com.badlogic.gdx.graphics.Color;
 import com.epicness.factorydude.game.stuff.GameStuff;
+import com.epicness.fundamentals.logic.SharedLogic;
+import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.grid.Cell;
 
 public class BuildingPanelHandler {
 
     // Structure
+    private SharedLogic sharedLogic;
+    private GameLogic logic;
     private GameStuff stuff;
-    // Logic
-    private float progress;
-    private boolean opening, closing, open, close;
 
-    public void init() {
-        stuff.getFactoryZone().getBuildingPanel().setX(-BUILDING_PANEL_WIDTH);
-        close = true;
-    }
-
-    public void open() {
-        if (open) {
+    public void mouseUpdate(float x, float y) {
+        if (!sharedLogic.getPauseTracker().get()) {
             return;
         }
-        if (close) {
-            progress = 0f;
+        Sprited factoryOption = stuff.getFactoryZone().getBuildingPanel().getFactoryOption();
+        factoryOption.setColor(Color.WHITE);
+        if (factoryOption.contains(x, y)) {
+            factoryOption.setColor(Color.GREEN);
         }
-        opening = true;
-        closing = false;
-        close = false;
     }
 
-    public void close() {
-        if (close) {
+    public void touchDown(float x, float y) {
+        if (!sharedLogic.getPauseTracker().get()) {
             return;
         }
-        if (open) {
-            progress = 1f;
-        }
-        opening = false;
-        closing = true;
-        open = false;
-    }
-
-    public void update(float delta) {
-        if (!opening && !closing) {
+        Sprited factoryOption = stuff.getFactoryZone().getBuildingPanel().getFactoryOption();
+        if (!factoryOption.contains(x, y)) {
             return;
         }
-        BuildingPanel buildingPanel = stuff.getFactoryZone().getBuildingPanel();
-        if (opening) {
-            progress = progress + delta / BUILDING_PANEL_SLIDE_DURATION;
-            progress = Math.min(progress, 1f);
-            buildingPanel.setX(-BUILDING_PANEL_WIDTH + progress * BUILDING_PANEL_WIDTH);
-            if (progress == 1f) {
-                open = true;
-                close = false;
-                opening = false;
-            }
+        Cell selectedCell = logic.getHexHighlighter().getSelectedCell();
+        if (selectedCell == null) {
+            return;
         }
-        if (closing) {
-            progress = progress - delta / BUILDING_PANEL_SLIDE_DURATION;
-            progress = Math.max(progress, 0f);
-            buildingPanel.setX(-BUILDING_PANEL_WIDTH + progress * BUILDING_PANEL_WIDTH);
-            if (progress == 0f) {
-                open = false;
-                close = true;
-                closing = false;
-            }
-        }
+        logic.getBuildingPlacer().placeCellable(selectedCell);
     }
 
     // Structure
+    public void setSharedLogic(SharedLogic sharedLogic) {
+        this.sharedLogic = sharedLogic;
+    }
+
+    public void setLogic(GameLogic logic) {
+        this.logic = logic;
+    }
+
     public void setStuff(GameStuff stuff) {
         this.stuff = stuff;
     }

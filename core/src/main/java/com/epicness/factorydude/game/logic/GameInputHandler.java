@@ -14,12 +14,14 @@ public class GameInputHandler extends InputHandler {
     @Override
     public void mouseMoved(float x, float y) {
         GameLogic logic = (GameLogic) this.logic;
+        logic.getBuildingPanelHandler().mouseUpdate(x, y);
         logic.getHexHighlighter().mouseUpdate(x, y);
     }
 
     @Override
     public void touchDown(float x, float y) {
         GameLogic logic = (GameLogic) this.logic;
+        logic.getBuildingPanelHandler().touchDown(x, y);
         logic.getHexHighlighter().touchDown(x, y);
     }
 

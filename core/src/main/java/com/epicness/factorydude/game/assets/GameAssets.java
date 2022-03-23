@@ -1,12 +1,12 @@
 package com.epicness.factorydude.game.assets;
 
 import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.FACTORY_PATH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.HEX_PATH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_EAST_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_EAST_WALK;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_NORTH_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_NORTH_WALK;
-import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_PATH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SOUTH_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SOUTH_WALK;
 
@@ -23,7 +23,7 @@ public class GameAssets extends Assets {
             playerSouthSlash, playerSouthWalk;
     // Sprites
     private Sprite hex;
-    private Sprite player;
+    private Sprite factory;
 
     @Override
     public void queueAssetLoading() {
@@ -34,7 +34,7 @@ public class GameAssets extends Assets {
         loadTexture(PLAYER_SOUTH_SLASH);
         loadTexture(PLAYER_SOUTH_WALK);
         loadTexture(HEX_PATH);
-        loadTexture(PLAYER_PATH);
+        loadTexture(FACTORY_PATH);
     }
 
     @Override
@@ -55,8 +55,8 @@ public class GameAssets extends Assets {
         // Sprites
         hex = new Sprite(getTexture(HEX_PATH));
         hex.getTexture().setFilter(Linear, Linear);
-        player = new Sprite(getTexture(PLAYER_PATH));
-        player.getTexture().setFilter(Linear, Linear);
+        factory = new Sprite(getTexture(FACTORY_PATH));
+        factory.getTexture().setFilter(Linear, Linear);
     }
 
     // Animations
@@ -89,7 +89,7 @@ public class GameAssets extends Assets {
         return hex;
     }
 
-    public Sprite getPlayer() {
-        return player;
+    public Sprite getFactory() {
+        return factory;
     }
 }
