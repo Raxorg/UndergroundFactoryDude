@@ -3,6 +3,7 @@ package com.epicness.factorydude.game.logic;
 import static com.badlogic.gdx.Input.Keys.A;
 import static com.badlogic.gdx.Input.Keys.D;
 import static com.badlogic.gdx.Input.Keys.F;
+import static com.badlogic.gdx.Input.Keys.G;
 import static com.badlogic.gdx.Input.Keys.S;
 import static com.badlogic.gdx.Input.Keys.W;
 
@@ -21,16 +22,19 @@ public class GameInputHandler extends InputHandler {
         GameLogic logic = (GameLogic) this.logic;
         switch (keycode) {
             case W:
-                logic.getPlayerHandler().verticalDirChange(true, true);
+                logic.getPlayerMover().verticalDirChange(true, true);
                 break;
             case A:
-                logic.getPlayerHandler().horizontalDirChange(true, true);
+                logic.getPlayerMover().horizontalDirChange(true, true);
                 break;
             case S:
-                logic.getPlayerHandler().verticalDirChange(false, true);
+                logic.getPlayerMover().verticalDirChange(false, true);
                 break;
             case D:
-                logic.getPlayerHandler().horizontalDirChange(false, true);
+                logic.getPlayerMover().horizontalDirChange(false, true);
+                break;
+            case G:
+                logic.getPlayerAttackHandler().attack();
                 break;
         }
     }
@@ -40,16 +44,16 @@ public class GameInputHandler extends InputHandler {
         GameLogic logic = (GameLogic) this.logic;
         switch (keycode) {
             case W:
-                logic.getPlayerHandler().verticalDirChange(true, false);
+                logic.getPlayerMover().verticalDirChange(true, false);
                 break;
             case A:
-                logic.getPlayerHandler().horizontalDirChange(true, false);
+                logic.getPlayerMover().horizontalDirChange(true, false);
                 break;
             case S:
-                logic.getPlayerHandler().verticalDirChange(false, false);
+                logic.getPlayerMover().verticalDirChange(false, false);
                 break;
             case D:
-                logic.getPlayerHandler().horizontalDirChange(false, false);
+                logic.getPlayerMover().horizontalDirChange(false, false);
                 break;
             case F:
                 logic.getFactoryZoneScaler().togglePressed();

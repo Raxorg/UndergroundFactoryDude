@@ -4,7 +4,6 @@ import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.fundamentals.input.SharedInput;
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.logic.SharedLogic;
-import com.epicness.fundamentals.logic.behaviors.AnimationUpdater;
 import com.epicness.fundamentals.stuff.Stuff;
 
 public class GameLogic extends Logic {
@@ -12,9 +11,9 @@ public class GameLogic extends Logic {
     private final FactoryZoneScaler factoryZoneScaler;
     private final GameInputHandler gameInputHandler;
     private final HexHighlighter hexHighlighter;
-    private final PlayerAnimationSelector playerAnimationSelector;
+    private final PlayerAnimationHandler playerAnimationHandler;
+    private final PlayerAttackHandler playerAttackHandler;
     private final PlayerMover playerMover;
-    private final AnimationUpdater playerAnimationUpdater;
 
     public GameLogic(SharedLogic sharedLogic) {
         super(sharedLogic);
@@ -22,31 +21,33 @@ public class GameLogic extends Logic {
         factoryZoneScaler = new FactoryZoneScaler();
         gameInputHandler = new GameInputHandler();
         hexHighlighter = new HexHighlighter();
-        playerAnimationSelector = new PlayerAnimationSelector();
+        playerAnimationHandler = new PlayerAnimationHandler();
+        playerAttackHandler = new PlayerAttackHandler();
         playerMover = new PlayerMover();
-        playerAnimationUpdater = new AnimationUpdater();
 
         gameInputHandler.setLogic(this);
-        playerAnimationSelector.setLogic(this);
+        playerAttackHandler.setLogic(this);
         playerMover.setLogic(this);
 
         factoryZoneScaler.setSharedLogic(sharedLogic);
         hexHighlighter.setSharedLogic(sharedLogic);
+        playerAnimationHandler.setSharedLogic(sharedLogic);
+        playerAttackHandler.setSharedLogic(sharedLogic);
         playerMover.setSharedLogic(sharedLogic);
     }
 
     @Override
     public void initialLogic() {
         gameInputHandler.setupInput();
-        playerAnimationSelector.init();
+        playerAnimationHandler.init();
     }
 
     @Override
     public void update(float delta) {
         factoryZoneScaler.update(delta);
-        playerAnimationSelector.update();
+        playerAnimationHandler.update(delta);
+        playerAttackHandler.update(delta);
         playerMover.update(delta);
-        playerAnimationUpdater.update(delta);
     }
 
     @Override
@@ -60,7 +61,8 @@ public class GameLogic extends Logic {
         factoryZoneScaler.setStuff(gameStuff);
         gameInputHandler.setStuff(gameStuff);
         hexHighlighter.setStuff(gameStuff);
-        playerAnimationSelector.setStuff(gameStuff);
+        playerAnimationHandler.setStuff(gameStuff);
+        playerAttackHandler.setStuff(gameStuff);
         playerMover.setStuff(gameStuff);
     }
 
@@ -72,15 +74,15 @@ public class GameLogic extends Logic {
         return hexHighlighter;
     }
 
-    public PlayerAnimationSelector getPlayerAnimationSelector() {
-        return playerAnimationSelector;
+    public PlayerAnimationHandler getPlayerAnimationSelector() {
+        return playerAnimationHandler;
     }
 
-    public PlayerMover getPlayerHandler() {
+    public PlayerAttackHandler getPlayerAttackHandler() {
+        return playerAttackHandler;
+    }
+
+    public PlayerMover getPlayerMover() {
         return playerMover;
-    }
-
-    public AnimationUpdater getPlayerAnimationUpdater() {
-        return playerAnimationUpdater;
     }
 }

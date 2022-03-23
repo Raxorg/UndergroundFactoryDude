@@ -29,6 +29,10 @@ public class SpritedAnimation extends Sprited {
         setSprite(animation.getKeyFrame(time));
     }
 
+    public boolean ended() {
+        return animation.isAnimationFinished(time);
+    }
+
     @Override
     public void setPosition(float x, float y) {
         for (int i = 0; i < animation.getKeyFrames().length; i++) {

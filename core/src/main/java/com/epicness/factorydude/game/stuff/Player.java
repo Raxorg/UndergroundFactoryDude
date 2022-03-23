@@ -6,17 +6,22 @@ import com.epicness.fundamentals.stuff.SpritedAnimation;
 
 public class Player {
 
-    private final SpritedAnimation eastSlash, eastWalk, northSlash, northWalk, southSlash, southWalk;
     private final SpritedAnimation[] animations;
     private SpritedAnimation currentAnimation;
 
     public Player(GameAssets assets) {
-        eastSlash = new SpritedAnimation(assets.getPlayerEastSlash(), 0.03f);
-        eastWalk = new SpritedAnimation(assets.getPlayerEastWalk(), 0.03f);
-        northSlash = new SpritedAnimation(assets.getPlayerNorthSlash(), 0.03f);
-        northWalk = new SpritedAnimation(assets.getPlayerNorthWalk(), 0.03f);
-        southSlash = new SpritedAnimation(assets.getPlayerSouthSlash(), 0.03f);
-        southWalk = new SpritedAnimation(assets.getPlayerSouthWalk(), 0.03f);
+        SpritedAnimation eastSlash = new SpritedAnimation(assets.getPlayerEastSlash(), 0.03f);
+        SpritedAnimation eastWalk = new SpritedAnimation(assets.getPlayerEastWalk(), 0.03f);
+        eastWalk.enableLooping();
+
+        SpritedAnimation northSlash = new SpritedAnimation(assets.getPlayerNorthSlash(), 0.03f);
+        SpritedAnimation northWalk = new SpritedAnimation(assets.getPlayerNorthWalk(), 0.03f);
+        northWalk.enableLooping();
+
+        SpritedAnimation southSlash = new SpritedAnimation(assets.getPlayerSouthSlash(), 0.03f);
+        SpritedAnimation southWalk = new SpritedAnimation(assets.getPlayerSouthWalk(), 0.03f);
+        southWalk.enableLooping();
+
         animations = new SpritedAnimation[6];
         animations[0] = eastSlash;
         animations[1] = eastWalk;
@@ -24,14 +29,27 @@ public class Player {
         animations[3] = northWalk;
         animations[4] = southSlash;
         animations[5] = southWalk;
-        for (int i = 0; i < animations.length; i++) {
-            animations[i].enableLooping();
-        }
-        currentAnimation = eastSlash;
+        currentAnimation = southWalk;
     }
 
     public void draw(SpriteBatch spriteBatch) {
         currentAnimation.draw(spriteBatch);
+    }
+
+    public void addAnimationTime(float time) {
+        for (int i = 0; i < animations.length; i++) {
+            animations[i].addTime(time);
+        }
+    }
+
+    public void setAnimationTime(float time) {
+        for (int i = 0; i < animations.length; i++) {
+            animations[i].setTime(time);
+        }
+    }
+
+    public boolean isAnimationFinished() {
+        return currentAnimation.ended();
     }
 
     public void translate(float xAmount, float yAmount) {
@@ -46,35 +64,27 @@ public class Player {
         }
     }
 
-    public SpritedAnimation getEastSlash() {
-        return eastSlash;
+    public void useEastSlash() {
+        currentAnimation = animations[0];
     }
 
-    public SpritedAnimation getEastWalk() {
-        return eastWalk;
+    public void useEastWalk() {
+        currentAnimation = animations[1];
     }
 
-    public SpritedAnimation getNorthSlash() {
-        return northSlash;
+    public void useNorthSlash() {
+        currentAnimation = animations[2];
     }
 
-    public SpritedAnimation getNorthWalk() {
-        return northWalk;
+    public void useNorthWalk() {
+        currentAnimation = animations[3];
     }
 
-    public SpritedAnimation getSouthSlash() {
-        return southSlash;
+    public void useSouthSlash() {
+        currentAnimation = animations[4];
     }
 
-    public SpritedAnimation getSouthWalk() {
-        return southWalk;
-    }
-
-    public SpritedAnimation getCurrentAnimation() {
-        return currentAnimation;
-    }
-
-    public void setCurrentAnimation(SpritedAnimation currentAnimation) {
-        this.currentAnimation = currentAnimation;
+    public void useSouthWalk() {
+        currentAnimation = animations[5];
     }
 }
