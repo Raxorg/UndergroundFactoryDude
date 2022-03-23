@@ -8,6 +8,7 @@ import com.epicness.fundamentals.stuff.Stuff;
 
 public class GameLogic extends Logic {
 
+    private final BuildingPanelHandler buildingPanelHandler;
     private final FactoryZoneScaler factoryZoneScaler;
     private final GameInputHandler gameInputHandler;
     private final HexHighlighter hexHighlighter;
@@ -18,6 +19,7 @@ public class GameLogic extends Logic {
     public GameLogic(SharedLogic sharedLogic) {
         super(sharedLogic);
 
+        buildingPanelHandler = new BuildingPanelHandler();
         factoryZoneScaler = new FactoryZoneScaler();
         gameInputHandler = new GameInputHandler();
         hexHighlighter = new HexHighlighter();
@@ -26,6 +28,7 @@ public class GameLogic extends Logic {
         playerMover = new PlayerMover();
 
         gameInputHandler.setLogic(this);
+        hexHighlighter.setLogic(this);
         playerAttackHandler.setLogic(this);
         playerMover.setLogic(this);
 
@@ -38,12 +41,14 @@ public class GameLogic extends Logic {
 
     @Override
     public void initialLogic() {
+        buildingPanelHandler.init();
         gameInputHandler.setupInput();
         playerAnimationHandler.init();
     }
 
     @Override
     public void update(float delta) {
+        buildingPanelHandler.update(delta);
         factoryZoneScaler.update(delta);
         playerAnimationHandler.update(delta);
         playerAttackHandler.update(delta);
@@ -58,12 +63,17 @@ public class GameLogic extends Logic {
     @Override
     public void setStuff(Stuff stuff) {
         GameStuff gameStuff = (GameStuff) stuff;
+        buildingPanelHandler.setStuff(gameStuff);
         factoryZoneScaler.setStuff(gameStuff);
         gameInputHandler.setStuff(gameStuff);
         hexHighlighter.setStuff(gameStuff);
         playerAnimationHandler.setStuff(gameStuff);
         playerAttackHandler.setStuff(gameStuff);
         playerMover.setStuff(gameStuff);
+    }
+
+    public BuildingPanelHandler getBuildingPanelHandler() {
+        return buildingPanelHandler;
     }
 
     public FactoryZoneScaler getFactoryZoneScaler() {

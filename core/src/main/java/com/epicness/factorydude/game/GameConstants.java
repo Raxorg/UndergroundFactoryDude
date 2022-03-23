@@ -17,4 +17,8 @@ public class GameConstants {
     public static final float HEX_GRID_HEIGHT = HEX_GRID_ROWS * (HEX_GRID_CELL_SIZE * 0.74f);
     public static final float HEX_GRID_STARTING_X = CAMERA_WIDTH / 2f - HEX_GRID_WIDTH / 2f;
     public static final float HEX_GRID_STARTING_Y = CAMERA_HEIGHT / 2f - HEX_GRID_HEIGHT / 2f;
+    // Building panel
+    public static final float BUILDING_PANEL_WIDTH = CAMERA_WIDTH * 0.2f;
+    public static final float BUILDING_PANEL_HEIGHT = CAMERA_HEIGHT;
+    public static final float BUILDING_PANEL_SLIDE_DURATION = 0.5f;
 }

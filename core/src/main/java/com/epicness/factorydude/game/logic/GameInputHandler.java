@@ -18,6 +18,12 @@ public class GameInputHandler extends InputHandler {
     }
 
     @Override
+    public void touchDown(float x, float y) {
+        GameLogic logic = (GameLogic) this.logic;
+        logic.getHexHighlighter().touchDown(x, y);
+    }
+
+    @Override
     public void keyDown(int keycode) {
         GameLogic logic = (GameLogic) this.logic;
         switch (keycode) {

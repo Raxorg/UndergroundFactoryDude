@@ -20,6 +20,7 @@ public class FactoryZone {
     private final Sprited background;
     private final HexGrid hexGrid;
     private final Sprited factory;
+    private final BuildingPanel buildingPanel;
 
     public FactoryZone(SharedAssets sharedAssets, GameAssets assets) {
         background = new Sprited(sharedAssets.getPixel());
@@ -42,6 +43,8 @@ public class FactoryZone {
         factory.setOriginCenter();
         factory.setColor(Color.GREEN);
 
+        buildingPanel = new BuildingPanel(sharedAssets, assets);
+
         setScale(0f);
     }
 
@@ -49,6 +52,7 @@ public class FactoryZone {
         background.draw(spriteBatch);
         hexGrid.draw(spriteBatch);
         factory.draw(spriteBatch);
+        buildingPanel.draw(spriteBatch);
     }
 
     public void setScale(float scale) {
@@ -59,9 +63,14 @@ public class FactoryZone {
             }
         }
         factory.setScale(scale);
+        buildingPanel.setScale(scale);
     }
 
     public HexGrid getHexGrid() {
         return hexGrid;
+    }
+
+    public BuildingPanel getBuildingPanel() {
+        return buildingPanel;
     }
 }

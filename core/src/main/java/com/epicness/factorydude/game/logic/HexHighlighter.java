@@ -13,6 +13,7 @@ public class HexHighlighter {
 
     // Structure
     private SharedLogic sharedLogic;
+    private GameLogic logic;
     private GameStuff stuff;
 
     public void mouseUpdate(float x, float y) {
@@ -33,9 +34,30 @@ public class HexHighlighter {
         }
     }
 
+    public void touchDown(float x, float y) {
+        if (!sharedLogic.getPauseTracker().get()) {
+            return;
+        }
+        HexGrid hexGrid = stuff.getFactoryZone().getHexGrid();
+        for (int column = 0; column < HEX_GRID_COLUMNS; column++) {
+            for (int row = 0; row < HEX_GRID_ROWS; row++) {
+                Cell cell = hexGrid.getCells()[column][row];
+                if (cell.contains(x, y)) {
+                    logic.getBuildingPanelHandler().open();
+                    return;
+                }
+            }
+        }
+        logic.getBuildingPanelHandler().close();
+    }
+
     // Structure
     public void setSharedLogic(SharedLogic sharedLogic) {
         this.sharedLogic = sharedLogic;
+    }
+
+    public void setLogic(GameLogic logic) {
+        this.logic = logic;
     }
 
     public void setStuff(GameStuff stuff) {
