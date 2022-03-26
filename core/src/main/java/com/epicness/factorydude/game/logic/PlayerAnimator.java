@@ -1,10 +1,10 @@
 package com.epicness.factorydude.game.logic;
 
 import com.epicness.factorydude.game.stuff.GameStuff;
-import com.epicness.factorydude.game.stuff.Player;
+import com.epicness.factorydude.game.stuff.characters.Player;
 import com.epicness.fundamentals.logic.SharedLogic;
 
-public class PlayerAnimationHandler {
+public class PlayerAnimator {
 
     // Structure
     private SharedLogic sharedLogic;

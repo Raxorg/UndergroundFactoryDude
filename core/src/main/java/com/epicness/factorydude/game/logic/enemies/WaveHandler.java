@@ -1,30 +1,34 @@
-package com.epicness.factorydude.game.logic;
+package com.epicness.factorydude.game.logic.enemies;
 
+import com.epicness.factorydude.game.logic.GameLogic;
 import com.epicness.factorydude.game.stuff.GameStuff;
+import com.epicness.factorydude.game.stuff.waves.Wave;
 import com.epicness.fundamentals.logic.SharedLogic;
 
-public class PlayerAttackHandler {
+public class WaveHandler {
 
     // Structure
     private SharedLogic sharedLogic;
     private GameLogic logic;
     private GameStuff stuff;
     // Logic
-    private float cooldown;
+    private float time;
+    private Wave currentWave;
 
     public void update(float delta) {
         if (sharedLogic.getPauseTracker().get()) {
             return;
         }
-        cooldown = Math.max(cooldown - delta, 0f);
-    }
-
-    public void attack() {
-        if (cooldown != 0f) {
+        time += delta;
+        Wave wave = stuff.getWaveStorage().getWaves()[0];
+        if (time >= wave.getSize()) {
+            // TODO: 25/3/2022 next wave
             return;
         }
-        logic.getPlayerAnimator().attackChange(true);
-        cooldown = 1f;
+        int quantity = wave.getQuantityAtTime(time);
+        for (int i = 0; i < quantity; i++) {
+            logic.getEnemySpawner().spawnEnemy();
+        }
     }
 
     // Structure

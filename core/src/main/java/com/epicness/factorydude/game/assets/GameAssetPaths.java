@@ -9,7 +9,13 @@ public class GameAssetPaths {
     public static final String PLAYER_NORTH_WALK = "factorydude/animations/player/playerNorthWalk.png";
     public static final String PLAYER_SOUTH_SLASH = "factorydude/animations/player/playerSouthSlash.png";
     public static final String PLAYER_SOUTH_WALK = "factorydude/animations/player/playerSouthWalk.png";
+
+    public static final String ENEMY_EAST_WALK = "factorydude/animations/enemy/enemyEastWalk.png";
+    public static final String ENEMY_NORTH_WALK = "factorydude/animations/enemy/enemyNorthWalk.png";
+    public static final String ENEMY_SOUTH_WALK = "factorydude/animations/enemy/enemySouthWalk.png";
     // Sprites
+    public static final String BG_1 = "factorydude/images/gameZone/bg-1.png";
+    public static final String BG_2 = "factorydude/images/gameZone/bg-2.png";
     public static final String HEX_PATH = "factorydude/images/hex.png";
-    public static final String FACTORY_PATH = "factorydude/images/factory.png";
+    public static final String FACTORY_PATH = "factorydude/images/factoryZone/factory.png";
 }

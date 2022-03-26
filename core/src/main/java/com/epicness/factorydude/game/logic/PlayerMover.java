@@ -2,6 +2,7 @@ package com.epicness.factorydude.game.logic;
 
 import static com.epicness.factorydude.game.GameConstants.PLAYER_SPEED;
 
+import com.badlogic.gdx.math.Vector2;
 import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.fundamentals.logic.SharedLogic;
 
@@ -11,26 +12,27 @@ public class PlayerMover {
     private SharedLogic sharedLogic;
     private GameLogic logic;
     private GameStuff stuff;
-    // Logic
-    private float xSpeed, ySpeed;
 
     public void horizontalDirChange(boolean left, boolean press) {
-        float speed = press ? PLAYER_SPEED : -PLAYER_SPEED;
-        xSpeed = left ? xSpeed - speed : xSpeed + speed;
+        float speedChange = press ? PLAYER_SPEED : -PLAYER_SPEED;
+        Vector2 speed = stuff.getPlayer().getSpeed();
+        speed.x = left ? speed.x - speedChange : speed.x + speedChange;
     }
 
     public void verticalDirChange(boolean up, boolean press) {
-        float speed = press ? PLAYER_SPEED : -PLAYER_SPEED;
-        ySpeed = up ? ySpeed + speed : ySpeed - speed;
+        float speedChange = press ? PLAYER_SPEED : -PLAYER_SPEED;
+        Vector2 speed = stuff.getPlayer().getSpeed();
+        speed.y = up ? speed.y + speedChange : speed.y - speedChange;
     }
 
     public void update(float delta) {
         if (sharedLogic.getPauseTracker().get()) {
             return;
         }
-        float xAmount = xSpeed * delta, yAmount = ySpeed * delta;
+        Vector2 speed = stuff.getPlayer().getSpeed();
+        float xAmount = speed.x * delta, yAmount = speed.y * delta;
         stuff.getPlayer().translate(xAmount, yAmount);
-        logic.getPlayerAnimationSelector().translationChange(xAmount, yAmount);
+        logic.getPlayerAnimator().translationChange(xAmount, yAmount);
     }
 
     // Structure

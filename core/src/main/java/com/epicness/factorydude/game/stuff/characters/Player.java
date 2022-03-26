@@ -1,13 +1,9 @@
-package com.epicness.factorydude.game.stuff;
+package com.epicness.factorydude.game.stuff.characters;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.fundamentals.stuff.SpritedAnimation;
 
-public class Player {
-
-    private final SpritedAnimation[] animations;
-    private SpritedAnimation currentAnimation;
+public class Player extends Character {
 
     public Player(GameAssets assets) {
         SpritedAnimation eastSlash = new SpritedAnimation(assets.getPlayerEastSlash(), 0.03f);
@@ -30,38 +26,6 @@ public class Player {
         animations[4] = southSlash;
         animations[5] = southWalk;
         currentAnimation = southWalk;
-    }
-
-    public void draw(SpriteBatch spriteBatch) {
-        currentAnimation.draw(spriteBatch);
-    }
-
-    public void addAnimationTime(float time) {
-        for (int i = 0; i < animations.length; i++) {
-            animations[i].addTime(time);
-        }
-    }
-
-    public void setAnimationTime(float time) {
-        for (int i = 0; i < animations.length; i++) {
-            animations[i].setTime(time);
-        }
-    }
-
-    public boolean isAnimationFinished() {
-        return currentAnimation.ended();
-    }
-
-    public void translate(float xAmount, float yAmount) {
-        for (int i = 0; i < animations.length; i++) {
-            animations[i].translate(xAmount, yAmount);
-        }
-    }
-
-    public void setFlipX(boolean flipX) {
-        for (int i = 0; i < animations.length; i++) {
-            animations[i].setFlip(flipX, false);
-        }
     }
 
     public void useEastSlash() {

@@ -1,6 +1,11 @@
 package com.epicness.factorydude.game.assets;
 
 import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.BG_1;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.BG_2;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_EAST_WALK;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_NORTH_WALK;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_SOUTH_WALK;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.FACTORY_PATH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.HEX_PATH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_EAST_SLASH;
@@ -21,18 +26,27 @@ public class GameAssets extends Assets {
     private Sprite[] playerEastSlash, playerEastWalk,
             playerNorthSlash, playerNorthWalk,
             playerSouthSlash, playerSouthWalk;
+    private Sprite[] enemyEastWalk, enemyNorthWalk, enemySouthWalk;
     // Sprites
+    private Sprite bg1, bg2;
     private Sprite hex;
     private Sprite factory;
 
     @Override
     public void queueAssetLoading() {
+        // Animations
         loadTexture(PLAYER_EAST_SLASH);
         loadTexture(PLAYER_EAST_WALK);
         loadTexture(PLAYER_NORTH_SLASH);
         loadTexture(PLAYER_NORTH_WALK);
         loadTexture(PLAYER_SOUTH_SLASH);
         loadTexture(PLAYER_SOUTH_WALK);
+        loadTexture(ENEMY_EAST_WALK);
+        loadTexture(ENEMY_NORTH_WALK);
+        loadTexture(ENEMY_SOUTH_WALK);
+        // Sprites
+        loadTexture(BG_1);
+        loadTexture(BG_2);
         loadTexture(HEX_PATH);
         loadTexture(FACTORY_PATH);
     }
@@ -52,7 +66,16 @@ public class GameAssets extends Assets {
         playerSouthSlash = AnimationUtils.split(playerSouthSlashTex, 138, 165, 14);
         Texture playerSouthWalkTex = getTexture(PLAYER_SOUTH_WALK);
         playerSouthWalk = AnimationUtils.split(playerSouthWalkTex, 138, 165, 12);
+
+        Texture enemyEastWalkTex = getTexture(ENEMY_EAST_WALK);
+        enemyEastWalk = AnimationUtils.split(enemyEastWalkTex, 138, 165, 20);
+        Texture enemyNorthWalkTex = getTexture(ENEMY_NORTH_WALK);
+        enemyNorthWalk = AnimationUtils.split(enemyNorthWalkTex, 138, 165, 20);
+        Texture enemySouthWalkTex = getTexture(ENEMY_SOUTH_WALK);
+        enemySouthWalk = AnimationUtils.split(enemySouthWalkTex, 138, 165, 20);
         // Sprites
+        bg1 = new Sprite(getTexture(BG_1));
+        bg2 = new Sprite(getTexture(BG_2));
         hex = new Sprite(getTexture(HEX_PATH));
         hex.getTexture().setFilter(Linear, Linear);
         factory = new Sprite(getTexture(FACTORY_PATH));
@@ -84,7 +107,27 @@ public class GameAssets extends Assets {
         return playerSouthWalk;
     }
 
+    public Sprite[] getEnemyEastWalk() {
+        return enemyEastWalk;
+    }
+
+    public Sprite[] getEnemyNorthWalk() {
+        return enemyNorthWalk;
+    }
+
+    public Sprite[] getEnemySouthWalk() {
+        return enemySouthWalk;
+    }
+
     // Sprites
+    public Sprite getBg1() {
+        return bg1;
+    }
+
+    public Sprite getBg2() {
+        return bg2;
+    }
+
     public Sprite getHex() {
         return hex;
     }

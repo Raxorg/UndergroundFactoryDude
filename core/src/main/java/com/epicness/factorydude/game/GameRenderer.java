@@ -13,6 +13,10 @@ public class GameRenderer extends Renderer {
 
         ScreenUtils.clear(Color.NAVY);
         spriteBatch.begin();
+        stuff.getBackground().draw(spriteBatch);
+        for (int i = 0; i < stuff.getEnemies().size; i++) {
+            stuff.getEnemies().get(i).draw(spriteBatch);
+        }
         stuff.getPlayer().draw(spriteBatch);
         stuff.getFactoryZone().draw(spriteBatch);
         spriteBatch.end();
