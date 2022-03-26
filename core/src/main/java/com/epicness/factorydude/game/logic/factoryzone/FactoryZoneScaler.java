@@ -1,4 +1,4 @@
-package com.epicness.factorydude.game.logic;
+package com.epicness.factorydude.game.logic.factoryzone;
 
 import static com.epicness.factorydude.game.GameConstants.SCALING_DURATION;
 

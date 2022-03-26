@@ -10,18 +10,17 @@ public class PlayerAnimator {
     private SharedLogic sharedLogic;
     private GameStuff stuff;
     // Logic
-    private boolean attacking, facingUp, facingDown, facingLeft, facingRight, idle;
-
-    public void init() {
-        idle = true;
-        facingDown = true;
-    }
+    private boolean attacking;
 
     public void update(float delta) {
         if (sharedLogic.getPauseTracker().get()) {
             return;
         }
         Player player = stuff.getPlayer();
+        boolean facingLeft = player.isFacingLeft();
+        boolean facingRight = player.isFacingRight();
+        boolean facingUp = player.isFacingUp();
+        boolean facingDown = player.isFacingDown();
         if (facingLeft || facingRight) {
             player.setFlipX(facingLeft);
             player.useEastWalk();
@@ -51,14 +50,15 @@ public class PlayerAnimator {
     }
 
     public void translationChange(float xAmount, float yAmount) {
-        idle = xAmount == 0f && yAmount == 0f;
+        boolean idle = xAmount == 0f && yAmount == 0f;
         if (attacking) {
             return;
         }
-        facingUp = yAmount > 0f || (facingUp && idle);
-        facingDown = yAmount < 0f || (facingDown && idle);
-        facingLeft = xAmount < 0f || (facingLeft && idle);
-        facingRight = xAmount > 0f || (facingRight && idle);
+        Player player = stuff.getPlayer();
+        player.setFacingUp(yAmount > 0f || (player.isFacingUp() && idle));
+        player.setFacingDown(yAmount < 0f || (player.isFacingDown() && idle));
+        player.setFacingLeft(xAmount < 0f || (player.isFacingLeft() && idle));
+        player.setFacingRight(xAmount > 0f || (player.isFacingRight() && idle));
         if (idle) {
             stuff.getPlayer().setAnimationTime(0.03f * 8f);
         }

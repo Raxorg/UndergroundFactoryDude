@@ -1,6 +1,7 @@
-package com.epicness.factorydude.game.logic;
+package com.epicness.factorydude.game.logic.factoryzone;
 
 import com.badlogic.gdx.graphics.Color;
+import com.epicness.factorydude.game.logic.GameLogic;
 import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.fundamentals.stuff.Sprited;

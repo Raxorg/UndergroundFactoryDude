@@ -1,22 +1,25 @@
 package com.epicness.factorydude.game.stuff.characters;
 
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+
+import com.badlogic.gdx.math.Rectangle;
 import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.fundamentals.stuff.SpritedAnimation;
 
 public class Player extends Character {
 
     public Player(GameAssets assets) {
-        SpritedAnimation eastSlash = new SpritedAnimation(assets.getPlayerEastSlash(), 0.03f);
         SpritedAnimation eastWalk = new SpritedAnimation(assets.getPlayerEastWalk(), 0.03f);
-        eastWalk.enableLooping();
-
-        SpritedAnimation northSlash = new SpritedAnimation(assets.getPlayerNorthSlash(), 0.03f);
         SpritedAnimation northWalk = new SpritedAnimation(assets.getPlayerNorthWalk(), 0.03f);
-        northWalk.enableLooping();
-
-        SpritedAnimation southSlash = new SpritedAnimation(assets.getPlayerSouthSlash(), 0.03f);
         SpritedAnimation southWalk = new SpritedAnimation(assets.getPlayerSouthWalk(), 0.03f);
+        eastWalk.enableLooping();
+        northWalk.enableLooping();
         southWalk.enableLooping();
+
+        SpritedAnimation eastSlash = new SpritedAnimation(assets.getPlayerEastSlash(), 0.03f);
+        SpritedAnimation northSlash = new SpritedAnimation(assets.getPlayerNorthSlash(), 0.03f);
+        SpritedAnimation southSlash = new SpritedAnimation(assets.getPlayerSouthSlash(), 0.03f);
 
         animations = new SpritedAnimation[6];
         animations[0] = eastSlash;
@@ -26,6 +29,14 @@ public class Player extends Character {
         animations[4] = southSlash;
         animations[5] = southWalk;
         currentAnimation = southWalk;
+
+        float width = getWidth() * 0.2f;
+        float height = getHeight() * 0.35f;
+        bounds = new Rectangle(
+                getWidth() / 2f - width / 2f, getHeight() / 2f - height / 2f,
+                width, height);
+
+        translate(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f);
     }
 
     public void useEastSlash() {

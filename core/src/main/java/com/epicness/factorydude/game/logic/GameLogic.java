@@ -5,6 +5,11 @@ import com.epicness.factorydude.game.logic.enemies.EnemyAnimator;
 import com.epicness.factorydude.game.logic.enemies.EnemyMover;
 import com.epicness.factorydude.game.logic.enemies.EnemySpawner;
 import com.epicness.factorydude.game.logic.enemies.WaveHandler;
+import com.epicness.factorydude.game.logic.factoryzone.BuildingPanelHandler;
+import com.epicness.factorydude.game.logic.factoryzone.BuildingPanelSlider;
+import com.epicness.factorydude.game.logic.factoryzone.BuildingPlacer;
+import com.epicness.factorydude.game.logic.factoryzone.FactoryZoneScaler;
+import com.epicness.factorydude.game.logic.factoryzone.HexHighlighter;
 import com.epicness.factorydude.game.logic.player.CameraHandler;
 import com.epicness.factorydude.game.logic.player.PlayerAnimator;
 import com.epicness.factorydude.game.logic.player.PlayerAttackHandler;
@@ -24,19 +29,21 @@ public class GameLogic extends Logic {
     private EnemyMover enemyMover;
     private EnemySpawner enemySpawner;
     private WaveHandler waveHandler;
+    // Factory zone
+    private BuildingPanelHandler buildingPanelHandler;
+    private BuildingPanelSlider buildingPanelSlider;
+    private BuildingPlacer buildingPlacer;
+    private FactoryZoneScaler factoryZoneScaler;
+    private HexHighlighter hexHighlighter;
     // Player
     private CameraHandler cameraHandler;
     private PlayerAnimator playerAnimator;
     private PlayerAttackHandler playerAttackHandler;
     private PlayerMover playerMover;
     // Other
-    private BuildingPanelHandler buildingPanelHandler;
-    private BuildingPanelSlider buildingPanelSlider;
-    private BuildingPlacer buildingPlacer;
     private CoinHandler coinHandler;
-    private FactoryZoneScaler factoryZoneScaler;
+    private EffectHandler effectHandler;
     private GameInputHandler gameInputHandler;
-    private HexHighlighter hexHighlighter;
 
     public GameLogic(SharedLogic sharedLogic) {
         super(sharedLogic);
@@ -49,19 +56,21 @@ public class GameLogic extends Logic {
         enemyMover = new EnemyMover();
         enemySpawner = new EnemySpawner();
         waveHandler = new WaveHandler();
+        // Factory zone
+        buildingPanelHandler = new BuildingPanelHandler();
+        buildingPanelSlider = new BuildingPanelSlider();
+        buildingPlacer = new BuildingPlacer();
+        factoryZoneScaler = new FactoryZoneScaler();
+        hexHighlighter = new HexHighlighter();
         // Player
         cameraHandler = new CameraHandler();
         playerAnimator = new PlayerAnimator();
         playerAttackHandler = new PlayerAttackHandler();
         playerMover = new PlayerMover();
         // Other
-        buildingPanelHandler = new BuildingPanelHandler();
-        buildingPanelSlider = new BuildingPanelSlider();
-        buildingPlacer = new BuildingPlacer();
         coinHandler = new CoinHandler();
-        factoryZoneScaler = new FactoryZoneScaler();
+        effectHandler = new EffectHandler();
         gameInputHandler = new GameInputHandler();
-        hexHighlighter = new HexHighlighter();
     }
 
     @Override
@@ -92,7 +101,6 @@ public class GameLogic extends Logic {
     public void initialLogic() {
         buildingPanelSlider.init();
         gameInputHandler.setupInput();
-        playerAnimator.init();
     }
 
     @Override
@@ -101,15 +109,17 @@ public class GameLogic extends Logic {
         enemyAnimator.update(delta);
         enemyMover.update(delta);
         waveHandler.update(delta);
+        // Factory zone
+        buildingPanelSlider.update(delta);
+        factoryZoneScaler.update(delta);
         // Player
         playerAnimator.update(delta);
         playerAttackHandler.update(delta);
         playerMover.update(delta);
         cameraHandler.update();
         // Other
-        buildingPanelSlider.update(delta);
         coinHandler.update(delta);
-        factoryZoneScaler.update(delta);
+        effectHandler.update(delta);
     }
 
     @Override
@@ -117,6 +127,7 @@ public class GameLogic extends Logic {
         GameAssets gameAssets = (GameAssets) assets;
         enemySpawner.setAssets(gameAssets);
         buildingPlacer.setAssets(gameAssets);
+        effectHandler.setAssets(gameAssets);
     }
 
     @Override
@@ -128,22 +139,24 @@ public class GameLogic extends Logic {
     public void setStuff(Stuff stuff) {
         GameStuff gameStuff = (GameStuff) stuff;
         // Enemy
+        enemyAnimator.setStuff(gameStuff);
         enemyMover.setStuff(gameStuff);
         enemySpawner.setStuff(gameStuff);
         waveHandler.setStuff(gameStuff);
+        // Factory zone
+        buildingPanelHandler.setStuff(gameStuff);
+        buildingPanelSlider.setStuff(gameStuff);
+        factoryZoneScaler.setStuff(gameStuff);
+        hexHighlighter.setStuff(gameStuff);
         // Player
         cameraHandler.setStuff(gameStuff);
         playerAnimator.setStuff(gameStuff);
         playerAttackHandler.setStuff(gameStuff);
         playerMover.setStuff(gameStuff);
         // Other
-        buildingPanelHandler.setStuff(gameStuff);
-        buildingPanelSlider.setStuff(gameStuff);
         coinHandler.setStuff(gameStuff);
-        enemyAnimator.setStuff(gameStuff);
-        factoryZoneScaler.setStuff(gameStuff);
+        effectHandler.setStuff(gameStuff);
         gameInputHandler.setStuff(gameStuff);
-        hexHighlighter.setStuff(gameStuff);
     }
 
     @Override
@@ -160,20 +173,7 @@ public class GameLogic extends Logic {
         return enemySpawner;
     }
 
-    // Player
-    public PlayerAnimator getPlayerAnimator() {
-        return playerAnimator;
-    }
-
-    public PlayerAttackHandler getPlayerAttackHandler() {
-        return playerAttackHandler;
-    }
-
-    public PlayerMover getPlayerMover() {
-        return playerMover;
-    }
-
-    // Other
+    // Factory zone
     public BuildingPanelHandler getBuildingPanelHandler() {
         return buildingPanelHandler;
     }
@@ -192,5 +192,27 @@ public class GameLogic extends Logic {
 
     public HexHighlighter getHexHighlighter() {
         return hexHighlighter;
+    }
+
+    // Player
+    public PlayerAnimator getPlayerAnimator() {
+        return playerAnimator;
+    }
+
+    public PlayerAttackHandler getPlayerAttackHandler() {
+        return playerAttackHandler;
+    }
+
+    public PlayerMover getPlayerMover() {
+        return playerMover;
+    }
+
+    // Other
+    public CoinHandler getCoinHandler() {
+        return coinHandler;
+    }
+
+    public EffectHandler getEffectHandler() {
+        return effectHandler;
     }
 }

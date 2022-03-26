@@ -1,5 +1,6 @@
 package com.epicness.factorydude.game.stuff.characters;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.fundamentals.stuff.SpritedAnimation;
 
@@ -22,6 +23,8 @@ public class Enemy extends Character {
         animations[1] = northWalk;
         animations[2] = southWalk;
         currentAnimation = southWalk;
+
+        bounds = new Rectangle(getWidth() / 4f, getHeight() / 4f, getWidth() / 2f, getHeight() / 2f);
     }
 
     public float getMovementLeft() {

@@ -6,10 +6,11 @@ public class WaveStorage {
 
     public WaveStorage() {
         waves = new Wave[1];
-        int[] waveNodes = new int[10];
-        waveNodes[0] = 1;
-        waveNodes[5] = 3;
-        waveNodes[9] = 5;
+        int[] waveNodes = new int[30];
+        waveNodes[7] = 1;
+        waveNodes[14] = 3;
+        waveNodes[21] = 5;
+        waveNodes[29] = 7;
         waves[0] = new Wave(waveNodes);
     }
 

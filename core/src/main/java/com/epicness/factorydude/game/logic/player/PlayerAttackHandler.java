@@ -1,8 +1,12 @@
 package com.epicness.factorydude.game.logic.player;
 
+import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.factorydude.game.logic.GameLogic;
 import com.epicness.factorydude.game.stuff.GameStuff;
+import com.epicness.factorydude.game.stuff.SlashEffect;
+import com.epicness.factorydude.game.stuff.characters.Enemy;
 import com.epicness.fundamentals.logic.SharedLogic;
+import com.epicness.fundamentals.stuff.SpritedAnimation;
 
 public class PlayerAttackHandler {
 
@@ -18,6 +22,29 @@ public class PlayerAttackHandler {
             return;
         }
         cooldown = Math.max(cooldown - delta, 0f);
+        checkAttackCollision();
+    }
+
+    private void checkAttackCollision() {
+        DelayedRemovalArray<Enemy> enemies = stuff.getEnemies();
+        DelayedRemovalArray<SpritedAnimation> effects = stuff.getEffects();
+        enemies.begin();
+        enemies:
+        for (int i = 0; i < enemies.size; i++) {
+            Enemy enemy = enemies.get(i);
+            for (int j = 0; j < effects.size; j++) {
+                SpritedAnimation effect = effects.get(j);
+                if (!(effect instanceof SlashEffect)) {
+                    continue;
+                }
+                if (enemy.overlaps(effect.getBounds())) {
+                    enemies.removeValue(enemy, true);
+                    logic.getCoinHandler().addCoin();
+                    break enemies;
+                }
+            }
+        }
+        enemies.end();
     }
 
     public void attack() {
@@ -25,6 +52,7 @@ public class PlayerAttackHandler {
             return;
         }
         logic.getPlayerAnimator().attackChange(true);
+        logic.getEffectHandler().spawnSlash();
         cooldown = 1f;
     }
 

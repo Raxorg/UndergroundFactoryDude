@@ -20,9 +20,12 @@ public class GameRenderer extends Renderer {
             stuff.getEnemies().get(i).draw(spriteBatch);
         }
         stuff.getPlayer().draw(spriteBatch);
-        stuff.getFactoryZone().draw(spriteBatch);
+        for (int i = 0; i < stuff.getEffects().size; i++) {
+            stuff.getEffects().get(i).draw(spriteBatch);
+        }
 
         useStaticCamera();
+        stuff.getFactoryZone().draw(spriteBatch);
         stuff.getCoinCounter().draw(spriteBatch);
         spriteBatch.end();
 
@@ -32,7 +35,13 @@ public class GameRenderer extends Renderer {
     private void renderDebug(GameStuff stuff) {
         shapeRenderer.begin();
         useDynamicCamera();
+        for (int i = 0; i < stuff.getEnemies().size; i++) {
+            stuff.getEnemies().get(i).drawDebug(shapeRenderer);
+        }
         stuff.getPlayer().drawDebug(shapeRenderer);
+        for (int i = 0; i < stuff.getEffects().size; i++) {
+            stuff.getEffects().get(i).drawDebug(shapeRenderer);
+        }
         shapeRenderer.end();
     }
 }

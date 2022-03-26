@@ -13,6 +13,7 @@ import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_EAST_SL
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_EAST_WALK;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_NORTH_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_NORTH_WALK;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SOUTH_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SOUTH_WALK;
 
@@ -24,9 +25,8 @@ import com.epicness.fundamentals.utils.AnimationUtils;
 public class GameAssets extends Assets {
 
     // Animations
-    private Sprite[] playerEastSlash, playerEastWalk,
-            playerNorthSlash, playerNorthWalk,
-            playerSouthSlash, playerSouthWalk;
+    private Sprite[] playerEastWalk, playerNorthWalk, playerSouthWalk,
+            playerEastSlash, playerNorthSlash, playerSouthSlash, playerSlash;
     private Sprite[] enemyEastWalk, enemyNorthWalk, enemySouthWalk;
     private Sprite[] coinFrames;
     // Sprites
@@ -37,12 +37,13 @@ public class GameAssets extends Assets {
     @Override
     public void queueAssetLoading() {
         // Animations
-        loadTexture(PLAYER_EAST_SLASH);
         loadTexture(PLAYER_EAST_WALK);
-        loadTexture(PLAYER_NORTH_SLASH);
         loadTexture(PLAYER_NORTH_WALK);
-        loadTexture(PLAYER_SOUTH_SLASH);
         loadTexture(PLAYER_SOUTH_WALK);
+        loadTexture(PLAYER_EAST_SLASH);
+        loadTexture(PLAYER_NORTH_SLASH);
+        loadTexture(PLAYER_SOUTH_SLASH);
+        loadTexture(PLAYER_SLASH);
         loadTexture(ENEMY_EAST_WALK);
         loadTexture(ENEMY_NORTH_WALK);
         loadTexture(ENEMY_SOUTH_WALK);
@@ -69,6 +70,8 @@ public class GameAssets extends Assets {
         playerSouthSlash = AnimationUtils.split(playerSouthSlashTex, 138, 165, 14);
         Texture playerSouthWalkTex = getTexture(PLAYER_SOUTH_WALK);
         playerSouthWalk = AnimationUtils.split(playerSouthWalkTex, 138, 165, 12);
+        Texture playerSlashTex = getTexture(PLAYER_SLASH);
+        playerSlash = AnimationUtils.split(playerSlashTex, 101, 114, 11);
 
         Texture enemyEastWalkTex = getTexture(ENEMY_EAST_WALK);
         enemyEastWalk = AnimationUtils.split(enemyEastWalkTex, 138, 165, 20);
@@ -89,28 +92,32 @@ public class GameAssets extends Assets {
     }
 
     // Animations
-    public Sprite[] getPlayerEastSlash() {
-        return playerEastSlash;
-    }
-
     public Sprite[] getPlayerEastWalk() {
         return playerEastWalk;
-    }
-
-    public Sprite[] getPlayerNorthSlash() {
-        return playerNorthSlash;
     }
 
     public Sprite[] getPlayerNorthWalk() {
         return playerNorthWalk;
     }
 
+    public Sprite[] getPlayerSouthWalk() {
+        return playerSouthWalk;
+    }
+
+    public Sprite[] getPlayerEastSlash() {
+        return playerEastSlash;
+    }
+
+    public Sprite[] getPlayerNorthSlash() {
+        return playerNorthSlash;
+    }
+
     public Sprite[] getPlayerSouthSlash() {
         return playerSouthSlash;
     }
 
-    public Sprite[] getPlayerSouthWalk() {
-        return playerSouthWalk;
+    public Sprite[] getPlayerSlash() {
+        return playerSlash;
     }
 
     public Sprite[] getEnemyEastWalk() {

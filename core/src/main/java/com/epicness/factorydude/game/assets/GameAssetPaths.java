@@ -9,6 +9,7 @@ public class GameAssetPaths {
     public static final String PLAYER_NORTH_WALK = "factorydude/animations/player/playerNorthWalk.png";
     public static final String PLAYER_SOUTH_SLASH = "factorydude/animations/player/playerSouthSlash.png";
     public static final String PLAYER_SOUTH_WALK = "factorydude/animations/player/playerSouthWalk.png";
+    public static final String PLAYER_SLASH = "factorydude/animations/player/playerSlash.png";
 
     public static final String ENEMY_EAST_WALK = "factorydude/animations/enemy/enemyEastWalk.png";
     public static final String ENEMY_NORTH_WALK = "factorydude/animations/enemy/enemyNorthWalk.png";

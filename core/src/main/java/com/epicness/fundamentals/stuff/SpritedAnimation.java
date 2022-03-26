@@ -2,10 +2,12 @@ package com.epicness.fundamentals.stuff;
 
 import static com.badlogic.gdx.graphics.g2d.Animation.PlayMode.LOOP;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
 
 public class SpritedAnimation {
 
@@ -28,6 +30,10 @@ public class SpritedAnimation {
         animation.getKeyFrame(time).drawDebug(shapeRenderer);
     }
 
+    public Rectangle getBounds() {
+        return animation.getKeyFrame(time).getBoundingRectangle();
+    }
+
     public float getX() {
         return animation.getKeyFrame(time).getX();
     }
@@ -48,10 +54,28 @@ public class SpritedAnimation {
         }
     }
 
+    public float getWidth() {
+        return animation.getKeyFrame(time).getWidth();
+    }
+
+    public float getHeight() {
+        return animation.getKeyFrame(time).getHeight();
+    }
+
     public void setSize(float size) {
         for (int i = 0; i < animation.getKeyFrames().length; i++) {
             animation.getKeyFrames()[i].setSize(size, size);
         }
+    }
+
+    public void setRotation(float degrees) {
+        for (int i = 0; i < animation.getKeyFrames().length; i++) {
+            animation.getKeyFrames()[i].setRotation(degrees);
+        }
+    }
+
+    public boolean isFlipX() {
+        return animation.getKeyFrame(time).isFlipX();
     }
 
     public void setFlip(boolean flipX, boolean flipY) {
@@ -60,16 +84,22 @@ public class SpritedAnimation {
         }
     }
 
+    public void setColor(Color color) {
+        for (int i = 0; i < animation.getKeyFrames().length; i++) {
+            animation.getKeyFrames()[i].setColor(color);
+        }
+    }
+
+    public void enableLooping() {
+        animation.setPlayMode(LOOP);
+    }
+
     public void addTime(float seconds) {
         time += seconds;
     }
 
     public void setTime(float time) {
         this.time = time;
-    }
-
-    public void enableLooping() {
-        animation.setPlayMode(LOOP);
     }
 
     public boolean ended() {

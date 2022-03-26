@@ -2,6 +2,7 @@ package com.epicness.factorydude.game.stuff.characters;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.stuff.SpritedAnimation;
 
@@ -11,6 +12,7 @@ public class Character {
     protected SpritedAnimation currentAnimation;
     private boolean facingUp, facingDown, facingLeft, facingRight;
     private final Vector2 speed;
+    protected Rectangle bounds;
 
     public Character() {
         facingDown = true;
@@ -23,6 +25,11 @@ public class Character {
 
     public void drawDebug(ShapeRenderer shapeRenderer) {
         currentAnimation.drawDebug(shapeRenderer);
+        shapeRenderer.rect(bounds.x, bounds.y, bounds.width, bounds.height);
+    }
+
+    public boolean overlaps(Rectangle rectangle) {
+        return bounds.overlaps(rectangle);
     }
 
     public float getX() {
@@ -31,6 +38,30 @@ public class Character {
 
     public float getY() {
         return currentAnimation.getY();
+    }
+
+    public void translate(float xAmount, float yAmount) {
+        for (int i = 0; i < animations.length; i++) {
+            animations[i].translate(xAmount, yAmount);
+        }
+        bounds.x += xAmount;
+        bounds.y += yAmount;
+    }
+
+    public float getWidth() {
+        return currentAnimation.getWidth();
+    }
+
+    public float getHeight() {
+        return currentAnimation.getHeight();
+    }
+
+    public float getCenterX() {
+        return getX() + getWidth() / 2f;
+    }
+
+    public float getCenterY() {
+        return getY() + getHeight() / 2f;
     }
 
     public void addAnimationTime(float time) {
@@ -49,10 +80,8 @@ public class Character {
         return currentAnimation.ended();
     }
 
-    public void translate(float xAmount, float yAmount) {
-        for (int i = 0; i < animations.length; i++) {
-            animations[i].translate(xAmount, yAmount);
-        }
+    public boolean isFlipX() {
+        return currentAnimation.isFlipX();
     }
 
     public void setFlipX(boolean flipX) {

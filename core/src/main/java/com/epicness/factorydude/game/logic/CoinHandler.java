@@ -11,6 +11,11 @@ public class CoinHandler {
         stuff.getCoinCounter().addTime(delta);
     }
 
+    public void addCoin() {
+        stuff.getCoinCounter().addCoin();
+    }
+
+    // Structure
     public void setStuff(GameStuff stuff) {
         this.stuff = stuff;
     }

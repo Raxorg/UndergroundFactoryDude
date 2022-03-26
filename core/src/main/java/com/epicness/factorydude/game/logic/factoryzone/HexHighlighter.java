@@ -1,9 +1,10 @@
-package com.epicness.factorydude.game.logic;
+package com.epicness.factorydude.game.logic.factoryzone;
 
 import static com.epicness.factorydude.game.GameConstants.HEX_GRID_COLUMNS;
 import static com.epicness.factorydude.game.GameConstants.HEX_GRID_ROWS;
 
 import com.badlogic.gdx.graphics.Color;
+import com.epicness.factorydude.game.logic.GameLogic;
 import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.factorydude.game.stuff.HexGrid;
 import com.epicness.fundamentals.logic.SharedLogic;

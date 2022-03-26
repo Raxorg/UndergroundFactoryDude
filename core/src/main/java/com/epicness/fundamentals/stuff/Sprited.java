@@ -111,6 +111,10 @@ public class Sprited implements Buttonable, Parallaxable {
         return sprite.isFlipX();
     }
 
+    public boolean isFlipY() {
+        return sprite.isFlipY();
+    }
+
     public void setFlip(boolean flipX, boolean flipY) {
         sprite.setFlip(flipX, flipY);
     }
