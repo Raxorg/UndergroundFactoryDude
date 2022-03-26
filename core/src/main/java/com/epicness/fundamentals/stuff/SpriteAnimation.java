@@ -6,12 +6,12 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class SpritedAnimation {
+public class SpriteAnimation {
 
     private final Animation<Sprite> animation;
     private float time;
 
-    public SpritedAnimation(Sprite[] spriteFrames, float frameDuration) {
+    public SpriteAnimation(Sprite[] spriteFrames, float frameDuration) {
         Sprite[] animationFrames = new Sprite[spriteFrames.length];
         for (int i = 0; i < spriteFrames.length; i++) {
             animationFrames[i] = new Sprite(spriteFrames[i]);
@@ -21,6 +21,14 @@ public class SpritedAnimation {
 
     public void draw(SpriteBatch spriteBatch) {
         animation.getKeyFrame(time).draw(spriteBatch);
+    }
+
+    public float getX() {
+        return animation.getKeyFrame(time).getX();
+    }
+
+    public float getY() {
+        return animation.getKeyFrame(time).getY();
     }
 
     public void setPosition(float x, float y) {

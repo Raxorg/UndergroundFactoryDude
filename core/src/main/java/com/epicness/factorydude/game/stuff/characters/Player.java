@@ -1,24 +1,24 @@
 package com.epicness.factorydude.game.stuff.characters;
 
 import com.epicness.factorydude.game.assets.GameAssets;
-import com.epicness.fundamentals.stuff.SpritedAnimation;
+import com.epicness.fundamentals.stuff.SpriteAnimation;
 
 public class Player extends Character {
 
     public Player(GameAssets assets) {
-        SpritedAnimation eastSlash = new SpritedAnimation(assets.getPlayerEastSlash(), 0.03f);
-        SpritedAnimation eastWalk = new SpritedAnimation(assets.getPlayerEastWalk(), 0.03f);
+        SpriteAnimation eastSlash = new SpriteAnimation(assets.getPlayerEastSlash(), 0.03f);
+        SpriteAnimation eastWalk = new SpriteAnimation(assets.getPlayerEastWalk(), 0.03f);
         eastWalk.enableLooping();
 
-        SpritedAnimation northSlash = new SpritedAnimation(assets.getPlayerNorthSlash(), 0.03f);
-        SpritedAnimation northWalk = new SpritedAnimation(assets.getPlayerNorthWalk(), 0.03f);
+        SpriteAnimation northSlash = new SpriteAnimation(assets.getPlayerNorthSlash(), 0.03f);
+        SpriteAnimation northWalk = new SpriteAnimation(assets.getPlayerNorthWalk(), 0.03f);
         northWalk.enableLooping();
 
-        SpritedAnimation southSlash = new SpritedAnimation(assets.getPlayerSouthSlash(), 0.03f);
-        SpritedAnimation southWalk = new SpritedAnimation(assets.getPlayerSouthWalk(), 0.03f);
+        SpriteAnimation southSlash = new SpriteAnimation(assets.getPlayerSouthSlash(), 0.03f);
+        SpriteAnimation southWalk = new SpriteAnimation(assets.getPlayerSouthWalk(), 0.03f);
         southWalk.enableLooping();
 
-        animations = new SpritedAnimation[6];
+        animations = new SpriteAnimation[6];
         animations[0] = eastSlash;
         animations[1] = eastWalk;
         animations[2] = northSlash;

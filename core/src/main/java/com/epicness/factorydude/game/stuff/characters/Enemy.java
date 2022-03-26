@@ -1,23 +1,23 @@
 package com.epicness.factorydude.game.stuff.characters;
 
 import com.epicness.factorydude.game.assets.GameAssets;
-import com.epicness.fundamentals.stuff.SpritedAnimation;
+import com.epicness.fundamentals.stuff.SpriteAnimation;
 
 public class Enemy extends Character {
 
     private float movementLeft, movementCooldown;
 
     public Enemy(GameAssets assets) {
-        SpritedAnimation eastWalk = new SpritedAnimation(assets.getEnemyEastWalk(), 0.03f);
+        SpriteAnimation eastWalk = new SpriteAnimation(assets.getEnemyEastWalk(), 0.03f);
         eastWalk.enableLooping();
 
-        SpritedAnimation northWalk = new SpritedAnimation(assets.getEnemyNorthWalk(), 0.03f);
+        SpriteAnimation northWalk = new SpriteAnimation(assets.getEnemyNorthWalk(), 0.03f);
         northWalk.enableLooping();
 
-        SpritedAnimation southWalk = new SpritedAnimation(assets.getEnemySouthWalk(), 0.03f);
+        SpriteAnimation southWalk = new SpriteAnimation(assets.getEnemySouthWalk(), 0.03f);
         southWalk.enableLooping();
 
-        animations = new SpritedAnimation[3];
+        animations = new SpriteAnimation[3];
         animations[0] = eastWalk;
         animations[1] = northWalk;
         animations[2] = southWalk;

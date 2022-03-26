@@ -2,23 +2,30 @@ package com.epicness.factorydude.game.stuff.characters;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.epicness.fundamentals.stuff.SpritedAnimation;
+import com.epicness.fundamentals.stuff.SpriteAnimation;
 
 public class Character {
 
-    protected SpritedAnimation[] animations;
-    protected SpritedAnimation currentAnimation;
-    private boolean facingUp, facingDown, facingLeft, facingRight, idle;
+    protected SpriteAnimation[] animations;
+    protected SpriteAnimation currentAnimation;
+    private boolean facingUp, facingDown, facingLeft, facingRight;
     private final Vector2 speed;
 
     public Character() {
         facingDown = true;
-        idle = true;
         speed = new Vector2();
     }
 
     public void draw(SpriteBatch spriteBatch) {
         currentAnimation.draw(spriteBatch);
+    }
+
+    public float getX() {
+        return currentAnimation.getX();
+    }
+
+    public float getY() {
+        return currentAnimation.getY();
     }
 
     public void addAnimationTime(float time) {
@@ -79,15 +86,6 @@ public class Character {
 
     public void setFacingRight(boolean facingRight) {
         this.facingRight = facingRight;
-    }
-
-    public boolean isIdle() {
-        return idle;
-    }
-
-    public boolean setIdle(boolean idle) {
-        this.idle = idle;
-        return idle;
     }
 
     public Vector2 getSpeed() {

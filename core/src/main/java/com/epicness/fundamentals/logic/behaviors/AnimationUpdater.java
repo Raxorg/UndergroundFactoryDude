@@ -1,13 +1,13 @@
 package com.epicness.fundamentals.logic.behaviors;
 
-import com.epicness.fundamentals.stuff.SpritedAnimation;
+import com.epicness.fundamentals.stuff.SpriteAnimation;
 
 public class AnimationUpdater {
 
-    private SpritedAnimation animation;
+    private SpriteAnimation animation;
     private boolean enabled;
 
-    public void setup(SpritedAnimation animation) {
+    public void setup(SpriteAnimation animation) {
         this.animation = animation;
         enabled = true;
     }

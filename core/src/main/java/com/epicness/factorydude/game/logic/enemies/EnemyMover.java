@@ -39,13 +39,16 @@ public class EnemyMover {
     }
 
     private void move(Enemy enemy, float delta) {
+        float xAmount = 0f, yAmount = 0f;
         if (enemy.getMovementLeft() <= 0f) {
             enemy.affectMovementLeft(-enemy.getMovementLeft());
+            logic.getEnemyAnimator().translationChange(enemy, xAmount, yAmount);
             return;
         }
         enemy.affectMovementLeft(-delta);
         Vector2 speed = enemy.getSpeed();
-        float xAmount = speed.x * delta, yAmount = speed.y * delta;
+        xAmount = speed.x * delta;
+        yAmount = speed.y * delta;
         enemy.translate(xAmount, yAmount);
         logic.getEnemyAnimator().translationChange(enemy, xAmount, yAmount);
     }
