@@ -1,13 +1,14 @@
 package com.epicness.factorydude.game.stuff.characters;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.epicness.fundamentals.stuff.SpriteAnimation;
+import com.epicness.fundamentals.stuff.SpritedAnimation;
 
 public class Character {
 
-    protected SpriteAnimation[] animations;
-    protected SpriteAnimation currentAnimation;
+    protected SpritedAnimation[] animations;
+    protected SpritedAnimation currentAnimation;
     private boolean facingUp, facingDown, facingLeft, facingRight;
     private final Vector2 speed;
 
@@ -18,6 +19,10 @@ public class Character {
 
     public void draw(SpriteBatch spriteBatch) {
         currentAnimation.draw(spriteBatch);
+    }
+
+    public void drawDebug(ShapeRenderer shapeRenderer) {
+        currentAnimation.drawDebug(shapeRenderer);
     }
 
     public float getX() {

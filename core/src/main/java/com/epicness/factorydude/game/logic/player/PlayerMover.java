@@ -1,8 +1,9 @@
-package com.epicness.factorydude.game.logic;
+package com.epicness.factorydude.game.logic.player;
 
 import static com.epicness.factorydude.game.GameConstants.PLAYER_SPEED;
 
 import com.badlogic.gdx.math.Vector2;
+import com.epicness.factorydude.game.logic.GameLogic;
 import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.fundamentals.logic.SharedLogic;
 

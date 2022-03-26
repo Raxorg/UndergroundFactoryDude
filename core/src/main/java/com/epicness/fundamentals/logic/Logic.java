@@ -14,6 +14,13 @@ public abstract class Logic {
 
     protected Logic(SharedLogic sharedLogic) {
         this.sharedLogic = sharedLogic;
+        initHelpers();
+        setSharedLogic();
+        setLogic();
+    }
+
+    public void initHelpers() {
+
     }
 
     public abstract void initialLogic();
@@ -37,6 +44,14 @@ public abstract class Logic {
     }
 
     public void setInput(SharedInput input) {
+
+    }
+
+    protected void setSharedLogic() {
+
+    }
+
+    protected void setLogic() {
 
     }
 

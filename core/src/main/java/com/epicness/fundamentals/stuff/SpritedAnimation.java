@@ -5,22 +5,27 @@ import static com.badlogic.gdx.graphics.g2d.Animation.PlayMode.LOOP;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-public class SpriteAnimation {
+public class SpritedAnimation {
 
-    private final Animation<Sprite> animation;
+    private final Animation<Sprited> animation;
     private float time;
 
-    public SpriteAnimation(Sprite[] spriteFrames, float frameDuration) {
-        Sprite[] animationFrames = new Sprite[spriteFrames.length];
+    public SpritedAnimation(Sprite[] spriteFrames, float frameDuration) {
+        Sprited[] animationFrames = new Sprited[spriteFrames.length];
         for (int i = 0; i < spriteFrames.length; i++) {
-            animationFrames[i] = new Sprite(spriteFrames[i]);
+            animationFrames[i] = new Sprited(spriteFrames[i]);
         }
         animation = new Animation<>(frameDuration, animationFrames);
     }
 
     public void draw(SpriteBatch spriteBatch) {
         animation.getKeyFrame(time).draw(spriteBatch);
+    }
+
+    public void drawDebug(ShapeRenderer shapeRenderer) {
+        animation.getKeyFrame(time).drawDebug(shapeRenderer);
     }
 
     public float getX() {

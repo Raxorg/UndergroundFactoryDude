@@ -1,5 +1,6 @@
-package com.epicness.factorydude.game.logic;
+package com.epicness.factorydude.game.logic.player;
 
+import com.epicness.factorydude.game.logic.GameLogic;
 import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.fundamentals.logic.SharedLogic;
 

@@ -12,13 +12,26 @@ public class GameRenderer extends Renderer {
         GameStuff stuff = (GameStuff) this.stuff;
 
         ScreenUtils.clear(Color.NAVY);
+
         spriteBatch.begin();
+        useDynamicCamera();
         stuff.getBackground().draw(spriteBatch);
         for (int i = 0; i < stuff.getEnemies().size; i++) {
             stuff.getEnemies().get(i).draw(spriteBatch);
         }
         stuff.getPlayer().draw(spriteBatch);
         stuff.getFactoryZone().draw(spriteBatch);
+
+        useStaticCamera();
         spriteBatch.end();
+
+        renderDebug(stuff);
+    }
+
+    private void renderDebug(GameStuff stuff) {
+        shapeRenderer.begin();
+        useDynamicCamera();
+        stuff.getPlayer().drawDebug(shapeRenderer);
+        shapeRenderer.end();
     }
 }
