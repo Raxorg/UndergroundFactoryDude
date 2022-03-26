@@ -23,6 +23,7 @@ public class GameRenderer extends Renderer {
         stuff.getFactoryZone().draw(spriteBatch);
 
         useStaticCamera();
+        stuff.getCoinCounter().draw(spriteBatch);
         spriteBatch.end();
 
         renderDebug(stuff);

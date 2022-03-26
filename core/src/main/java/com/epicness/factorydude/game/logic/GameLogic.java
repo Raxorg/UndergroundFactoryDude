@@ -33,6 +33,7 @@ public class GameLogic extends Logic {
     private BuildingPanelHandler buildingPanelHandler;
     private BuildingPanelSlider buildingPanelSlider;
     private BuildingPlacer buildingPlacer;
+    private CoinHandler coinHandler;
     private FactoryZoneScaler factoryZoneScaler;
     private GameInputHandler gameInputHandler;
     private HexHighlighter hexHighlighter;
@@ -57,6 +58,7 @@ public class GameLogic extends Logic {
         buildingPanelHandler = new BuildingPanelHandler();
         buildingPanelSlider = new BuildingPanelSlider();
         buildingPlacer = new BuildingPlacer();
+        coinHandler = new CoinHandler();
         factoryZoneScaler = new FactoryZoneScaler();
         gameInputHandler = new GameInputHandler();
         hexHighlighter = new HexHighlighter();
@@ -100,12 +102,13 @@ public class GameLogic extends Logic {
         enemyMover.update(delta);
         waveHandler.update(delta);
         // Player
-        cameraHandler.update();
         playerAnimator.update(delta);
         playerAttackHandler.update(delta);
         playerMover.update(delta);
+        cameraHandler.update();
         // Other
         buildingPanelSlider.update(delta);
+        coinHandler.update(delta);
         factoryZoneScaler.update(delta);
     }
 
@@ -136,6 +139,7 @@ public class GameLogic extends Logic {
         // Other
         buildingPanelHandler.setStuff(gameStuff);
         buildingPanelSlider.setStuff(gameStuff);
+        coinHandler.setStuff(gameStuff);
         enemyAnimator.setStuff(gameStuff);
         factoryZoneScaler.setStuff(gameStuff);
         gameInputHandler.setStuff(gameStuff);

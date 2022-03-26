@@ -3,6 +3,7 @@ package com.epicness.factorydude.game.assets;
 import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.BG_1;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.BG_2;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.COIN_FRAMES_PATH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_EAST_WALK;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_NORTH_WALK;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_SOUTH_WALK;
@@ -27,6 +28,7 @@ public class GameAssets extends Assets {
             playerNorthSlash, playerNorthWalk,
             playerSouthSlash, playerSouthWalk;
     private Sprite[] enemyEastWalk, enemyNorthWalk, enemySouthWalk;
+    private Sprite[] coinFrames;
     // Sprites
     private Sprite bg1, bg2;
     private Sprite hex;
@@ -44,6 +46,7 @@ public class GameAssets extends Assets {
         loadTexture(ENEMY_EAST_WALK);
         loadTexture(ENEMY_NORTH_WALK);
         loadTexture(ENEMY_SOUTH_WALK);
+        loadTexture(COIN_FRAMES_PATH);
         // Sprites
         loadTexture(BG_1);
         loadTexture(BG_2);
@@ -73,6 +76,9 @@ public class GameAssets extends Assets {
         enemyNorthWalk = AnimationUtils.split(enemyNorthWalkTex, 138, 165, 20);
         Texture enemySouthWalkTex = getTexture(ENEMY_SOUTH_WALK);
         enemySouthWalk = AnimationUtils.split(enemySouthWalkTex, 138, 165, 20);
+
+        Texture coinFramesTex = getTexture(COIN_FRAMES_PATH);
+        coinFrames = AnimationUtils.split(coinFramesTex, 16, 21, 4);
         // Sprites
         bg1 = new Sprite(getTexture(BG_1));
         bg2 = new Sprite(getTexture(BG_2));
@@ -117,6 +123,10 @@ public class GameAssets extends Assets {
 
     public Sprite[] getEnemySouthWalk() {
         return enemySouthWalk;
+    }
+
+    public Sprite[] getCoinFrames() {
+        return coinFrames;
     }
 
     // Sprites

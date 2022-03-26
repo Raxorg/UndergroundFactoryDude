@@ -1,9 +1,13 @@
 package com.epicness.factorydude.game.stuff;
 
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.factorydude.game.stuff.characters.Enemy;
 import com.epicness.factorydude.game.stuff.characters.Player;
+import com.epicness.factorydude.game.stuff.hud.CoinCounter;
 import com.epicness.factorydude.game.stuff.waves.WaveStorage;
 import com.epicness.fundamentals.stuff.Stuff;
 import com.epicness.fundamentals.stuff.grid.Grid;
@@ -15,6 +19,7 @@ public class GameStuff extends Stuff {
     private DelayedRemovalArray<Enemy> enemies;
     private Player player;
     private FactoryZone factoryZone;
+    private CoinCounter coinCounter;
 
     @Override
     public void initializeStuff() {
@@ -28,8 +33,11 @@ public class GameStuff extends Stuff {
         enemies = new DelayedRemovalArray<>();
 
         player = new Player(assets);
+        player.translate(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f);
 
         factoryZone = new FactoryZone(sharedAssets, assets);
+
+        coinCounter = new CoinCounter(sharedAssets.getPixel(), assets.getCoinFrames(), sharedAssets.getTimesSquare());
     }
 
     public WaveStorage getWaveStorage() {
@@ -50,5 +58,9 @@ public class GameStuff extends Stuff {
 
     public FactoryZone getFactoryZone() {
         return factoryZone;
+    }
+
+    public CoinCounter getCoinCounter() {
+        return coinCounter;
     }
 }

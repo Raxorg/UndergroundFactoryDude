@@ -28,4 +28,13 @@ public class GameConstants {
     public static final float OPTION_X_OFFSET = BUILDING_PANEL_WIDTH / 2f - OPTION_SIZE / 2f;
     // Factory option
     public static final float FACTORY_OPTION_Y = BUILDING_PANEL_HEIGHT / 2f - OPTION_SIZE / 2f;
+    // Coin counter
+    public static final float COIN_COUNTER_WIDTH = 300f;
+    public static final float COIN_COUNTER_HEIGHT = 100f;
+    public static final float COIN_COUNTER_Y = CAMERA_HEIGHT - COIN_COUNTER_HEIGHT;
+    public static final float COIN_COUNTER_ANIM_SIZE = COIN_COUNTER_HEIGHT * 0.8f;
+    public static final float COIN_COUNTER_ANIM_Y = COIN_COUNTER_Y + COIN_COUNTER_HEIGHT / 2f - COIN_COUNTER_ANIM_SIZE / 2f;
+    public static final float COIN_COUNTER_TEXT_X = CAMERA_WIDTH - COIN_COUNTER_WIDTH + COIN_COUNTER_ANIM_SIZE;
+    public static final float COIN_COUNTER_TEXT_Y = COIN_COUNTER_Y + COIN_COUNTER_HEIGHT / 2f;
+    public static final float COIN_COUNTER_TEXT_WIDTH = COIN_COUNTER_WIDTH - COIN_COUNTER_ANIM_SIZE;
 }
