@@ -5,6 +5,7 @@ import static com.epicness.factorydude.game.assets.GameAssetPaths.BG_1;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.BG_2;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.BULLET_FRAMES;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.COIN_FRAMES;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.CONVEYOR_BELT_FRAMES;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.CURSOR_FRAMES;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_EAST_WALK;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_NORTH_WALK;
@@ -33,13 +34,13 @@ public class GameAssets extends Assets {
             playerEastSlash, playerNorthSlash, playerSouthSlash, playerSlash;
     private Sprite[] enemyEastWalk, enemyNorthWalk, enemySouthWalk,
             bulletFrames;
-    private Sprite[] coinFrames, cursorFrames;
+    private Sprite[] coinFrames, conveyorBeltFrames, cursorFrames;
     // Fonts
     private BitmapFont timesSquare;
     // Sprites
     private Sprite bg1, bg2;
     private Sprite hex;
-    private Sprite factory;
+    private Sprite factory, conveyor;
 
     @Override
     public void queueAssetLoading() {
@@ -56,6 +57,7 @@ public class GameAssets extends Assets {
         loadTexture(ENEMY_SOUTH_WALK);
         loadTexture(BULLET_FRAMES);
         loadTexture(COIN_FRAMES);
+        loadTexture(CONVEYOR_BELT_FRAMES);
         loadTexture(CURSOR_FRAMES);
         // Fonts
         loadFont(TIMES_SQUARE);
@@ -94,7 +96,12 @@ public class GameAssets extends Assets {
         bulletFrames = AnimationUtils.split(bulletFramesTex, 22, 25, 5);
 
         Texture coinFramesTex = getTexture(COIN_FRAMES);
+        coinFramesTex.setFilter(Linear, Linear);
         coinFrames = AnimationUtils.split(coinFramesTex, 16, 21, 4);
+
+        Texture conveyorFramesTex = getTexture(CONVEYOR_BELT_FRAMES);
+        conveyorFramesTex.setFilter(Linear, Linear);
+        conveyorBeltFrames = AnimationUtils.split(conveyorFramesTex, 100, 100, 4);
 
         Texture cursorFramesTex = getTexture(CURSOR_FRAMES);
         cursorFrames = AnimationUtils.split(cursorFramesTex, 69, 69, 15);
@@ -108,6 +115,7 @@ public class GameAssets extends Assets {
         hex.getTexture().setFilter(Linear, Linear);
         factory = new Sprite(getTexture(FACTORY_PATH));
         factory.getTexture().setFilter(Linear, Linear);
+        conveyor = new Sprite(conveyorFramesTex, 0, 0, 100, 100);
     }
 
     // Animations
@@ -159,6 +167,10 @@ public class GameAssets extends Assets {
         return coinFrames;
     }
 
+    public Sprite[] getConveyorBeltFrames() {
+        return conveyorBeltFrames;
+    }
+
     public Sprite[] getCursorFrames() {
         return cursorFrames;
     }
@@ -183,5 +195,9 @@ public class GameAssets extends Assets {
 
     public Sprite getFactory() {
         return factory;
+    }
+
+    public Sprite getConveyor() {
+        return conveyor;
     }
 }

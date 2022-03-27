@@ -11,6 +11,7 @@ import com.epicness.factorydude.game.logic.enemies.WaveHandler;
 import com.epicness.factorydude.game.logic.factoryzone.BuildingPanelHandler;
 import com.epicness.factorydude.game.logic.factoryzone.BuildingPanelSlider;
 import com.epicness.factorydude.game.logic.factoryzone.BuildingPlacer;
+import com.epicness.factorydude.game.logic.factoryzone.ConveyorAnimator;
 import com.epicness.factorydude.game.logic.factoryzone.FactoryZoneScaler;
 import com.epicness.factorydude.game.logic.factoryzone.HexHighlighter;
 import com.epicness.factorydude.game.logic.player.CameraHandler;
@@ -39,6 +40,7 @@ public class GameLogic extends Logic {
     private BuildingPanelHandler buildingPanelHandler;
     private BuildingPanelSlider buildingPanelSlider;
     private BuildingPlacer buildingPlacer;
+    private ConveyorAnimator conveyorAnimator;
     private FactoryZoneScaler factoryZoneScaler;
     private HexHighlighter hexHighlighter;
     // Player
@@ -70,6 +72,7 @@ public class GameLogic extends Logic {
         buildingPanelHandler = new BuildingPanelHandler();
         buildingPanelSlider = new BuildingPanelSlider();
         buildingPlacer = new BuildingPlacer();
+        conveyorAnimator = new ConveyorAnimator();
         factoryZoneScaler = new FactoryZoneScaler();
         hexHighlighter = new HexHighlighter();
         // Player
@@ -86,12 +89,16 @@ public class GameLogic extends Logic {
 
     @Override
     protected void setSharedLogic() {
+        // Enemies
+        bulletHandler.setSharedLogic(sharedLogic);
         enemyAnimator.setSharedLogic(sharedLogic);
         enemyMover.setSharedLogic(sharedLogic);
         waveHandler.setSharedLogic(sharedLogic);
+
         buildingPanelHandler.setSharedLogic(sharedLogic);
         factoryZoneScaler.setSharedLogic(sharedLogic);
         hexHighlighter.setSharedLogic(sharedLogic);
+
         playerAnimator.setSharedLogic(sharedLogic);
         playerAttackHandler.setSharedLogic(sharedLogic);
         playerMover.setSharedLogic(sharedLogic);
@@ -127,6 +134,7 @@ public class GameLogic extends Logic {
         waveHandler.update(delta);
         // Factory zone
         buildingPanelSlider.update(delta);
+        conveyorAnimator.update(delta);
         factoryZoneScaler.update(delta);
         // Player
         playerAnimator.update(delta);
@@ -167,6 +175,7 @@ public class GameLogic extends Logic {
         // Factory zone
         buildingPanelHandler.setStuff(gameStuff);
         buildingPanelSlider.setStuff(gameStuff);
+        conveyorAnimator.setStuff(gameStuff);
         factoryZoneScaler.setStuff(gameStuff);
         hexHighlighter.setStuff(gameStuff);
         // Player

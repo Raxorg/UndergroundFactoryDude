@@ -59,6 +59,10 @@ public class CoinCounter {
         coinAnimation.addTime(time);
     }
 
+    public int getCoins() {
+        return Integer.parseInt(text.getText());
+    }
+
     public void addCoin() {
         int coins = Integer.parseInt(text.getText()) + 1;
         text.setText(coins + "");

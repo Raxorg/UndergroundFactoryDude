@@ -68,6 +68,18 @@ public class SpritedAnimation {
         }
     }
 
+    public void setOriginCenter() {
+        for (int i = 0; i < animation.getKeyFrames().length; i++) {
+            animation.getKeyFrames()[i].setOriginCenter();
+        }
+    }
+
+    public void setScale(float scale) {
+        for (int i = 0; i < animation.getKeyFrames().length; i++) {
+            animation.getKeyFrames()[i].setScale(scale);
+        }
+    }
+
     public void setRotation(float degrees) {
         for (int i = 0; i < animation.getKeyFrames().length; i++) {
             animation.getKeyFrames()[i].setRotation(degrees);

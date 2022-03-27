@@ -31,7 +31,9 @@ public class GameConstants {
     public static final float OPTION_SIZE = BUILDING_PANEL_WIDTH / 2f;
     public static final float OPTION_X_OFFSET = BUILDING_PANEL_WIDTH / 2f - OPTION_SIZE / 2f;
     // Factory option
-    public static final float FACTORY_OPTION_Y = BUILDING_PANEL_HEIGHT / 2f - OPTION_SIZE / 2f;
+    public static final float FACTORY_OPTION_Y = BUILDING_PANEL_HEIGHT * 0.66f - OPTION_SIZE / 2f;
+    // Conveyor option
+    public static final float CONVEYOR_OPTION_Y = BUILDING_PANEL_HEIGHT * 0.33f - OPTION_SIZE / 2f;
     // Coin counter
     public static final float COIN_COUNTER_WIDTH = 300f;
     public static final float COIN_COUNTER_HEIGHT = 100f;

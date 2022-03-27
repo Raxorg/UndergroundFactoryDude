@@ -19,9 +19,13 @@ public class BuildingPanelHandler {
             return;
         }
         Sprited factoryOption = stuff.getFactoryZone().getBuildingPanel().getFactoryOption();
+        Sprited conveyorOption = stuff.getFactoryZone().getBuildingPanel().getConveyorOption();
         factoryOption.setColor(Color.WHITE);
+        conveyorOption.setColor(Color.WHITE);
         if (factoryOption.contains(x, y)) {
             factoryOption.setColor(Color.GREEN);
+        } else if (conveyorOption.contains(x, y)) {
+            conveyorOption.setColor(Color.GREEN);
         }
     }
 
@@ -30,14 +34,20 @@ public class BuildingPanelHandler {
             return;
         }
         Sprited factoryOption = stuff.getFactoryZone().getBuildingPanel().getFactoryOption();
-        if (!factoryOption.contains(x, y)) {
+        Sprited conveyorOption = stuff.getFactoryZone().getBuildingPanel().getConveyorOption();
+        int selectedOption;
+        if (factoryOption.contains(x, y)) {
+            selectedOption = 0;
+        } else if (conveyorOption.contains(x, y)) {
+            selectedOption = 1;
+        } else {
             return;
         }
         Cell selectedCell = logic.getHexHighlighter().getSelectedCell();
         if (selectedCell == null) {
             return;
         }
-        logic.getBuildingPlacer().placeCellable(selectedCell);
+        logic.getBuildingPlacer().placeCellable(selectedCell, selectedOption);
     }
 
     // Structure

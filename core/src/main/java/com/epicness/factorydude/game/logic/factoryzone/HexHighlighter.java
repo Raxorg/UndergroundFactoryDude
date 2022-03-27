@@ -50,10 +50,10 @@ public class HexHighlighter {
                 Cell cell = hexGrid.getCells()[column][row];
                 if (cell.contains(x, y)) {
                     logic.getBuildingPanelSlider().open();
-                    cell.setColor(Color.BLUE);
                     if (selectedCell != null) {
                         selectedCell.setColor(Color.WHITE);
                     }
+                    cell.setColor(Color.BLUE);
                     selectedCell = cell;
                     return;
                 }

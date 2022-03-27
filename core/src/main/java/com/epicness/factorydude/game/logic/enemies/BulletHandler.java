@@ -4,13 +4,18 @@ import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.factorydude.game.stuff.Bullet;
 import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.factorydude.game.stuff.characters.Player;
+import com.epicness.fundamentals.logic.SharedLogic;
 
 public class BulletHandler {
 
     // Structure
+    private SharedLogic sharedLogic;
     private GameStuff stuff;
 
     public void update(float delta) {
+        if (sharedLogic.getPauseTracker().get()) {
+            return;
+        }
         DelayedRemovalArray<Bullet> bullets = stuff.getBullets();
         Player player = stuff.getPlayer();
         boolean collisionHandled = false;
@@ -32,6 +37,10 @@ public class BulletHandler {
     }
 
     // Structure
+    public void setSharedLogic(SharedLogic sharedLogic) {
+        this.sharedLogic = sharedLogic;
+    }
+
     public void setStuff(GameStuff stuff) {
         this.stuff = stuff;
     }
