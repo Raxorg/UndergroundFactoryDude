@@ -1,7 +1,7 @@
 package com.epicness.factorydude.game.logic.enemies;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.factorydude.game.GameConstants.FLOOR_HEIGHT;
+import static com.epicness.factorydude.game.GameConstants.FLOOR_WIDTH;
 
 import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.factorydude.game.stuff.GameStuff;
@@ -15,7 +15,7 @@ public class EnemySpawner {
 
     public void spawnEnemy() {
         Enemy enemy = new Enemy(assets);
-        enemy.translate(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f);
+        enemy.translate(FLOOR_WIDTH / 2f, FLOOR_HEIGHT / 2f);
         stuff.getEnemies().add(enemy);
     }
 

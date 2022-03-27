@@ -6,6 +6,7 @@ import static com.badlogic.gdx.Input.Keys.F;
 import static com.badlogic.gdx.Input.Keys.S;
 import static com.badlogic.gdx.Input.Keys.W;
 
+import com.badlogic.gdx.Input;
 import com.epicness.fundamentals.input.InputHandler;
 
 public class GameInputHandler extends InputHandler {
@@ -19,11 +20,20 @@ public class GameInputHandler extends InputHandler {
     }
 
     @Override
+    public void mousePressed(float x, float y, int button) {
+        GameLogic logic = (GameLogic) this.logic;
+        if (button == Input.Buttons.LEFT) {
+            logic.getPlayerAttackHandler().attack();
+        } else if (button == Input.Buttons.RIGHT) {
+            logic.getDashHandler().dash();
+        }
+    }
+
+    @Override
     public void touchDown(float x, float y) {
         GameLogic logic = (GameLogic) this.logic;
         logic.getBuildingPanelHandler().touchDown(x, y);
         logic.getHexHighlighter().touchDown(x, y);
-        logic.getPlayerAttackHandler().attack();
     }
 
     @Override

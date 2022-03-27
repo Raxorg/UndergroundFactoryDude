@@ -4,8 +4,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.factorydude.game.stuff.GameStuff;
-import com.epicness.factorydude.game.stuff.SlashEffect;
 import com.epicness.factorydude.game.stuff.characters.Player;
+import com.epicness.factorydude.game.stuff.effects.SlashEffect;
 import com.epicness.fundamentals.stuff.SpritedAnimation;
 
 public class EffectHandler {
@@ -55,6 +55,14 @@ public class EffectHandler {
             }
             slash.translate(xAmount, yAmount);
         }
+    }
+
+    public void spawnDash() {
+        Player player = stuff.getPlayer();
+        SpritedAnimation dash = new SpritedAnimation(assets.getDash(), 0.05f);
+        dash.setPosition(player.getCenterX() - dash.getWidth() / 2f, player.getCenterY() - dash.getHeight() / 2f);
+        dash.setRotation(player.getSpeed().angleDeg());
+        stuff.getEffects().add(dash);
     }
 
     // Structure

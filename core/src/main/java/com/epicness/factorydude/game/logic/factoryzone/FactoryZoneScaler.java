@@ -2,7 +2,7 @@ package com.epicness.factorydude.game.logic.factoryzone;
 
 import static com.epicness.factorydude.game.GameConstants.SCALING_DURATION;
 
-import com.epicness.factorydude.game.stuff.FactoryZone;
+import com.epicness.factorydude.game.stuff.factoryzone.FactoryZone;
 import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.fundamentals.logic.SharedLogic;
 

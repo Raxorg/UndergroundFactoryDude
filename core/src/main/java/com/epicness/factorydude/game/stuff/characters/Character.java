@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.stuff.SpritedAnimation;
 
-public class Character {
+public abstract class Character {
 
     protected SpritedAnimation[] animations;
     protected SpritedAnimation currentAnimation;

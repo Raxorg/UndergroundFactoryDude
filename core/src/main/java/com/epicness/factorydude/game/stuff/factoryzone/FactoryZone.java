@@ -1,4 +1,4 @@
-package com.epicness.factorydude.game.stuff;
+package com.epicness.factorydude.game.stuff.factoryzone;
 
 import static com.epicness.factorydude.game.GameConstants.CELLABLE_PROPERTY;
 import static com.epicness.factorydude.game.GameConstants.HEX_GRID_CELL_SIZE;

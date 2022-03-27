@@ -12,6 +12,7 @@ import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_NORTH_WA
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_SOUTH_WALK;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.FACTORY_PATH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.HEX_PATH;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_DASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_EAST_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_EAST_WALK;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_NORTH_SLASH;
@@ -31,7 +32,8 @@ public class GameAssets extends Assets {
 
     // Animations
     private Sprite[] playerEastWalk, playerNorthWalk, playerSouthWalk,
-            playerEastSlash, playerNorthSlash, playerSouthSlash, playerSlash;
+            playerEastSlash, playerNorthSlash, playerSouthSlash,
+            playerSlash, dash;
     private Sprite[] enemyEastWalk, enemyNorthWalk, enemySouthWalk,
             bulletFrames;
     private Sprite[] coinFrames, conveyorBeltFrames, cursorFrames;
@@ -52,6 +54,7 @@ public class GameAssets extends Assets {
         loadTexture(PLAYER_NORTH_SLASH);
         loadTexture(PLAYER_SOUTH_SLASH);
         loadTexture(PLAYER_SLASH);
+        loadTexture(PLAYER_DASH);
         loadTexture(ENEMY_EAST_WALK);
         loadTexture(ENEMY_NORTH_WALK);
         loadTexture(ENEMY_SOUTH_WALK);
@@ -85,6 +88,8 @@ public class GameAssets extends Assets {
         playerSouthWalk = AnimationUtils.split(playerSouthWalkTex, 138, 165, 12);
         Texture playerSlashTex = getTexture(PLAYER_SLASH);
         playerSlash = AnimationUtils.split(playerSlashTex, 101, 114, 11);
+        Texture dashTex = getTexture(PLAYER_DASH);
+        dash = AnimationUtils.split(dashTex, 76, 74, 12);
 
         Texture enemyEastWalkTex = getTexture(ENEMY_EAST_WALK);
         enemyEastWalk = AnimationUtils.split(enemyEastWalkTex, 138, 165, 20);
@@ -145,6 +150,10 @@ public class GameAssets extends Assets {
 
     public Sprite[] getPlayerSlash() {
         return playerSlash;
+    }
+
+    public Sprite[] getDash() {
+        return dash;
     }
 
     public Sprite[] getEnemyEastWalk() {

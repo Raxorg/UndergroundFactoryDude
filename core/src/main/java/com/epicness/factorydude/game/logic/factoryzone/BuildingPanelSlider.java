@@ -3,7 +3,7 @@ package com.epicness.factorydude.game.logic.factoryzone;
 import static com.epicness.factorydude.game.GameConstants.BUILDING_PANEL_SLIDE_DURATION;
 import static com.epicness.factorydude.game.GameConstants.BUILDING_PANEL_WIDTH;
 
-import com.epicness.factorydude.game.stuff.BuildingPanel;
+import com.epicness.factorydude.game.stuff.factoryzone.BuildingPanel;
 import com.epicness.factorydude.game.stuff.GameStuff;
 
 public class BuildingPanelSlider {

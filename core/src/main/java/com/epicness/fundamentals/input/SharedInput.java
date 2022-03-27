@@ -39,9 +39,11 @@ public class SharedInput extends InputAdapter {
         }
         unprojected = staticCamera.unproject(new Vector3(screenX, screenY, 0f));
         inputHandler.touchDown(unprojected.x, unprojected.y);
+        inputHandler.mousePressed(unprojected.x, unprojected.y, button);
 
         unprojected = dynamicCamera.unproject(new Vector3(screenX, screenY, 0f));
         inputHandler.touchDownDynamic(unprojected.x, unprojected.y);
+        inputHandler.mousePressedDynamic(unprojected.x, unprojected.y, button);
         return true;
     }
 

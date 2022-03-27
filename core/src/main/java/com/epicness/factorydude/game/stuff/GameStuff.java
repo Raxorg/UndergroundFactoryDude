@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.factorydude.game.stuff.characters.Enemy;
 import com.epicness.factorydude.game.stuff.characters.Player;
+import com.epicness.factorydude.game.stuff.factoryzone.FactoryZone;
 import com.epicness.factorydude.game.stuff.hud.CoinCounter;
 import com.epicness.factorydude.game.stuff.waves.WaveStorage;
 import com.epicness.fundamentals.stuff.SpritedAnimation;

@@ -3,7 +3,7 @@ package com.epicness.factorydude.game.logic.player;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.factorydude.game.logic.GameLogic;
 import com.epicness.factorydude.game.stuff.GameStuff;
-import com.epicness.factorydude.game.stuff.SlashEffect;
+import com.epicness.factorydude.game.stuff.effects.SlashEffect;
 import com.epicness.factorydude.game.stuff.characters.Enemy;
 import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.fundamentals.stuff.SpritedAnimation;
@@ -40,6 +40,7 @@ public class PlayerAttackHandler {
                 if (effect.getBounds().overlaps(enemy.getBounds())) {
                     enemies.removeValue(enemy, true);
                     logic.getCoinHandler().addCoin();
+                    logic.getWaveHandler().checkEnemies();
                     break enemies;
                 }
             }

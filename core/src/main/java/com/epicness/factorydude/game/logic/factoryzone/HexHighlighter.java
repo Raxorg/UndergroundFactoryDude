@@ -6,7 +6,7 @@ import static com.epicness.factorydude.game.GameConstants.HEX_GRID_ROWS;
 import com.badlogic.gdx.graphics.Color;
 import com.epicness.factorydude.game.logic.GameLogic;
 import com.epicness.factorydude.game.stuff.GameStuff;
-import com.epicness.factorydude.game.stuff.HexGrid;
+import com.epicness.factorydude.game.stuff.factoryzone.HexGrid;
 import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.fundamentals.stuff.grid.Cell;
 

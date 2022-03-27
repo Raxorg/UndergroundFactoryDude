@@ -13,6 +13,8 @@ public class PlayerMover {
     private SharedLogic sharedLogic;
     private GameLogic logic;
     private GameStuff stuff;
+    // Logic
+    private float speedMultiplier;
 
     public void horizontalDirChange(boolean left, boolean press) {
         float speedChange = press ? PLAYER_SPEED : -PLAYER_SPEED;
@@ -31,9 +33,14 @@ public class PlayerMover {
             return;
         }
         Vector2 speed = stuff.getPlayer().getSpeed();
-        float xAmount = speed.x * delta, yAmount = speed.y * delta;
-        stuff.getPlayer().translate(xAmount, yAmount);
+        Vector2 clamped = new Vector2(speed).clamp(0f, PLAYER_SPEED);
+        float xAmount = clamped.x * delta, yAmount = clamped.y * delta;
+        stuff.getPlayer().translate(xAmount * speedMultiplier, yAmount * speedMultiplier);
         logic.getPlayerAnimator().translationChange(xAmount, yAmount);
+    }
+
+    public void setSpeedMultiplier(float speedMultiplier) {
+        this.speedMultiplier = speedMultiplier;
     }
 
     // Structure

@@ -1,4 +1,4 @@
-package com.epicness.factorydude.game.stuff;
+package com.epicness.factorydude.game.stuff.factoryzone;
 
 import static com.epicness.factorydude.game.GameConstants.BUILDING_PANEL_HEIGHT;
 import static com.epicness.factorydude.game.GameConstants.BUILDING_PANEL_WIDTH;

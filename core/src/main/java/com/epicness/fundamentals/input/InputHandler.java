@@ -20,6 +20,10 @@ public abstract class InputHandler {
 
     }
 
+    public void mousePressed(float x, float y, int button) {
+
+    }
+
     public void touchDown(float x, float y) {
 
     }
@@ -34,6 +38,10 @@ public abstract class InputHandler {
 
     // Input related to the dynamic camera
     public void mouseMovedDynamic(float x, float y) {
+
+    }
+
+    public void mousePressedDynamic(float x, float y, int button) {
 
     }
 

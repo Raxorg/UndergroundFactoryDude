@@ -1,4 +1,4 @@
-package com.epicness.factorydude.game.stuff;
+package com.epicness.factorydude.game.stuff.effects;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.epicness.fundamentals.stuff.SpritedAnimation;
