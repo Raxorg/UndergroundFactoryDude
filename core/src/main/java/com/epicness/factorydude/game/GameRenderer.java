@@ -1,6 +1,7 @@
 package com.epicness.factorydude.game;
 
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
+import static com.epicness.factorydude.game.GameConstants.DEBUG;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -36,7 +37,9 @@ public class GameRenderer extends Renderer {
         stuff.getCursor().draw(spriteBatch);
         spriteBatch.end();
 
-        renderDebug(stuff);
+        if (DEBUG) {
+            renderDebug(stuff);
+        }
     }
 
     private void renderDebug(GameStuff stuff) {

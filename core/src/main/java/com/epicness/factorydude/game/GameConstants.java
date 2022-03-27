@@ -50,4 +50,6 @@ public class GameConstants {
     // Wave message
     public static final float MESSAGE_DURATION = 3f;
     public static final float HALF_MESSAGE_DURATION = MESSAGE_DURATION / 2f;
+    // Debug
+    public static final boolean DEBUG = false;
 }
