@@ -1,5 +1,8 @@
 package com.epicness.factorydude.game.logic.enemies;
 
+import static com.epicness.factorydude.game.GameConstants.FLOOR_HEIGHT;
+import static com.epicness.factorydude.game.GameConstants.FLOOR_WIDTH;
+
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
@@ -49,8 +52,22 @@ public class EnemyMover {
         Vector2 speed = enemy.getSpeed();
         xAmount = speed.x * delta;
         yAmount = speed.y * delta;
+        checkLimits(enemy, speed, xAmount, yAmount);
         enemy.translate(xAmount, yAmount);
         logic.getEnemyAnimator().translationChange(enemy, xAmount, yAmount);
+    }
+
+    private void checkLimits(Enemy enemy, Vector2 speed, float xAmount, float yAmount) {
+        if (enemy.getX() + xAmount < 0f) {
+            speed.x = -speed.x;
+        } else if (enemy.getX() + enemy.getWidth() + xAmount > FLOOR_WIDTH) {
+            speed.x = -speed.x;
+        }
+        if (enemy.getY() + yAmount < 0f) {
+            speed.y = -speed.y;
+        } else if (enemy.getY() + enemy.getHeight() + yAmount > FLOOR_HEIGHT) {
+            speed.y = -speed.y;
+        }
     }
 
     // Structure
