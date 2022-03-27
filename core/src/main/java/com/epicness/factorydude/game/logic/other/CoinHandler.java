@@ -1,4 +1,4 @@
-package com.epicness.factorydude.game.logic;
+package com.epicness.factorydude.game.logic.other;
 
 import com.epicness.factorydude.game.stuff.GameStuff;
 

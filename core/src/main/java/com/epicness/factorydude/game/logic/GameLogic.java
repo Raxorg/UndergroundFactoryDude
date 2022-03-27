@@ -14,6 +14,11 @@ import com.epicness.factorydude.game.logic.factoryzone.BuildingPlacer;
 import com.epicness.factorydude.game.logic.factoryzone.ConveyorAnimator;
 import com.epicness.factorydude.game.logic.factoryzone.FactoryZoneScaler;
 import com.epicness.factorydude.game.logic.factoryzone.HexHighlighter;
+import com.epicness.factorydude.game.logic.other.CoinHandler;
+import com.epicness.factorydude.game.logic.other.CursorHandler;
+import com.epicness.factorydude.game.logic.other.EffectHandler;
+import com.epicness.factorydude.game.logic.other.GameInputHandler;
+import com.epicness.factorydude.game.logic.other.MusicHandler;
 import com.epicness.factorydude.game.logic.player.CameraHandler;
 import com.epicness.factorydude.game.logic.player.DashHandler;
 import com.epicness.factorydude.game.logic.player.PlayerAnimator;
@@ -55,6 +60,7 @@ public class GameLogic extends Logic {
     private CursorHandler cursorHandler;
     private EffectHandler effectHandler;
     private GameInputHandler gameInputHandler;
+    private MusicHandler musicHandler;
 
     public GameLogic(SharedLogic sharedLogic) {
         super(sharedLogic);
@@ -88,6 +94,7 @@ public class GameLogic extends Logic {
         cursorHandler = new CursorHandler();
         effectHandler = new EffectHandler();
         gameInputHandler = new GameInputHandler();
+        musicHandler = new MusicHandler();
     }
 
     @Override
@@ -126,10 +133,11 @@ public class GameLogic extends Logic {
     @Override
     public void initialLogic() {
         buildingPanelSlider.init();
-        cursorHandler.init();
-        dashHandler.init();
-        gameInputHandler.setupInput();
         waveHandler.startWave(0);
+        cursorHandler.init();
+        gameInputHandler.setupInput();
+        musicHandler.playMusic();
+        dashHandler.init();
     }
 
     @Override
@@ -164,6 +172,7 @@ public class GameLogic extends Logic {
         enemySpawner.setAssets(gameAssets);
         buildingPlacer.setAssets(gameAssets);
         effectHandler.setAssets(gameAssets);
+        musicHandler.setAssets(gameAssets);
     }
 
     @Override

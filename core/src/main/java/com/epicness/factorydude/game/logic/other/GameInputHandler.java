@@ -1,4 +1,4 @@
-package com.epicness.factorydude.game.logic;
+package com.epicness.factorydude.game.logic.other;
 
 import static com.badlogic.gdx.Input.Keys.A;
 import static com.badlogic.gdx.Input.Keys.D;
@@ -7,6 +7,7 @@ import static com.badlogic.gdx.Input.Keys.S;
 import static com.badlogic.gdx.Input.Keys.W;
 
 import com.badlogic.gdx.Input;
+import com.epicness.factorydude.game.logic.GameLogic;
 import com.epicness.fundamentals.input.InputHandler;
 
 public class GameInputHandler extends InputHandler {

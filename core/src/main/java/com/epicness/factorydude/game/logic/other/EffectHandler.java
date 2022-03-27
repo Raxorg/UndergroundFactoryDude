@@ -1,4 +1,4 @@
-package com.epicness.factorydude.game.logic;
+package com.epicness.factorydude.game.logic.other;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.DelayedRemovalArray;

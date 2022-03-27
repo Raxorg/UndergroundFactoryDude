@@ -20,8 +20,10 @@ import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_NORTH_W
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SOUTH_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SOUTH_WALK;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.CAVES;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.TIMES_SQUARE;
 
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -43,6 +45,8 @@ public class GameAssets extends Assets {
     private Sprite bg1, bg2;
     private Sprite hex;
     private Sprite factory, conveyor;
+    // Music
+    private Music caves;
 
     @Override
     public void queueAssetLoading() {
@@ -69,6 +73,8 @@ public class GameAssets extends Assets {
         loadTexture(BG_2);
         loadTexture(HEX_PATH);
         loadTexture(FACTORY_PATH);
+        // Music
+        loadMusic(CAVES);
     }
 
     @Override
@@ -121,6 +127,8 @@ public class GameAssets extends Assets {
         factory = new Sprite(getTexture(FACTORY_PATH));
         factory.getTexture().setFilter(Linear, Linear);
         conveyor = new Sprite(conveyorFramesTex, 0, 0, 100, 100);
+        // Music
+        caves = getMusic(CAVES);
     }
 
     // Animations
@@ -208,5 +216,10 @@ public class GameAssets extends Assets {
 
     public Sprite getConveyor() {
         return conveyor;
+    }
+
+    // Music
+    public Music getCaves() {
+        return caves;
     }
 }
