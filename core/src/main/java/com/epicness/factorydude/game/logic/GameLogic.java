@@ -1,7 +1,9 @@
 package com.epicness.factorydude.game.logic;
 
 import com.epicness.factorydude.game.assets.GameAssets;
+import com.epicness.factorydude.game.logic.enemies.BulletHandler;
 import com.epicness.factorydude.game.logic.enemies.EnemyAnimator;
+import com.epicness.factorydude.game.logic.enemies.EnemyAttackHandler;
 import com.epicness.factorydude.game.logic.enemies.EnemyMover;
 import com.epicness.factorydude.game.logic.enemies.EnemySpawner;
 import com.epicness.factorydude.game.logic.enemies.WaveHandler;
@@ -25,7 +27,9 @@ import com.epicness.fundamentals.stuff.Stuff;
 public class GameLogic extends Logic {
 
     // Enemy
+    private BulletHandler bulletHandler;
     private EnemyAnimator enemyAnimator;
+    private EnemyAttackHandler enemyAttackHandler;
     private EnemyMover enemyMover;
     private EnemySpawner enemySpawner;
     private WaveHandler waveHandler;
@@ -52,7 +56,9 @@ public class GameLogic extends Logic {
     @Override
     public void initHelpers() {
         // Enemy
+        bulletHandler = new BulletHandler();
         enemyAnimator = new EnemyAnimator();
+        enemyAttackHandler = new EnemyAttackHandler();
         enemyMover = new EnemyMover();
         enemySpawner = new EnemySpawner();
         waveHandler = new WaveHandler();
@@ -106,7 +112,9 @@ public class GameLogic extends Logic {
     @Override
     public void update(float delta) {
         // Enemy
+        bulletHandler.update(delta);
         enemyAnimator.update(delta);
+        enemyAttackHandler.update(delta);
         enemyMover.update(delta);
         waveHandler.update(delta);
         // Factory zone
@@ -125,6 +133,7 @@ public class GameLogic extends Logic {
     @Override
     public void setAssets(Assets assets) {
         GameAssets gameAssets = (GameAssets) assets;
+        enemyAttackHandler.setAssets(gameAssets);
         enemySpawner.setAssets(gameAssets);
         buildingPlacer.setAssets(gameAssets);
         effectHandler.setAssets(gameAssets);
@@ -139,7 +148,9 @@ public class GameLogic extends Logic {
     public void setStuff(Stuff stuff) {
         GameStuff gameStuff = (GameStuff) stuff;
         // Enemy
+        bulletHandler.setStuff(gameStuff);
         enemyAnimator.setStuff(gameStuff);
+        enemyAttackHandler.setStuff(gameStuff);
         enemyMover.setStuff(gameStuff);
         enemySpawner.setStuff(gameStuff);
         waveHandler.setStuff(gameStuff);

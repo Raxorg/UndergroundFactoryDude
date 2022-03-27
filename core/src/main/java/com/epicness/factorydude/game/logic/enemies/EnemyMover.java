@@ -27,10 +27,10 @@ public class EnemyMover {
     }
 
     private void reduceMovementCooldown(Enemy enemy, float delta) {
-        enemy.affectCooldown(-delta);
+        enemy.affectMovementCooldown(-delta);
         if (enemy.getMovementCooldown() <= 0f) {
             float cooldown = MathUtils.random(2f, 5f);
-            enemy.affectCooldown(cooldown - enemy.getMovementCooldown());
+            enemy.affectMovementCooldown(cooldown - enemy.getMovementCooldown());
             enemy.affectMovementLeft(MathUtils.random(0.5f, 1.5f));
             enemy.getSpeed().x = MathUtils.random(-400f, 400f);
             enemy.getSpeed().y = MathUtils.random(-400f, 400f);

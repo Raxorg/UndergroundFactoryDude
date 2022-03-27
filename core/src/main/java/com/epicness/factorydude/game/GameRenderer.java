@@ -1,5 +1,7 @@
 package com.epicness.factorydude.game;
 
+import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.factorydude.game.stuff.GameStuff;
@@ -20,6 +22,9 @@ public class GameRenderer extends Renderer {
             stuff.getEnemies().get(i).draw(spriteBatch);
         }
         stuff.getPlayer().draw(spriteBatch);
+        for (int i = 0; i < stuff.getBullets().size; i++) {
+            stuff.getBullets().get(i).draw(spriteBatch);
+        }
         for (int i = 0; i < stuff.getEffects().size; i++) {
             stuff.getEffects().get(i).draw(spriteBatch);
         }
@@ -39,6 +44,10 @@ public class GameRenderer extends Renderer {
             stuff.getEnemies().get(i).drawDebug(shapeRenderer);
         }
         stuff.getPlayer().drawDebug(shapeRenderer);
+        shapeRenderer.set(Line);
+        for (int i = 0; i < stuff.getBullets().size; i++) {
+            stuff.getBullets().get(i).drawDebug(shapeRenderer);
+        }
         for (int i = 0; i < stuff.getEffects().size; i++) {
             stuff.getEffects().get(i).drawDebug(shapeRenderer);
         }

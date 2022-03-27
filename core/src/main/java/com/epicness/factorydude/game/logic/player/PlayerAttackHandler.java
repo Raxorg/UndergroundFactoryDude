@@ -37,7 +37,7 @@ public class PlayerAttackHandler {
                 if (!(effect instanceof SlashEffect)) {
                     continue;
                 }
-                if (enemy.overlaps(effect.getBounds())) {
+                if (effect.getBounds().overlaps(enemy.getBounds())) {
                     enemies.removeValue(enemy, true);
                     logic.getCoinHandler().addCoin();
                     break enemies;

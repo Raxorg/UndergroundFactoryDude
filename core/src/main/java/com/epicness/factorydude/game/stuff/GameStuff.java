@@ -16,6 +16,7 @@ public class GameStuff extends Stuff {
     private Grid background;
     private DelayedRemovalArray<Enemy> enemies;
     private Player player;
+    private DelayedRemovalArray<Bullet> bullets;
     private DelayedRemovalArray<SpritedAnimation> effects;
     private FactoryZone factoryZone;
     private CoinCounter coinCounter;
@@ -31,6 +32,7 @@ public class GameStuff extends Stuff {
 
         enemies = new DelayedRemovalArray<>();
         player = new Player(assets);
+        bullets = new DelayedRemovalArray<>();
         effects = new DelayedRemovalArray<>();
         factoryZone = new FactoryZone(sharedAssets, assets);
         coinCounter = new CoinCounter(sharedAssets.getPixel(), assets.getCoinFrames(), sharedAssets.getTimesSquare());
@@ -50,6 +52,10 @@ public class GameStuff extends Stuff {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public DelayedRemovalArray<Bullet> getBullets() {
+        return bullets;
     }
 
     public DelayedRemovalArray<SpritedAnimation> getEffects() {

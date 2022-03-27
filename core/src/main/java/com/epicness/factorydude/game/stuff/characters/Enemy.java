@@ -1,12 +1,13 @@
 package com.epicness.factorydude.game.stuff.characters;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.fundamentals.stuff.SpritedAnimation;
 
 public class Enemy extends Character {
 
-    private float movementLeft, movementCooldown;
+    private float movementLeft, movementCooldown, attackCooldown;
 
     public Enemy(GameAssets assets) {
         SpritedAnimation eastWalk = new SpritedAnimation(assets.getEnemyEastWalk(), 0.03f);
@@ -25,6 +26,7 @@ public class Enemy extends Character {
         currentAnimation = southWalk;
 
         bounds = new Rectangle(getWidth() / 4f, getHeight() / 4f, getWidth() / 2f, getHeight() / 2f);
+        attackCooldown = MathUtils.random(3f, 5f);
     }
 
     public float getMovementLeft() {
@@ -39,8 +41,16 @@ public class Enemy extends Character {
         return movementCooldown;
     }
 
-    public void affectCooldown(float amount) {
+    public void affectMovementCooldown(float amount) {
         movementCooldown += amount;
+    }
+
+    public float getAttackCooldown() {
+        return attackCooldown;
+    }
+
+    public void affectAttackCooldown(float amount) {
+        attackCooldown += amount;
     }
 
     public void useEastWalk() {

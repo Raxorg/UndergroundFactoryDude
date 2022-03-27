@@ -28,10 +28,6 @@ public class Character {
         shapeRenderer.rect(bounds.x, bounds.y, bounds.width, bounds.height);
     }
 
-    public boolean overlaps(Rectangle rectangle) {
-        return bounds.overlaps(rectangle);
-    }
-
     public float getX() {
         return currentAnimation.getX();
     }
@@ -124,5 +120,9 @@ public class Character {
 
     public Vector2 getSpeed() {
         return speed;
+    }
+
+    public Rectangle getBounds() {
+        return bounds;
     }
 }

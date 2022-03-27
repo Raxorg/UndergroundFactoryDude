@@ -37,4 +37,8 @@ public class GameConstants {
     public static final float COIN_COUNTER_TEXT_X = CAMERA_WIDTH - COIN_COUNTER_WIDTH + COIN_COUNTER_ANIM_SIZE;
     public static final float COIN_COUNTER_TEXT_Y = COIN_COUNTER_Y + COIN_COUNTER_HEIGHT / 2f;
     public static final float COIN_COUNTER_TEXT_WIDTH = COIN_COUNTER_WIDTH - COIN_COUNTER_ANIM_SIZE;
+    // Bullet
+    public static final float BULLET_SIZE = 50f;
+    public static final float BULLET_RADIUS = BULLET_SIZE / 2f;
+    public static final float BULLET_BOUNDS_RADIUS = BULLET_RADIUS / 2f;
 }

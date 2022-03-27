@@ -3,7 +3,8 @@ package com.epicness.factorydude.game.assets;
 import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.BG_1;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.BG_2;
-import static com.epicness.factorydude.game.assets.GameAssetPaths.COIN_FRAMES_PATH;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.BULLET_FRAMES;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.COIN_FRAMES;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_EAST_WALK;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_NORTH_WALK;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_SOUTH_WALK;
@@ -27,7 +28,8 @@ public class GameAssets extends Assets {
     // Animations
     private Sprite[] playerEastWalk, playerNorthWalk, playerSouthWalk,
             playerEastSlash, playerNorthSlash, playerSouthSlash, playerSlash;
-    private Sprite[] enemyEastWalk, enemyNorthWalk, enemySouthWalk;
+    private Sprite[] enemyEastWalk, enemyNorthWalk, enemySouthWalk,
+            bulletFrames;
     private Sprite[] coinFrames;
     // Sprites
     private Sprite bg1, bg2;
@@ -47,7 +49,8 @@ public class GameAssets extends Assets {
         loadTexture(ENEMY_EAST_WALK);
         loadTexture(ENEMY_NORTH_WALK);
         loadTexture(ENEMY_SOUTH_WALK);
-        loadTexture(COIN_FRAMES_PATH);
+        loadTexture(BULLET_FRAMES);
+        loadTexture(COIN_FRAMES);
         // Sprites
         loadTexture(BG_1);
         loadTexture(BG_2);
@@ -79,8 +82,10 @@ public class GameAssets extends Assets {
         enemyNorthWalk = AnimationUtils.split(enemyNorthWalkTex, 138, 165, 20);
         Texture enemySouthWalkTex = getTexture(ENEMY_SOUTH_WALK);
         enemySouthWalk = AnimationUtils.split(enemySouthWalkTex, 138, 165, 20);
+        Texture bulletFramesTex = getTexture(BULLET_FRAMES);
+        bulletFrames = AnimationUtils.split(bulletFramesTex, 22, 25, 5);
 
-        Texture coinFramesTex = getTexture(COIN_FRAMES_PATH);
+        Texture coinFramesTex = getTexture(COIN_FRAMES);
         coinFrames = AnimationUtils.split(coinFramesTex, 16, 21, 4);
         // Sprites
         bg1 = new Sprite(getTexture(BG_1));
@@ -130,6 +135,10 @@ public class GameAssets extends Assets {
 
     public Sprite[] getEnemySouthWalk() {
         return enemySouthWalk;
+    }
+
+    public Sprite[] getBulletFrames() {
+        return bulletFrames;
     }
 
     public Sprite[] getCoinFrames() {
