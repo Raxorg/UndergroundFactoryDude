@@ -29,6 +29,7 @@ public class GameStuff extends Stuff {
     private Text waveMessage;
     private FactoryZone factoryZone;
     private CoinCounter coinCounter;
+    private SpritedAnimation cursor;
 
     @Override
     public void initializeStuff() {
@@ -52,6 +53,9 @@ public class GameStuff extends Stuff {
 
         factoryZone = new FactoryZone(sharedAssets, assets);
         coinCounter = new CoinCounter(sharedAssets.getPixel(), assets.getCoinFrames(), sharedAssets.getTimesSquare());
+
+        cursor = new SpritedAnimation(assets.getCursorFrames(), 0.05f);
+        cursor.enableLooping();
     }
 
     public WaveStorage getWaveStorage() {
@@ -88,5 +92,9 @@ public class GameStuff extends Stuff {
 
     public CoinCounter getCoinCounter() {
         return coinCounter;
+    }
+
+    public SpritedAnimation getCursor() {
+        return cursor;
     }
 }

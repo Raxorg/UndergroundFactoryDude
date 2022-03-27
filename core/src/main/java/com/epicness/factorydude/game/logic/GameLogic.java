@@ -1,8 +1,5 @@
 package com.epicness.factorydude.game.logic;
 
-import static com.badlogic.gdx.Input.Keys.R;
-
-import com.badlogic.gdx.Gdx;
 import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.factorydude.game.logic.enemies.BulletHandler;
 import com.epicness.factorydude.game.logic.enemies.EnemyAnimator;
@@ -51,6 +48,7 @@ public class GameLogic extends Logic {
     private PlayerMover playerMover;
     // Other
     private CoinHandler coinHandler;
+    private CursorHandler cursorHandler;
     private EffectHandler effectHandler;
     private GameInputHandler gameInputHandler;
 
@@ -81,6 +79,7 @@ public class GameLogic extends Logic {
         playerMover = new PlayerMover();
         // Other
         coinHandler = new CoinHandler();
+        cursorHandler = new CursorHandler();
         effectHandler = new EffectHandler();
         gameInputHandler = new GameInputHandler();
     }
@@ -112,15 +111,13 @@ public class GameLogic extends Logic {
     @Override
     public void initialLogic() {
         buildingPanelSlider.init();
+        cursorHandler.init();
         gameInputHandler.setupInput();
-        waveAnnouncer.announceWave(2);
+        waveAnnouncer.announceWave(1);
     }
 
     @Override
     public void update(float delta) {
-        if (Gdx.input.isKeyJustPressed(R)) {
-            waveAnnouncer.announceWave(3);
-        }
         // Enemy
         bulletHandler.update(delta);
         enemyAnimator.update(delta);
@@ -138,6 +135,7 @@ public class GameLogic extends Logic {
         cameraHandler.update();
         // Other
         coinHandler.update(delta);
+        cursorHandler.update(delta);
         effectHandler.update(delta);
     }
 
@@ -178,6 +176,7 @@ public class GameLogic extends Logic {
         playerMover.setStuff(gameStuff);
         // Other
         coinHandler.setStuff(gameStuff);
+        cursorHandler.setStuff(gameStuff);
         effectHandler.setStuff(gameStuff);
         gameInputHandler.setStuff(gameStuff);
     }
@@ -233,6 +232,10 @@ public class GameLogic extends Logic {
     // Other
     public CoinHandler getCoinHandler() {
         return coinHandler;
+    }
+
+    public CursorHandler getCursorHandler() {
+        return cursorHandler;
     }
 
     public EffectHandler getEffectHandler() {

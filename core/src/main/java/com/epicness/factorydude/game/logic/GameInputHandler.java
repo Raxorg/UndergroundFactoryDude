@@ -3,7 +3,6 @@ package com.epicness.factorydude.game.logic;
 import static com.badlogic.gdx.Input.Keys.A;
 import static com.badlogic.gdx.Input.Keys.D;
 import static com.badlogic.gdx.Input.Keys.F;
-import static com.badlogic.gdx.Input.Keys.G;
 import static com.badlogic.gdx.Input.Keys.S;
 import static com.badlogic.gdx.Input.Keys.W;
 
@@ -15,6 +14,7 @@ public class GameInputHandler extends InputHandler {
     public void mouseMoved(float x, float y) {
         GameLogic logic = (GameLogic) this.logic;
         logic.getBuildingPanelHandler().mouseUpdate(x, y);
+        logic.getCursorHandler().mouseUpdate(x, y);
         logic.getHexHighlighter().mouseUpdate(x, y);
     }
 
@@ -23,6 +23,7 @@ public class GameInputHandler extends InputHandler {
         GameLogic logic = (GameLogic) this.logic;
         logic.getBuildingPanelHandler().touchDown(x, y);
         logic.getHexHighlighter().touchDown(x, y);
+        logic.getPlayerAttackHandler().attack();
     }
 
     @Override
@@ -40,9 +41,6 @@ public class GameInputHandler extends InputHandler {
                 break;
             case D:
                 logic.getPlayerMover().horizontalDirChange(false, true);
-                break;
-            case G:
-                logic.getPlayerAttackHandler().attack();
                 break;
         }
     }

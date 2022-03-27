@@ -33,6 +33,7 @@ public class GameRenderer extends Renderer {
         stuff.getWaveMessage().draw(spriteBatch);
         stuff.getFactoryZone().draw(spriteBatch);
         stuff.getCoinCounter().draw(spriteBatch);
+        stuff.getCursor().draw(spriteBatch);
         spriteBatch.end();
 
         renderDebug(stuff);
