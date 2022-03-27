@@ -1,11 +1,15 @@
 package com.epicness.factorydude.game.logic;
 
+import static com.badlogic.gdx.Input.Keys.R;
+
+import com.badlogic.gdx.Gdx;
 import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.factorydude.game.logic.enemies.BulletHandler;
 import com.epicness.factorydude.game.logic.enemies.EnemyAnimator;
 import com.epicness.factorydude.game.logic.enemies.EnemyAttackHandler;
 import com.epicness.factorydude.game.logic.enemies.EnemyMover;
 import com.epicness.factorydude.game.logic.enemies.EnemySpawner;
+import com.epicness.factorydude.game.logic.enemies.WaveAnnouncer;
 import com.epicness.factorydude.game.logic.enemies.WaveHandler;
 import com.epicness.factorydude.game.logic.factoryzone.BuildingPanelHandler;
 import com.epicness.factorydude.game.logic.factoryzone.BuildingPanelSlider;
@@ -32,6 +36,7 @@ public class GameLogic extends Logic {
     private EnemyAttackHandler enemyAttackHandler;
     private EnemyMover enemyMover;
     private EnemySpawner enemySpawner;
+    private WaveAnnouncer waveAnnouncer;
     private WaveHandler waveHandler;
     // Factory zone
     private BuildingPanelHandler buildingPanelHandler;
@@ -61,6 +66,7 @@ public class GameLogic extends Logic {
         enemyAttackHandler = new EnemyAttackHandler();
         enemyMover = new EnemyMover();
         enemySpawner = new EnemySpawner();
+        waveAnnouncer = new WaveAnnouncer();
         waveHandler = new WaveHandler();
         // Factory zone
         buildingPanelHandler = new BuildingPanelHandler();
@@ -107,15 +113,20 @@ public class GameLogic extends Logic {
     public void initialLogic() {
         buildingPanelSlider.init();
         gameInputHandler.setupInput();
+        waveAnnouncer.announceWave(2);
     }
 
     @Override
     public void update(float delta) {
+        if (Gdx.input.isKeyJustPressed(R)) {
+            waveAnnouncer.announceWave(3);
+        }
         // Enemy
         bulletHandler.update(delta);
         enemyAnimator.update(delta);
         enemyAttackHandler.update(delta);
         enemyMover.update(delta);
+        waveAnnouncer.update(delta);
         waveHandler.update(delta);
         // Factory zone
         buildingPanelSlider.update(delta);
@@ -153,6 +164,7 @@ public class GameLogic extends Logic {
         enemyAttackHandler.setStuff(gameStuff);
         enemyMover.setStuff(gameStuff);
         enemySpawner.setStuff(gameStuff);
+        waveAnnouncer.setStuff(gameStuff);
         waveHandler.setStuff(gameStuff);
         // Factory zone
         buildingPanelHandler.setStuff(gameStuff);

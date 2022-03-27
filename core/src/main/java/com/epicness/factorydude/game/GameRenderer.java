@@ -17,7 +17,7 @@ public class GameRenderer extends Renderer {
 
         spriteBatch.begin();
         useDynamicCamera();
-        stuff.getBackground().draw(spriteBatch);
+        stuff.getFloor().draw(spriteBatch);
         for (int i = 0; i < stuff.getEnemies().size; i++) {
             stuff.getEnemies().get(i).draw(spriteBatch);
         }
@@ -30,6 +30,7 @@ public class GameRenderer extends Renderer {
         }
 
         useStaticCamera();
+        stuff.getWaveMessage().draw(spriteBatch);
         stuff.getFactoryZone().draw(spriteBatch);
         stuff.getCoinCounter().draw(spriteBatch);
         spriteBatch.end();

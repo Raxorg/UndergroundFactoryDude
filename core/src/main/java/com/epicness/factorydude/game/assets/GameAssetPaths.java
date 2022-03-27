@@ -17,6 +17,8 @@ public class GameAssetPaths {
     public static final String BULLET_FRAMES = "factorydude/animations/enemy/bulletAnim.png";
 
     public static final String COIN_FRAMES = "factorydude/animations/coin.png";
+    // Fonts
+    public static final String TIMES_SQUARE = "factorydude/fonts/timesSquare.fnt";
     // Sprites
     public static final String BG_1 = "factorydude/images/gameZone/bg-1.png";
     public static final String BG_2 = "factorydude/images/gameZone/bg-2.png";

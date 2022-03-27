@@ -3,6 +3,7 @@ package com.epicness.fundamentals.stuff;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Align;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
@@ -32,7 +33,7 @@ public class Text implements Buttonable, Scrollable {
 
     public void draw(SpriteBatch spriteBatch) {
         font.setColor(color);
-        getFont().draw(
+        font.draw(
                 spriteBatch,
                 text,
                 bounds.x,
@@ -46,8 +47,13 @@ public class Text implements Buttonable, Scrollable {
         );
     }
 
+    public void drawDebug(ShapeRenderer shapeRenderer) {
+        float y = centerVertical ? bounds.y - bounds.height / 2f : bounds.y - bounds.height;
+        shapeRenderer.rect(bounds.x, y, bounds.width, bounds.height);
+    }
+
     protected void calculateSize() {
-        bounds.height = TextUtils.getTextHeight(getFont(), text, bounds.width, horizontalAlignment, true, truncate);
+        bounds.height = TextUtils.getTextHeight(font, text, bounds.width, horizontalAlignment, true, truncate);
     }
 
     @Override
@@ -87,10 +93,6 @@ public class Text implements Buttonable, Scrollable {
         bounds.x += x;
     }
 
-    public BitmapFont getFont() {
-        return font;
-    }
-
     public void setFont(BitmapFont font) {
         this.font = font;
         calculateSize();
@@ -102,6 +104,11 @@ public class Text implements Buttonable, Scrollable {
 
     public void setText(String text) {
         this.text = text;
+        calculateSize();
+    }
+
+    public void setScale(float scale) {
+        font.getData().setScale(scale);
         calculateSize();
     }
 

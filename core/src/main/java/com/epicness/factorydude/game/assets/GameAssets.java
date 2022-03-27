@@ -17,8 +17,10 @@ import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_NORTH_W
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SOUTH_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SOUTH_WALK;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.TIMES_SQUARE;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.epicness.fundamentals.assets.Assets;
 import com.epicness.fundamentals.utils.AnimationUtils;
@@ -31,6 +33,8 @@ public class GameAssets extends Assets {
     private Sprite[] enemyEastWalk, enemyNorthWalk, enemySouthWalk,
             bulletFrames;
     private Sprite[] coinFrames;
+    // Fonts
+    private BitmapFont timesSquare;
     // Sprites
     private Sprite bg1, bg2;
     private Sprite hex;
@@ -51,6 +55,8 @@ public class GameAssets extends Assets {
         loadTexture(ENEMY_SOUTH_WALK);
         loadTexture(BULLET_FRAMES);
         loadTexture(COIN_FRAMES);
+        // Fonts
+        loadFont(TIMES_SQUARE);
         // Sprites
         loadTexture(BG_1);
         loadTexture(BG_2);
@@ -87,6 +93,9 @@ public class GameAssets extends Assets {
 
         Texture coinFramesTex = getTexture(COIN_FRAMES);
         coinFrames = AnimationUtils.split(coinFramesTex, 16, 21, 4);
+        // Fonts
+        timesSquare = getFont(TIMES_SQUARE);
+        timesSquare.getRegion().getTexture().setFilter(Linear, Linear);
         // Sprites
         bg1 = new Sprite(getTexture(BG_1));
         bg2 = new Sprite(getTexture(BG_2));
@@ -143,6 +152,11 @@ public class GameAssets extends Assets {
 
     public Sprite[] getCoinFrames() {
         return coinFrames;
+    }
+
+    // Fonts
+    public BitmapFont getTimesSquare() {
+        return timesSquare;
     }
 
     // Sprites

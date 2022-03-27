@@ -1,7 +1,7 @@
 package com.epicness.factorydude.game.stuff.characters;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.factorydude.game.GameConstants.FLOOR_HEIGHT;
+import static com.epicness.factorydude.game.GameConstants.FLOOR_WIDTH;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.epicness.factorydude.game.assets.GameAssets;
@@ -36,7 +36,7 @@ public class Player extends Character {
                 getWidth() / 2f - width / 2f, getHeight() / 2f - height / 2f,
                 width, height);
 
-        translate(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f);
+        translate(FLOOR_WIDTH / 2f, FLOOR_HEIGHT / 2f);
     }
 
     public void useEastSlash() {

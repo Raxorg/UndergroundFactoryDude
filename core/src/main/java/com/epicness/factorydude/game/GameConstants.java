@@ -5,6 +5,11 @@ import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 
 public class GameConstants {
 
+    // Background
+    public static final int FLOOR_COLUMNS = 20, FLOOR_ROWS = 20;
+    public static final float TILE_SIZE = 150f;
+    public static final float FLOOR_WIDTH = FLOOR_COLUMNS * TILE_SIZE;
+    public static final float FLOOR_HEIGHT = FLOOR_ROWS * TILE_SIZE;
     // Cellables
     public static final String CELLABLE_PROPERTY = "Cellable";
     // Player
@@ -12,8 +17,7 @@ public class GameConstants {
     // Factory zone
     public static final float SCALING_DURATION = 0.25f;
     // Hex grid
-    public static final int HEX_GRID_COLUMNS = 10;
-    public static final int HEX_GRID_ROWS = 5;
+    public static final int HEX_GRID_COLUMNS = 10, HEX_GRID_ROWS = 5;
     public static final float HEX_GRID_CELL_SIZE = 100f;
     public static final float HEX_GRID_WIDTH = HEX_GRID_COLUMNS * (HEX_GRID_CELL_SIZE * 0.98f);
     public static final float HEX_GRID_HEIGHT = HEX_GRID_ROWS * (HEX_GRID_CELL_SIZE * 0.74f);
@@ -41,4 +45,7 @@ public class GameConstants {
     public static final float BULLET_SIZE = 50f;
     public static final float BULLET_RADIUS = BULLET_SIZE / 2f;
     public static final float BULLET_BOUNDS_RADIUS = BULLET_RADIUS / 2f;
+    // Wave message
+    public static final float MESSAGE_DURATION = 3f;
+    public static final float HALF_MESSAGE_DURATION = MESSAGE_DURATION / 2f;
 }
