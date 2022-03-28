@@ -29,7 +29,7 @@ public class GameOverHandler {
         }
         progress = Math.min(progress + delta, 1f);
         Text message = stuff.getMessage();
-        message.setScale(Interpolation.linear.apply(progress) * 6f);
+        message.setScale(Interpolation.linear.apply(progress) * 4f);
         message.setColor(Color.GREEN.cpy().lerp(Color.CLEAR, 1f - progress));
     }
 

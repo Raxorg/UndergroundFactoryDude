@@ -14,6 +14,7 @@ import com.epicness.factorydude.game.stuff.characters.Player;
 import com.epicness.factorydude.game.stuff.factoryzone.FactoryZone;
 import com.epicness.factorydude.game.stuff.hud.CoinCounter;
 import com.epicness.factorydude.game.stuff.waves.WaveStorage;
+import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.SpritedAnimation;
 import com.epicness.fundamentals.stuff.Stuff;
 import com.epicness.fundamentals.stuff.Text;
@@ -31,6 +32,7 @@ public class GameStuff extends Stuff {
     private FactoryZone factoryZone;
     private CoinCounter coinCounter;
     private SpritedAnimation cursor;
+    private Sprited overlay;
 
     @Override
     public void initializeStuff() {
@@ -53,10 +55,14 @@ public class GameStuff extends Stuff {
         message.setCenterVertical(true);
 
         factoryZone = new FactoryZone(sharedAssets, assets);
-        coinCounter = new CoinCounter(sharedAssets.getPixel(), assets.getCoinFrames(), sharedAssets.getTimesSquare());
 
         cursor = new SpritedAnimation(assets.getCursorFrames(), 0.05f);
         cursor.enableLooping();
+
+        overlay = new Sprited(assets.getOverlay());
+        overlay.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
+
+        coinCounter = new CoinCounter(sharedAssets.getPixel(), assets.getCoinFrames(), sharedAssets.getTimesSquare());
     }
 
     public WaveStorage getWaveStorage() {
@@ -91,11 +97,15 @@ public class GameStuff extends Stuff {
         return factoryZone;
     }
 
-    public CoinCounter getCoinCounter() {
-        return coinCounter;
-    }
-
     public SpritedAnimation getCursor() {
         return cursor;
+    }
+
+    public Sprited getOverlay() {
+        return overlay;
+    }
+
+    public CoinCounter getCoinCounter() {
+        return coinCounter;
     }
 }

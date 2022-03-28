@@ -14,6 +14,7 @@ import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_NORTH_WA
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_SOUTH_WALK;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.FACTORY_PATH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.HEX_PATH;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.OVERLAY_PATH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_DASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_EAST_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_EAST_WALK;
@@ -43,9 +44,8 @@ public class GameAssets extends Assets {
     // Fonts
     private BitmapFont timesSquare;
     // Sprites
-    private Sprite bg1, bg2;
-    private Sprite hex;
-    private Sprite factory, conveyor, destination;
+    private Sprite bg1, bg2, bg3, overlay;
+    private Sprite hex, factory, conveyor, destination;
     // Music
     private Music caves;
 
@@ -72,6 +72,7 @@ public class GameAssets extends Assets {
         // Sprites
         loadTexture(BG_1);
         loadTexture(BG_2);
+        loadTexture(OVERLAY_PATH);
         loadTexture(HEX_PATH);
         loadTexture(FACTORY_PATH);
         loadTexture(DESTINATION_PATH);
@@ -124,6 +125,7 @@ public class GameAssets extends Assets {
         // Sprites
         bg1 = new Sprite(getTexture(BG_1));
         bg2 = new Sprite(getTexture(BG_2));
+        overlay = new Sprite(getTexture(OVERLAY_PATH));
         hex = new Sprite(getTexture(HEX_PATH));
         hex.getTexture().setFilter(Linear, Linear);
 
@@ -210,6 +212,14 @@ public class GameAssets extends Assets {
 
     public Sprite getBg2() {
         return bg2;
+    }
+
+    public Sprite getBg3() {
+        return bg3;
+    }
+
+    public Sprite getOverlay() {
+        return overlay;
     }
 
     public Sprite getHex() {

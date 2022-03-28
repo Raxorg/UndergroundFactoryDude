@@ -7,7 +7,7 @@ public class SharedConstants {
 
     // Camera
     public static final float RATIO = (float) Gdx.graphics.getWidth() / (float) Gdx.graphics.getHeight();
-    public static final float CAMERA_HEIGHT = 1000;
+    public static final float CAMERA_HEIGHT = 700;
     public static final float CAMERA_WIDTH = CAMERA_HEIGHT * RATIO;
     // Asset paths
     public static final String EXPLOSION_PATH = "fundamentals/audio/explosionSound.wav";

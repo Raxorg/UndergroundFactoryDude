@@ -34,7 +34,7 @@ public class WaveAnnouncer {
             progress = Interpolation.circleIn.apply((time - HALF_MESSAGE_DURATION) / (HALF_MESSAGE_DURATION));
         }
         Text message = stuff.getMessage();
-        message.setScale(Math.min(1f + Interpolation.pow5Out.apply(time / MESSAGE_DURATION) * 6f, 7f));
+        message.setScale(Math.min(1f + Interpolation.pow5Out.apply(time / MESSAGE_DURATION) * 3f, 4f));
         message.setColor(Color.RED.cpy().lerp(Color.CLEAR, progress));
         if (time == MESSAGE_DURATION) {
             showing = false;

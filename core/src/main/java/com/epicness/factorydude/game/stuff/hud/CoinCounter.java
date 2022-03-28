@@ -7,9 +7,9 @@ import static com.epicness.factorydude.game.GameConstants.COIN_COUNTER_TEXT_WIDT
 import static com.epicness.factorydude.game.GameConstants.COIN_COUNTER_TEXT_X;
 import static com.epicness.factorydude.game.GameConstants.COIN_COUNTER_TEXT_Y;
 import static com.epicness.factorydude.game.GameConstants.COIN_COUNTER_WIDTH;
+import static com.epicness.factorydude.game.GameConstants.COIN_COUNTER_X;
 import static com.epicness.factorydude.game.GameConstants.COIN_COUNTER_Y;
 import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -27,10 +27,12 @@ public class CoinCounter {
 
     public CoinCounter(Sprite backgroundSprite, Sprite[] coinAnimationFrames, BitmapFont font) {
         background = new Sprited(backgroundSprite);
+        background.setPosition(COIN_COUNTER_X, COIN_COUNTER_Y);
         background.setSize(COIN_COUNTER_WIDTH, COIN_COUNTER_HEIGHT);
         background.setColor(BLACK_CLEAR_50);
 
         coinAnimation = new SpritedAnimation(coinAnimationFrames, 0.15f);
+        coinAnimation.setPosition(COIN_COUNTER_X, COIN_COUNTER_ANIM_Y);
         coinAnimation.setSize(COIN_COUNTER_ANIM_SIZE);
         coinAnimation.enableLooping();
 
@@ -40,19 +42,12 @@ public class CoinCounter {
         text.setCenterVertical(true);
         text.setHorizontalAlignment(Align.center);
         text.setText("0");
-
-        setPosition(CAMERA_WIDTH - 300f);
     }
 
     public void draw(SpriteBatch spriteBatch) {
         background.draw(spriteBatch);
         coinAnimation.draw(spriteBatch);
         text.draw(spriteBatch);
-    }
-
-    private void setPosition(float x) {
-        background.setPosition(x, COIN_COUNTER_Y);
-        coinAnimation.setPosition(x, COIN_COUNTER_ANIM_Y);
     }
 
     public void addTime(float time) {
