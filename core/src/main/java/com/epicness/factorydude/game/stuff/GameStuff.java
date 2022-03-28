@@ -32,7 +32,7 @@ public class GameStuff extends Stuff {
     private FactoryZone factoryZone;
     private CoinCounter coinCounter;
     private SpritedAnimation cursor;
-    private Sprited overlay;
+    private Sprited overlay, damageOverlay;
 
     @Override
     public void initializeStuff() {
@@ -60,9 +60,10 @@ public class GameStuff extends Stuff {
         cursor.enableLooping();
 
         overlay = new Sprited(assets.getOverlay());
-        overlay.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
-
         coinCounter = new CoinCounter(sharedAssets.getPixel(), assets.getCoinFrames(), sharedAssets.getTimesSquare());
+
+        damageOverlay = new Sprited(sharedAssets.getPixel());
+        damageOverlay.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
     }
 
     public WaveStorage getWaveStorage() {
@@ -107,5 +108,9 @@ public class GameStuff extends Stuff {
 
     public CoinCounter getCoinCounter() {
         return coinCounter;
+    }
+
+    public Sprited getDamageOverlay() {
+        return damageOverlay;
     }
 }

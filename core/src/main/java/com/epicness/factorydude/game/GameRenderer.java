@@ -36,6 +36,7 @@ public class GameRenderer extends Renderer {
         stuff.getCursor().draw(spriteBatch);
         stuff.getOverlay().draw(spriteBatch);
         stuff.getCoinCounter().draw(spriteBatch);
+        stuff.getDamageOverlay().draw(spriteBatch);
         spriteBatch.end();
 
         if (DEBUG) {

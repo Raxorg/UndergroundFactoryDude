@@ -1,6 +1,7 @@
 package com.epicness.factorydude.game.logic.enemies;
 
 import com.badlogic.gdx.utils.DelayedRemovalArray;
+import com.epicness.factorydude.game.logic.GameLogic;
 import com.epicness.factorydude.game.stuff.Bullet;
 import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.factorydude.game.stuff.characters.Player;
@@ -10,6 +11,7 @@ public class BulletHandler {
 
     // Structure
     private SharedLogic sharedLogic;
+    private GameLogic logic;
     private GameStuff stuff;
 
     public void update(float delta) {
@@ -29,7 +31,7 @@ public class BulletHandler {
             }
             if (bullet.collides(player.getBounds())) {
                 bullets.removeValue(bullet, true);
-                // TODO: 27/3/2022 player takes damage
+                logic.getPlayerDamager().showDamage();
                 collisionHandled = true;
             }
         }
@@ -39,6 +41,10 @@ public class BulletHandler {
     // Structure
     public void setSharedLogic(SharedLogic sharedLogic) {
         this.sharedLogic = sharedLogic;
+    }
+
+    public void setLogic(GameLogic logic) {
+        this.logic = logic;
     }
 
     public void setStuff(GameStuff stuff) {

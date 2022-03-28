@@ -1,8 +1,5 @@
 package com.epicness.factorydude.game.logic;
 
-import static com.badlogic.gdx.Input.Keys.P;
-
-import com.badlogic.gdx.Gdx;
 import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.factorydude.game.logic.enemies.BulletHandler;
 import com.epicness.factorydude.game.logic.enemies.EnemyAnimator;
@@ -29,6 +26,7 @@ import com.epicness.factorydude.game.logic.player.CameraHandler;
 import com.epicness.factorydude.game.logic.player.DashHandler;
 import com.epicness.factorydude.game.logic.player.PlayerAnimator;
 import com.epicness.factorydude.game.logic.player.PlayerAttackHandler;
+import com.epicness.factorydude.game.logic.player.PlayerDamager;
 import com.epicness.factorydude.game.logic.player.PlayerMover;
 import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.fundamentals.SharedScreen;
@@ -62,6 +60,7 @@ public class GameLogic extends Logic {
     private DashHandler dashHandler;
     private PlayerAnimator playerAnimator;
     private PlayerAttackHandler playerAttackHandler;
+    private PlayerDamager playerDamager;
     private PlayerMover playerMover;
     // Other
     private CoinHandler coinHandler;
@@ -99,6 +98,7 @@ public class GameLogic extends Logic {
         dashHandler = new DashHandler();
         playerAnimator = new PlayerAnimator();
         playerAttackHandler = new PlayerAttackHandler();
+        playerDamager = new PlayerDamager();
         playerMover = new PlayerMover();
         // Other
         coinHandler = new CoinHandler();
@@ -130,6 +130,7 @@ public class GameLogic extends Logic {
     @Override
     protected void setLogic() {
         // Enemies
+        bulletHandler.setLogic(this);
         enemyMover.setLogic(this);
         waveHandler.setLogic(this);
         // Factory zone
@@ -150,6 +151,7 @@ public class GameLogic extends Logic {
         cursorHandler.init();
         destinationHandler.spawnDestination();
         gameInputHandler.setupInput();
+        playerDamager.init();
         musicHandler.playMusic();
         dashHandler.init();
     }
@@ -168,11 +170,12 @@ public class GameLogic extends Logic {
         conveyorAnimator.update(delta);
         factoryZoneScaler.update(delta);
         // Player
+        cameraHandler.update();
         dashHandler.update(delta);
         playerAnimator.update(delta);
         playerAttackHandler.update(delta);
+        playerDamager.update(delta);
         playerMover.update(delta);
-        cameraHandler.update();
         // Other
         coinHandler.update(delta);
         cursorHandler.update(delta);
@@ -219,6 +222,7 @@ public class GameLogic extends Logic {
         cameraHandler.setStuff(gameStuff);
         playerAnimator.setStuff(gameStuff);
         playerAttackHandler.setStuff(gameStuff);
+        playerDamager.setStuff(gameStuff);
         playerMover.setStuff(gameStuff);
         // Other
         coinHandler.setStuff(gameStuff);
@@ -286,6 +290,10 @@ public class GameLogic extends Logic {
 
     public PlayerAttackHandler getPlayerAttackHandler() {
         return playerAttackHandler;
+    }
+
+    public PlayerDamager getPlayerDamager() {
+        return playerDamager;
     }
 
     public PlayerMover getPlayerMover() {
