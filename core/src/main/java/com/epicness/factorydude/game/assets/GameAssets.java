@@ -1,6 +1,7 @@
 package com.epicness.factorydude.game.assets;
 
 import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.ATTACK_ICON;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.BG_1;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.BG_2;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.BULLET_FRAMES;
@@ -8,12 +9,14 @@ import static com.epicness.factorydude.game.assets.GameAssetPaths.CAVES;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.COIN_FRAMES;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.CONVEYOR_BELT_FRAMES;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.CURSOR_FRAMES;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.DASH_ICON;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.DESTINATION_PATH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_EAST_WALK;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_NORTH_WALK;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_SOUTH_WALK;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.FACTORY_PATH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.HEX_PATH;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.MOVE_ICON;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.OVERLAY_PATH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_DASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_EAST_SLASH;
@@ -23,6 +26,7 @@ import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_NORTH_W
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SOUTH_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SOUTH_WALK;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.SYRINGE_ICON;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.TIMES_SQUARE;
 
 import com.badlogic.gdx.audio.Music;
@@ -46,6 +50,7 @@ public class GameAssets extends Assets {
     // Sprites
     private Sprite bg1, bg2, bg3, overlay;
     private Sprite hex, factory, conveyor, destination;
+    private Sprite attackIcon, dashIcon, moveIcon, chonkyIcon;
     // Music
     private Music caves;
 
@@ -76,6 +81,10 @@ public class GameAssets extends Assets {
         loadTexture(HEX_PATH);
         loadTexture(FACTORY_PATH);
         loadTexture(DESTINATION_PATH);
+        loadTexture(ATTACK_ICON);
+        loadTexture(DASH_ICON);
+        loadTexture(MOVE_ICON);
+        loadTexture(SYRINGE_ICON);
         // Music
         loadMusic(CAVES);
     }
@@ -132,9 +141,14 @@ public class GameAssets extends Assets {
         factory = new Sprite(getTexture(FACTORY_PATH));
         factory.getTexture().setFilter(Linear, Linear);
         conveyor = new Sprite(conveyorFramesTex, 0, 0, 100, 100);
-        conveyor.getTexture().setFilter(Linear,Linear);
+        conveyor.getTexture().setFilter(Linear, Linear);
         destination = new Sprite(getTexture(DESTINATION_PATH));
         destination.getTexture().setFilter(Linear, Linear);
+
+        attackIcon = new Sprite(getTexture(ATTACK_ICON));
+        dashIcon = new Sprite(getTexture(DASH_ICON));
+        moveIcon = new Sprite(getTexture(MOVE_ICON));
+        chonkyIcon = new Sprite(getTexture(SYRINGE_ICON));
         // Music
         caves = getMusic(CAVES);
     }
@@ -236,6 +250,22 @@ public class GameAssets extends Assets {
 
     public Sprite getDestination() {
         return destination;
+    }
+
+    public Sprite getAttackIcon() {
+        return attackIcon;
+    }
+
+    public Sprite getDashIcon() {
+        return dashIcon;
+    }
+
+    public Sprite getMoveIcon() {
+        return moveIcon;
+    }
+
+    public Sprite getChonkyIcon() {
+        return chonkyIcon;
     }
 
     // Music

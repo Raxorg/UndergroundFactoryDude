@@ -14,6 +14,7 @@ import com.epicness.factorydude.game.logic.factoryzone.BuildingPlacer;
 import com.epicness.factorydude.game.logic.factoryzone.ConveyorAnimator;
 import com.epicness.factorydude.game.logic.factoryzone.ConveyorHandler;
 import com.epicness.factorydude.game.logic.factoryzone.DestinationHandler;
+import com.epicness.factorydude.game.logic.factoryzone.FactoryHandler;
 import com.epicness.factorydude.game.logic.factoryzone.FactoryZoneScaler;
 import com.epicness.factorydude.game.logic.factoryzone.HexHighlighter;
 import com.epicness.factorydude.game.logic.other.CoinHandler;
@@ -53,6 +54,7 @@ public class GameLogic extends Logic {
     private ConveyorAnimator conveyorAnimator;
     private ConveyorHandler conveyorHandler;
     private DestinationHandler destinationHandler;
+    private FactoryHandler factoryHandler;
     private FactoryZoneScaler factoryZoneScaler;
     private HexHighlighter hexHighlighter;
     // Player
@@ -91,6 +93,7 @@ public class GameLogic extends Logic {
         conveyorAnimator = new ConveyorAnimator();
         conveyorHandler = new ConveyorHandler();
         destinationHandler = new DestinationHandler();
+        factoryHandler = new FactoryHandler();
         factoryZoneScaler = new FactoryZoneScaler();
         hexHighlighter = new HexHighlighter();
         // Player
@@ -168,6 +171,7 @@ public class GameLogic extends Logic {
         // Factory zone
         buildingPanelSlider.update(delta);
         conveyorAnimator.update(delta);
+        factoryHandler.update(delta);
         factoryZoneScaler.update(delta);
         // Player
         cameraHandler.update();
@@ -191,6 +195,7 @@ public class GameLogic extends Logic {
         buildingPlacer.setAssets(gameAssets);
         destinationHandler.setAssets(gameAssets);
         effectHandler.setAssets(gameAssets);
+        factoryHandler.setAssets(gameAssets);
         musicHandler.setAssets(gameAssets);
     }
 
@@ -216,6 +221,7 @@ public class GameLogic extends Logic {
         conveyorAnimator.setStuff(gameStuff);
         conveyorHandler.setStuff(gameStuff);
         destinationHandler.setStuff(gameStuff);
+        factoryHandler.setStuff(gameStuff);
         factoryZoneScaler.setStuff(gameStuff);
         hexHighlighter.setStuff(gameStuff);
         // Player

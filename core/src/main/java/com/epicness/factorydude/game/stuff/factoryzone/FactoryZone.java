@@ -11,8 +11,10 @@ import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.factorydude.game.stuff.cellables.Cellable;
+import com.epicness.factorydude.game.stuff.pieces.ActionPiece;
 import com.epicness.fundamentals.assets.SharedAssets;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.grid.Cell;
@@ -21,6 +23,7 @@ public class FactoryZone {
 
     private final Sprited background;
     private final HexGrid hexGrid;
+    private final DelayedRemovalArray<ActionPiece> pieces;
     private final BuildingPanel buildingPanel;
 
     public FactoryZone(SharedAssets sharedAssets, GameAssets assets) {
@@ -38,6 +41,7 @@ public class FactoryZone {
         }
         hexGrid.translate(HEX_GRID_STARTING_X, HEX_GRID_STARTING_Y);
 
+        pieces = new DelayedRemovalArray<>();
         buildingPanel = new BuildingPanel(sharedAssets, assets);
 
         setScale(0f);
@@ -47,6 +51,9 @@ public class FactoryZone {
         background.draw(spriteBatch);
         hexGrid.draw(spriteBatch);
         drawCellables(spriteBatch);
+        for (int i = 0; i < pieces.size; i++) {
+            pieces.get(i).draw(spriteBatch);
+        }
         buildingPanel.draw(spriteBatch);
     }
 
@@ -81,6 +88,10 @@ public class FactoryZone {
 
     public HexGrid getHexGrid() {
         return hexGrid;
+    }
+
+    public DelayedRemovalArray<ActionPiece> getPieces() {
+        return pieces;
     }
 
     public BuildingPanel getBuildingPanel() {

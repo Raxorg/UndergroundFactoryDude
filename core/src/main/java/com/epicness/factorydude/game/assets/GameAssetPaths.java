@@ -29,6 +29,10 @@ public class GameAssetPaths {
     public static final String HEX_PATH = "factorydude/game/images/factoryZone/hex.png";
     public static final String FACTORY_PATH = "factorydude/game/images/factoryZone/factory.png";
     public static final String DESTINATION_PATH = "factorydude/game/images/factoryZone/destination.png";
+    public static final String ATTACK_ICON = "factorydude/game/images/factoryZone/icons/attackIcon.png";
+    public static final String DASH_ICON = "factorydude/game/images/factoryZone/icons/dashIcon.png";
+    public static final String MOVE_ICON = "factorydude/game/images/factoryZone/icons/moveIcon.png";
+    public static final String SYRINGE_ICON = "factorydude/game/images/factoryZone/icons/syringeIcon.png";
     // Music
     public static final String CAVES = "factorydude/game/music/Chee-Zee-Caves-V2.ogg";
 }
