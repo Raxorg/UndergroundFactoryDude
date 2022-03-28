@@ -42,4 +42,12 @@ public class ConveyorBelt implements Cellable {
     public void addTime(float time) {
         animation.addTime(time);
     }
+
+    public float getRotation() {
+        return animation.getRotation();
+    }
+
+    public void setRotation(float degrees) {
+        animation.setRotation(degrees);
+    }
 }

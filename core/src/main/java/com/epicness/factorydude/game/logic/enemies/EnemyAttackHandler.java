@@ -10,15 +10,20 @@ import com.epicness.factorydude.game.stuff.Bullet;
 import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.factorydude.game.stuff.characters.Enemy;
 import com.epicness.factorydude.game.stuff.characters.Player;
+import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.fundamentals.utils.AngleUtils;
 
 public class EnemyAttackHandler {
 
     // Structure
     private GameAssets assets;
+    private SharedLogic sharedLogic;
     private GameStuff stuff;
 
     public void update(float delta) {
+        if (sharedLogic.getPauseTracker().get()) {
+            return;
+        }
         DelayedRemovalArray<Enemy> enemies = stuff.getEnemies();
         for (int i = 0; i < enemies.size; i++) {
             Enemy enemy = enemies.get(i);
@@ -44,6 +49,10 @@ public class EnemyAttackHandler {
     // Structure
     public void setAssets(GameAssets assets) {
         this.assets = assets;
+    }
+
+    public void setSharedLogic(SharedLogic sharedLogic) {
+        this.sharedLogic = sharedLogic;
     }
 
     public void setStuff(GameStuff stuff) {

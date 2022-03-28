@@ -49,6 +49,9 @@ public class PlayerAttackHandler {
     }
 
     public void attack() {
+        if (sharedLogic.getPauseTracker().get()) {
+            return;
+        }
         if (cooldown != 0f) {
             return;
         }

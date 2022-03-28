@@ -27,6 +27,7 @@ public class GameAssetPaths {
     public static final String BG_2 = "factorydude/game/images/gameZone/bg-2.png";
     public static final String HEX_PATH = "factorydude/game/images/hex.png";
     public static final String FACTORY_PATH = "factorydude/game/images/factoryZone/factory.png";
+    public static final String DESTINATION_PATH = "factorydude/game/images/factoryZone/destination.png";
     // Music
     public static final String CAVES = "factorydude/game/music/Chee-Zee-Caves-V2.ogg";
 }

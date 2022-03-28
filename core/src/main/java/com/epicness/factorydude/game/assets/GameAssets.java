@@ -4,9 +4,11 @@ import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.BG_1;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.BG_2;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.BULLET_FRAMES;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.CAVES;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.COIN_FRAMES;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.CONVEYOR_BELT_FRAMES;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.CURSOR_FRAMES;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.DESTINATION_PATH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_EAST_WALK;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_NORTH_WALK;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_SOUTH_WALK;
@@ -20,7 +22,6 @@ import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_NORTH_W
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SOUTH_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SOUTH_WALK;
-import static com.epicness.factorydude.game.assets.GameAssetPaths.CAVES;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.TIMES_SQUARE;
 
 import com.badlogic.gdx.audio.Music;
@@ -44,7 +45,7 @@ public class GameAssets extends Assets {
     // Sprites
     private Sprite bg1, bg2;
     private Sprite hex;
-    private Sprite factory, conveyor;
+    private Sprite factory, conveyor, destination;
     // Music
     private Music caves;
 
@@ -73,6 +74,7 @@ public class GameAssets extends Assets {
         loadTexture(BG_2);
         loadTexture(HEX_PATH);
         loadTexture(FACTORY_PATH);
+        loadTexture(DESTINATION_PATH);
         // Music
         loadMusic(CAVES);
     }
@@ -124,9 +126,13 @@ public class GameAssets extends Assets {
         bg2 = new Sprite(getTexture(BG_2));
         hex = new Sprite(getTexture(HEX_PATH));
         hex.getTexture().setFilter(Linear, Linear);
+
         factory = new Sprite(getTexture(FACTORY_PATH));
         factory.getTexture().setFilter(Linear, Linear);
         conveyor = new Sprite(conveyorFramesTex, 0, 0, 100, 100);
+        conveyor.getTexture().setFilter(Linear,Linear);
+        destination = new Sprite(getTexture(DESTINATION_PATH));
+        destination.getTexture().setFilter(Linear, Linear);
         // Music
         caves = getMusic(CAVES);
     }
@@ -216,6 +222,10 @@ public class GameAssets extends Assets {
 
     public Sprite getConveyor() {
         return conveyor;
+    }
+
+    public Sprite getDestination() {
+        return destination;
     }
 
     // Music

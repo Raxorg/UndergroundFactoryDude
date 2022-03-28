@@ -12,6 +12,8 @@ import com.epicness.factorydude.game.logic.factoryzone.BuildingPanelHandler;
 import com.epicness.factorydude.game.logic.factoryzone.BuildingPanelSlider;
 import com.epicness.factorydude.game.logic.factoryzone.BuildingPlacer;
 import com.epicness.factorydude.game.logic.factoryzone.ConveyorAnimator;
+import com.epicness.factorydude.game.logic.factoryzone.ConveyorHandler;
+import com.epicness.factorydude.game.logic.factoryzone.DestinationHandler;
 import com.epicness.factorydude.game.logic.factoryzone.FactoryZoneScaler;
 import com.epicness.factorydude.game.logic.factoryzone.HexHighlighter;
 import com.epicness.factorydude.game.logic.other.CoinHandler;
@@ -47,6 +49,8 @@ public class GameLogic extends Logic {
     private BuildingPanelSlider buildingPanelSlider;
     private BuildingPlacer buildingPlacer;
     private ConveyorAnimator conveyorAnimator;
+    private ConveyorHandler conveyorHandler;
+    private DestinationHandler destinationHandler;
     private FactoryZoneScaler factoryZoneScaler;
     private HexHighlighter hexHighlighter;
     // Player
@@ -81,6 +85,8 @@ public class GameLogic extends Logic {
         buildingPanelSlider = new BuildingPanelSlider();
         buildingPlacer = new BuildingPlacer();
         conveyorAnimator = new ConveyorAnimator();
+        conveyorHandler = new ConveyorHandler();
+        destinationHandler = new DestinationHandler();
         factoryZoneScaler = new FactoryZoneScaler();
         hexHighlighter = new HexHighlighter();
         // Player
@@ -102,6 +108,7 @@ public class GameLogic extends Logic {
         // Enemies
         bulletHandler.setSharedLogic(sharedLogic);
         enemyAnimator.setSharedLogic(sharedLogic);
+        enemyAttackHandler.setSharedLogic(sharedLogic);
         enemyMover.setSharedLogic(sharedLogic);
         waveHandler.setSharedLogic(sharedLogic);
         // Factory zone
@@ -135,6 +142,7 @@ public class GameLogic extends Logic {
         buildingPanelSlider.init();
         waveHandler.startWave(0);
         cursorHandler.init();
+        destinationHandler.spawnDestination();
         gameInputHandler.setupInput();
         musicHandler.playMusic();
         dashHandler.init();
@@ -171,6 +179,7 @@ public class GameLogic extends Logic {
         enemyAttackHandler.setAssets(gameAssets);
         enemySpawner.setAssets(gameAssets);
         buildingPlacer.setAssets(gameAssets);
+        destinationHandler.setAssets(gameAssets);
         effectHandler.setAssets(gameAssets);
         musicHandler.setAssets(gameAssets);
     }
@@ -195,6 +204,8 @@ public class GameLogic extends Logic {
         buildingPanelHandler.setStuff(gameStuff);
         buildingPanelSlider.setStuff(gameStuff);
         conveyorAnimator.setStuff(gameStuff);
+        conveyorHandler.setStuff(gameStuff);
+        destinationHandler.setStuff(gameStuff);
         factoryZoneScaler.setStuff(gameStuff);
         hexHighlighter.setStuff(gameStuff);
         // Player
@@ -242,6 +253,10 @@ public class GameLogic extends Logic {
 
     public BuildingPlacer getBuildingPlacer() {
         return buildingPlacer;
+    }
+
+    public ConveyorHandler getConveyorHandler() {
+        return conveyorHandler;
     }
 
     public FactoryZoneScaler getFactoryZoneScaler() {

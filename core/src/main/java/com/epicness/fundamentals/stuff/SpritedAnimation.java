@@ -30,6 +30,10 @@ public class SpritedAnimation {
         animation.getKeyFrame(time).drawDebug(shapeRenderer);
     }
 
+    public boolean contains(float x, float y) {
+        return animation.getKeyFrame(time).contains(x, y);
+    }
+
     public Rectangle getBounds() {
         return animation.getKeyFrame(time).getBoundingRectangle();
     }
@@ -78,6 +82,10 @@ public class SpritedAnimation {
         for (int i = 0; i < animation.getKeyFrames().length; i++) {
             animation.getKeyFrames()[i].setScale(scale);
         }
+    }
+
+    public float getRotation() {
+        return animation.getKeyFrame(time).getRotation();
     }
 
     public void setRotation(float degrees) {
