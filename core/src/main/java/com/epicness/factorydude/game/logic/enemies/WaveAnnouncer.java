@@ -17,7 +17,7 @@ public class WaveAnnouncer {
     private float time;
 
     public void announceWave(int wave) {
-        stuff.getWaveMessage().setText("WAVE " + wave);
+        stuff.getMessage().setText("WAVE " + wave);
         time = 0f;
         showing = true;
     }
@@ -33,9 +33,9 @@ public class WaveAnnouncer {
         } else {
             progress = Interpolation.circleIn.apply((time - HALF_MESSAGE_DURATION) / (HALF_MESSAGE_DURATION));
         }
-        Text waveMessage = stuff.getWaveMessage();
-        waveMessage.setScale(Math.min(1f + Interpolation.pow5Out.apply(time / MESSAGE_DURATION) * 6f, 7f));
-        waveMessage.setColor(Color.RED.cpy().lerp(Color.CLEAR, progress));
+        Text message = stuff.getMessage();
+        message.setScale(Math.min(1f + Interpolation.pow5Out.apply(time / MESSAGE_DURATION) * 6f, 7f));
+        message.setColor(Color.RED.cpy().lerp(Color.CLEAR, progress));
         if (time == MESSAGE_DURATION) {
             showing = false;
         }

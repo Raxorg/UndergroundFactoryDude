@@ -27,7 +27,7 @@ public class GameStuff extends Stuff {
     private Player player;
     private DelayedRemovalArray<Bullet> bullets;
     private DelayedRemovalArray<SpritedAnimation> effects;
-    private Text waveMessage;
+    private Text message;
     private FactoryZone factoryZone;
     private CoinCounter coinCounter;
     private SpritedAnimation cursor;
@@ -46,11 +46,11 @@ public class GameStuff extends Stuff {
         bullets = new DelayedRemovalArray<>();
         effects = new DelayedRemovalArray<>();
 
-        waveMessage = new Text(assets.getTimesSquare());
-        waveMessage.setY(CAMERA_HEIGHT / 2f);
-        waveMessage.setTextTargetWidth(CAMERA_WIDTH);
-        waveMessage.setHorizontalAlignment(Align.center);
-        waveMessage.setCenterVertical(true);
+        message = new Text(assets.getTimesSquare());
+        message.setY(CAMERA_HEIGHT / 2f);
+        message.setTextTargetWidth(CAMERA_WIDTH);
+        message.setHorizontalAlignment(Align.center);
+        message.setCenterVertical(true);
 
         factoryZone = new FactoryZone(sharedAssets, assets);
         coinCounter = new CoinCounter(sharedAssets.getPixel(), assets.getCoinFrames(), sharedAssets.getTimesSquare());
@@ -83,8 +83,8 @@ public class GameStuff extends Stuff {
         return effects;
     }
 
-    public Text getWaveMessage() {
-        return waveMessage;
+    public Text getMessage() {
+        return message;
     }
 
     public FactoryZone getFactoryZone() {

@@ -31,7 +31,7 @@ public class GameRenderer extends Renderer {
         }
 
         useStaticCamera();
-        stuff.getWaveMessage().draw(spriteBatch);
+        stuff.getMessage().draw(spriteBatch);
         stuff.getFactoryZone().draw(spriteBatch);
         stuff.getCoinCounter().draw(spriteBatch);
         stuff.getCursor().draw(spriteBatch);

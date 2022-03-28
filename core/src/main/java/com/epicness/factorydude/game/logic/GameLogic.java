@@ -1,5 +1,8 @@
 package com.epicness.factorydude.game.logic;
 
+import static com.badlogic.gdx.Input.Keys.P;
+
+import com.badlogic.gdx.Gdx;
 import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.factorydude.game.logic.enemies.BulletHandler;
 import com.epicness.factorydude.game.logic.enemies.EnemyAnimator;
@@ -20,6 +23,7 @@ import com.epicness.factorydude.game.logic.other.CoinHandler;
 import com.epicness.factorydude.game.logic.other.CursorHandler;
 import com.epicness.factorydude.game.logic.other.EffectHandler;
 import com.epicness.factorydude.game.logic.other.GameInputHandler;
+import com.epicness.factorydude.game.logic.other.GameOverHandler;
 import com.epicness.factorydude.game.logic.other.MusicHandler;
 import com.epicness.factorydude.game.logic.player.CameraHandler;
 import com.epicness.factorydude.game.logic.player.DashHandler;
@@ -64,6 +68,7 @@ public class GameLogic extends Logic {
     private CursorHandler cursorHandler;
     private EffectHandler effectHandler;
     private GameInputHandler gameInputHandler;
+    private GameOverHandler gameOverHandler;
     private MusicHandler musicHandler;
 
     public GameLogic(SharedLogic sharedLogic) {
@@ -100,6 +105,7 @@ public class GameLogic extends Logic {
         cursorHandler = new CursorHandler();
         effectHandler = new EffectHandler();
         gameInputHandler = new GameInputHandler();
+        gameOverHandler = new GameOverHandler();
         musicHandler = new MusicHandler();
     }
 
@@ -171,6 +177,7 @@ public class GameLogic extends Logic {
         coinHandler.update(delta);
         cursorHandler.update(delta);
         effectHandler.update(delta);
+        gameOverHandler.update(delta);
     }
 
     @Override
@@ -218,6 +225,7 @@ public class GameLogic extends Logic {
         cursorHandler.setStuff(gameStuff);
         effectHandler.setStuff(gameStuff);
         gameInputHandler.setStuff(gameStuff);
+        gameOverHandler.setStuff(gameStuff);
     }
 
     @Override
@@ -295,5 +303,9 @@ public class GameLogic extends Logic {
 
     public EffectHandler getEffectHandler() {
         return effectHandler;
+    }
+
+    public GameOverHandler getGameOverHandler() {
+        return gameOverHandler;
     }
 }

@@ -56,8 +56,7 @@ public class WaveHandler {
         waveIndex++;
         Wave[] waves = stuff.getWaveStorage().getWaves();
         if (waveIndex == waves.length) {
-            // TODO: 27/3/2022 GAME WON
-            System.out.println("WIN");
+            logic.getGameOverHandler().showVictory();
             return;
         }
         startWave(waveIndex);
