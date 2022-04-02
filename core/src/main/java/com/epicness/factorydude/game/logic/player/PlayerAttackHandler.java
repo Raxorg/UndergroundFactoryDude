@@ -40,6 +40,7 @@ public class PlayerAttackHandler {
                 if (effect.getBounds().overlaps(enemy.getBounds())) {
                     enemies.removeValue(enemy, true);
                     logic.getCoinHandler().addCoin();
+                    logic.getEffectHandler().spawnBloodEffects(enemy.getCenterX(), enemy.getCenterY());
                     logic.getWaveHandler().checkEnemies();
                     break enemies;
                 }

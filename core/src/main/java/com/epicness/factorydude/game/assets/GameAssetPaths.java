@@ -17,6 +17,9 @@ public class GameAssetPaths {
     public static final String ENEMY_SOUTH_WALK = "factorydude/game/animations/enemy/enemySouthWalk.png";
     public static final String BULLET_FRAMES = "factorydude/game/animations/enemy/bulletAnim.png";
 
+    public static final String BLOOD_SPLATTER_FRAMES = "factorydude/game/animations/bloodSplatter.png";
+    public static final String BLOOD_WOUND_FRAMES = "factorydude/game/animations/bloodSplatter.png";
+
     public static final String COIN_FRAMES = "factorydude/game/animations/coin.png";
     public static final String CURSOR_FRAMES = "factorydude/game/animations/crosshair.png";
     public static final String CONVEYOR_BELT_FRAMES = "factorydude/game/animations/conveyorBelt.png";

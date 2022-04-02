@@ -4,6 +4,8 @@ import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.ATTACK_ICON;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.BG_1;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.BG_2;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.BLOOD_SPLATTER_FRAMES;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.BLOOD_WOUND_FRAMES;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.BULLET_FRAMES;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.CAVES;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.COIN_FRAMES;
@@ -47,6 +49,7 @@ public class GameAssets extends Assets {
             playerSlash, dash;
     private Sprite[] enemyEastWalk, enemyNorthWalk, enemySouthWalk,
             bulletFrames;
+    private Sprite[] bloodSplatterFrames, bloodWoundFrames;
     private Sprite[] coinFrames, conveyorBeltFrames, cursorFrames;
     // Fonts
     private BitmapFont timesSquare, normalTimesSquare, smallTimesSquare, pixelFont;
@@ -68,10 +71,15 @@ public class GameAssets extends Assets {
         loadTexture(PLAYER_SOUTH_SLASH);
         loadTexture(PLAYER_SLASH);
         loadTexture(PLAYER_DASH);
+
         loadTexture(ENEMY_EAST_WALK);
         loadTexture(ENEMY_NORTH_WALK);
         loadTexture(ENEMY_SOUTH_WALK);
         loadTexture(BULLET_FRAMES);
+
+        loadTexture(BLOOD_SPLATTER_FRAMES);
+        loadTexture(BLOOD_WOUND_FRAMES);
+
         loadTexture(COIN_FRAMES);
         loadTexture(CONVEYOR_BELT_FRAMES);
         loadTexture(CURSOR_FRAMES);
@@ -123,6 +131,11 @@ public class GameAssets extends Assets {
         enemySouthWalk = AnimationUtils.split(enemySouthWalkTex, 138, 165, 20);
         Texture bulletFramesTex = getTexture(BULLET_FRAMES);
         bulletFrames = AnimationUtils.split(bulletFramesTex, 22, 25, 5);
+
+        Texture bloodSplatterTex = getTexture(BLOOD_SPLATTER_FRAMES);
+        bloodSplatterFrames = AnimationUtils.split(bloodSplatterTex, 59, 57, 8);
+        Texture bloodWoundTex = getTexture(BLOOD_WOUND_FRAMES);
+        bloodWoundFrames = AnimationUtils.split(bloodWoundTex, 48, 18, 10);
 
         Texture coinFramesTex = getTexture(COIN_FRAMES);
         coinFramesTex.setFilter(Linear, Linear);
@@ -216,6 +229,14 @@ public class GameAssets extends Assets {
 
     public Sprite[] getBulletFrames() {
         return bulletFrames;
+    }
+
+    public Sprite[] getBloodSplatterFrames() {
+        return bloodSplatterFrames;
+    }
+
+    public Sprite[] getBloodWoundFrames() {
+        return bloodWoundFrames;
     }
 
     public Sprite[] getCoinFrames() {

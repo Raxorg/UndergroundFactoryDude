@@ -34,6 +34,7 @@ public class BulletHandler {
                 bullets.removeValue(bullet, true);
                 logic.getPlayerDamager().showDamage();
                 collisionHandled = true;
+                logic.getEffectHandler().spawnBloodEffects(player.getCenterX(), player.getCenterY());
             }
         }
         bullets.end();

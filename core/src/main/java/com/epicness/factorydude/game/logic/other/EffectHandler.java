@@ -1,6 +1,7 @@
 package com.epicness.factorydude.game.logic.other;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.factorydude.game.stuff.GameStuff;
@@ -63,6 +64,21 @@ public class EffectHandler {
         dash.setPosition(player.getCenterX() - dash.getWidth() / 2f, player.getCenterY() - dash.getHeight() / 2f);
         dash.setRotation(player.getSpeed().angleDeg());
         stuff.getEffects().add(dash);
+    }
+
+    public void spawnBloodEffects(float x, float y) {
+        for (int i = 0; i < 10; i++) {
+            SpritedAnimation bloodSplatter = new SpritedAnimation(assets.getBloodSplatterFrames(), 0.075f);
+            SpritedAnimation bloodWound = new SpritedAnimation(assets.getBloodWoundFrames(), 0.075f);
+            float bloodX = MathUtils.random(-50f, 50f);
+            float bloodY = MathUtils.random(-50f, 50f);
+            bloodSplatter.setPosition(x + bloodX, y + bloodY);
+            bloodSplatter.setRotation(MathUtils.random(360f));
+            bloodWound.setPosition(x + bloodX * 2f, y + bloodY * 2f);
+            bloodWound.setRotation(MathUtils.random(360f));
+            stuff.getEffects().add(bloodSplatter);
+            stuff.getEffects().add(bloodWound);
+        }
     }
 
     // Structure
