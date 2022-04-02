@@ -6,7 +6,7 @@ import com.epicness.fundamentals.stuff.Sprited;
 
 public abstract class StaticCellable implements Cellable {
 
-    private final Sprited sprited;
+    protected final Sprited sprited;
 
     public StaticCellable(Sprite sprite) {
         sprited = new Sprited(sprite);

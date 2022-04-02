@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 import com.epicness.fundamentals.stuff.interfaces.Parallaxable;
 
@@ -125,5 +126,9 @@ public class Sprited implements Buttonable, Parallaxable {
 
     public void setColor(Color color) {
         sprite.setColor(color);
+    }
+
+    public Vector2 getCenter() {
+        return sprite.getBoundingRectangle().getCenter(new Vector2());
     }
 }

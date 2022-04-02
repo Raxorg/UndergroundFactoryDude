@@ -138,6 +138,7 @@ public class GameLogic extends Logic {
         waveHandler.setLogic(this);
         // Factory zone
         buildingPanelHandler.setLogic(this);
+        conveyorHandler.setLogic(this);
         hexHighlighter.setLogic(this);
         // Player
         dashHandler.setLogic(this);
@@ -171,6 +172,7 @@ public class GameLogic extends Logic {
         // Factory zone
         buildingPanelSlider.update(delta);
         conveyorAnimator.update(delta);
+        conveyorHandler.update(delta);
         factoryHandler.update(delta);
         factoryZoneScaler.update(delta);
         // Player
@@ -218,6 +220,7 @@ public class GameLogic extends Logic {
         // Factory zone
         buildingPanelHandler.setStuff(gameStuff);
         buildingPanelSlider.setStuff(gameStuff);
+        buildingPlacer.setStuff(gameStuff);
         conveyorAnimator.setStuff(gameStuff);
         conveyorHandler.setStuff(gameStuff);
         destinationHandler.setStuff(gameStuff);
@@ -275,6 +278,10 @@ public class GameLogic extends Logic {
 
     public ConveyorHandler getConveyorHandler() {
         return conveyorHandler;
+    }
+
+    public DestinationHandler getDestinationHandler() {
+        return destinationHandler;
     }
 
     public FactoryZoneScaler getFactoryZoneScaler() {

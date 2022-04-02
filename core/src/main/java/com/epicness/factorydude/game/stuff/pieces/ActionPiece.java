@@ -2,21 +2,25 @@ package com.epicness.factorydude.game.stuff.pieces;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 import com.epicness.factorydude.game.enums.PieceType;
 import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.grid.Cell;
 
 public class ActionPiece {
 
     private final Sprited sprited;
-    private final Vector2 origin, destination;
+    private Cell origin, destination;
     private float progress;
     private final PieceType type;
 
-    public ActionPiece(Sprite actionSprite, PieceType type) {
+    public ActionPiece(Sprite actionSprite, PieceType type, Cell originCell, Cell destinationCell) {
         sprited = new Sprited(actionSprite);
-        origin = new Vector2();
-        destination = new Vector2();
+        sprited.setOriginCenter();
+        float x = originCell.getX() + originCell.getWidth() / 2f;
+        float y = originCell.getY() + originCell.getHeight() / 2f;
+        setOriginBasedPosition(x, y);
+        origin = originCell;
+        destination = destinationCell;
         this.type = type;
     }
 
@@ -24,8 +28,8 @@ public class ActionPiece {
         sprited.draw(spriteBatch);
     }
 
-    public void setPosition(float x, float y) {
-        sprited.setPosition(x, y);
+    public void setOriginBasedPosition(float x, float y) {
+        sprited.setOriginBasedPosition(x, y);
     }
 
     public float getWidth() {
@@ -36,12 +40,20 @@ public class ActionPiece {
         return sprited.getHeight();
     }
 
-    public Vector2 getOrigin() {
+    public Cell getOrigin() {
         return origin;
     }
 
-    public Vector2 getDestination() {
+    public void setOrigin(Cell origin) {
+        this.origin = origin;
+    }
+
+    public Cell getDestination() {
         return destination;
+    }
+
+    public void setDestination(Cell destination) {
+        this.destination = destination;
     }
 
     public float getProgress() {

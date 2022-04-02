@@ -30,9 +30,11 @@ public class GameStuff extends Stuff {
     private DelayedRemovalArray<SpritedAnimation> effects;
     private Text message;
     private FactoryZone factoryZone;
-    private CoinCounter coinCounter;
     private SpritedAnimation cursor;
-    private Sprited overlay, damageOverlay;
+    private Sprited overlay;
+    private CoinCounter coinCounter;
+    private Text chonkyCount;
+    private Sprited damageOverlay;
 
     @Override
     public void initializeStuff() {
@@ -61,6 +63,10 @@ public class GameStuff extends Stuff {
 
         overlay = new Sprited(assets.getOverlay());
         coinCounter = new CoinCounter(sharedAssets.getPixel(), assets.getCoinFrames(), sharedAssets.getTimesSquare());
+
+        chonkyCount = new Text(sharedAssets.getTimesSquare());
+        chonkyCount.setText("Chonky Boosters: 0");
+        chonkyCount.setY(chonkyCount.getHeight() * 1.25f);
 
         damageOverlay = new Sprited(sharedAssets.getPixel());
         damageOverlay.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
@@ -104,6 +110,10 @@ public class GameStuff extends Stuff {
 
     public Sprited getOverlay() {
         return overlay;
+    }
+
+    public Text getChonkyCount() {
+        return chonkyCount;
     }
 
     public CoinCounter getCoinCounter() {

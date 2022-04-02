@@ -3,6 +3,7 @@ package com.epicness.factorydude.game.logic.factoryzone;
 import static com.epicness.factorydude.game.GameConstants.CELLABLE_PROPERTY;
 
 import com.epicness.factorydude.game.assets.GameAssets;
+import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.factorydude.game.stuff.cellables.Cellable;
 import com.epicness.factorydude.game.stuff.cellables.ConveyorBelt;
 import com.epicness.factorydude.game.stuff.cellables.Factory;
@@ -12,6 +13,7 @@ public class BuildingPlacer {
 
     // Structure
     private GameAssets assets;
+    private GameStuff stuff;
 
     public void placeCellable(Cell cell, int option) {
         Cellable cellable;
@@ -21,7 +23,7 @@ public class BuildingPlacer {
                 break;
             case 1:
             default:
-                cellable = new ConveyorBelt(assets.getConveyorBeltFrames());
+                cellable = placeConveyorBelt(cell);
                 break;
         }
         float cellCenterX = cell.getX() + cell.getWidth() / 2f;
@@ -31,8 +33,22 @@ public class BuildingPlacer {
         cell.getProperties().put(CELLABLE_PROPERTY, cellable);
     }
 
+    private ConveyorBelt placeConveyorBelt(Cell cell) {
+        ConveyorBelt conveyorBelt = new ConveyorBelt(assets.getConveyorBeltFrames(), cell);
+        Cell[][] cells = stuff.getFactoryZone().getHexGrid().getCells();
+        if (cell.getColumn() == cells.length - 1) {
+            return conveyorBelt;
+        }
+        conveyorBelt.setDestination(cells[cell.getColumn() + 1][cell.getRow()]);
+        return conveyorBelt;
+    }
+
     // Structure
     public void setAssets(GameAssets assets) {
         this.assets = assets;
+    }
+
+    public void setStuff(GameStuff stuff) {
+        this.stuff = stuff;
     }
 }

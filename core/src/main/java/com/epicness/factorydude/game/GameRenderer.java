@@ -35,6 +35,7 @@ public class GameRenderer extends Renderer {
         stuff.getFactoryZone().draw(spriteBatch);
         stuff.getCursor().draw(spriteBatch);
         stuff.getOverlay().draw(spriteBatch);
+        stuff.getChonkyCount().draw(spriteBatch);
         stuff.getCoinCounter().draw(spriteBatch);
         stuff.getDamageOverlay().draw(spriteBatch);
         spriteBatch.end();

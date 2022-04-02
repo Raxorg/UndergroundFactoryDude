@@ -93,6 +93,10 @@ public class Text implements Buttonable, Scrollable {
         bounds.x += x;
     }
 
+    public float getHeight() {
+        return bounds.height;
+    }
+
     public void setFont(BitmapFont font) {
         this.font = font;
         calculateSize();
