@@ -122,6 +122,8 @@ public class GameLogic extends Logic {
         waveHandler.setSharedLogic(sharedLogic);
         // Factory zone
         buildingPanelHandler.setSharedLogic(sharedLogic);
+        conveyorHandler.setSharedLogic(sharedLogic);
+        factoryHandler.setSharedLogic(sharedLogic);
         factoryZoneScaler.setSharedLogic(sharedLogic);
         hexHighlighter.setSharedLogic(sharedLogic);
         // Player
@@ -158,6 +160,7 @@ public class GameLogic extends Logic {
         playerDamager.init();
         musicHandler.playMusic();
         dashHandler.init();
+        coinHandler.init();
     }
 
     @Override

@@ -40,6 +40,10 @@ public class ActionPiece {
         return sprited.getHeight();
     }
 
+    public void setScale(float scale) {
+        sprited.setScale(scale);
+    }
+
     public Cell getOrigin() {
         return origin;
     }

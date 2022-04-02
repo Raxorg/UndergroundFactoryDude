@@ -30,11 +30,12 @@ public class GameStuff extends Stuff {
     private DelayedRemovalArray<Bullet> bullets;
     private DelayedRemovalArray<SpritedAnimation> effects;
     private Text message;
+    private PieceCounters pieceCounters;
+    private Sprited overlay;
     private FactoryZone factoryZone;
     private SpritedAnimation cursor;
-    private Sprited overlay;
+    private Text factoryReminder;
     private CoinCounter coinCounter;
-    private PieceCounters pieceCounters;
     private Sprited damageOverlay;
 
     @Override
@@ -57,14 +58,17 @@ public class GameStuff extends Stuff {
         message.setHorizontalAlignment(Align.center);
         message.setCenterVertical(true);
 
+        pieceCounters = new PieceCounters(sharedAssets, assets);
+        overlay = new Sprited(assets.getOverlay());
         factoryZone = new FactoryZone(sharedAssets, assets);
 
         cursor = new SpritedAnimation(assets.getCursorFrames(), 0.05f);
         cursor.enableLooping();
 
-        overlay = new Sprited(assets.getOverlay());
+        factoryReminder = new Text(assets.getPixelFont());
+        factoryReminder.setText("F to open factory grid");
+        factoryReminder.setY(CAMERA_HEIGHT);
         coinCounter = new CoinCounter(sharedAssets.getPixel(), assets.getCoinFrames(), sharedAssets.getTimesSquare());
-        pieceCounters = new PieceCounters(sharedAssets, assets);
 
         damageOverlay = new Sprited(sharedAssets.getPixel());
         damageOverlay.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
@@ -98,6 +102,14 @@ public class GameStuff extends Stuff {
         return message;
     }
 
+    public PieceCounters getPieceCounters() {
+        return pieceCounters;
+    }
+
+    public Sprited getOverlay() {
+        return overlay;
+    }
+
     public FactoryZone getFactoryZone() {
         return factoryZone;
     }
@@ -106,16 +118,12 @@ public class GameStuff extends Stuff {
         return cursor;
     }
 
-    public Sprited getOverlay() {
-        return overlay;
+    public Text getFactoryReminder() {
+        return factoryReminder;
     }
 
     public CoinCounter getCoinCounter() {
         return coinCounter;
-    }
-
-    public PieceCounters getPieceCounters() {
-        return pieceCounters;
     }
 
     public Sprited getDamageOverlay() {

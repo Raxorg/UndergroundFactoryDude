@@ -11,12 +11,14 @@ import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.factorydude.game.stuff.cellables.Cellable;
 import com.epicness.factorydude.game.stuff.pieces.ActionPiece;
 import com.epicness.fundamentals.assets.SharedAssets;
 import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.Text;
 import com.epicness.fundamentals.stuff.grid.Cell;
 
 public class FactoryZone {
@@ -25,6 +27,7 @@ public class FactoryZone {
     private final HexGrid hexGrid;
     private final DelayedRemovalArray<ActionPiece> pieces;
     private final BuildingPanel buildingPanel;
+    private final Text slowMotionText;
 
     public FactoryZone(SharedAssets sharedAssets, GameAssets assets) {
         background = new Sprited(sharedAssets.getPixel());
@@ -44,6 +47,12 @@ public class FactoryZone {
         pieces = new DelayedRemovalArray<>();
         buildingPanel = new BuildingPanel(sharedAssets, assets);
 
+        slowMotionText = new Text(assets.getNormalTimesSquare());
+        slowMotionText.setY(CAMERA_HEIGHT);
+        slowMotionText.setTextTargetWidth(CAMERA_WIDTH);
+        slowMotionText.setText("Slow motion");
+        slowMotionText.setHorizontalAlignment(Align.center);
+
         setScale(0f);
     }
 
@@ -55,6 +64,7 @@ public class FactoryZone {
             pieces.get(i).draw(spriteBatch);
         }
         buildingPanel.draw(spriteBatch);
+        slowMotionText.draw(spriteBatch);
     }
 
     private void drawCellables(SpriteBatch spriteBatch) {
@@ -83,7 +93,11 @@ public class FactoryZone {
                 cellable.setScale(scale);
             }
         }
+        for (int i = 0; i < pieces.size; i++) {
+            pieces.get(i).setScale(scale);
+        }
         buildingPanel.setScale(scale);
+        slowMotionText.setScale(scale == 0f ? 0.001f : scale);
     }
 
     public HexGrid getHexGrid() {

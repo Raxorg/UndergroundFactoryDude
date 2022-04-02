@@ -32,10 +32,11 @@ public class GameRenderer extends Renderer {
 
         useStaticCamera();
         stuff.getMessage().draw(spriteBatch);
+        stuff.getPieceCounters().draw(spriteBatch);
+        stuff.getOverlay().draw(spriteBatch);
         stuff.getFactoryZone().draw(spriteBatch);
         stuff.getCursor().draw(spriteBatch);
-        stuff.getOverlay().draw(spriteBatch);
-        stuff.getPieceCounters().draw(spriteBatch);
+        stuff.getFactoryReminder().draw(spriteBatch);
         stuff.getCoinCounter().draw(spriteBatch);
         stuff.getDamageOverlay().draw(spriteBatch);
         spriteBatch.end();

@@ -58,6 +58,10 @@ public class CoinCounter {
         return Integer.parseInt(text.getText());
     }
 
+    public void setCoins(int coins) {
+        text.setText(coins + "");
+    }
+
     public void addCoin() {
         int coins = Integer.parseInt(text.getText()) + 1;
         text.setText(coins + "");

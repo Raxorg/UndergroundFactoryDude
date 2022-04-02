@@ -17,7 +17,9 @@ import static com.epicness.factorydude.game.assets.GameAssetPaths.ENEMY_SOUTH_WA
 import static com.epicness.factorydude.game.assets.GameAssetPaths.FACTORY_PATH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.HEX_PATH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.MOVE_ICON;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.NORMAL_TIMES_SQUARE;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.OVERLAY_PATH;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.PIXEL_FONT;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_DASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_EAST_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_EAST_WALK;
@@ -47,7 +49,7 @@ public class GameAssets extends Assets {
             bulletFrames;
     private Sprite[] coinFrames, conveyorBeltFrames, cursorFrames;
     // Fonts
-    private BitmapFont timesSquare, smallTimesSquare;
+    private BitmapFont timesSquare, normalTimesSquare, smallTimesSquare, pixelFont;
     // Sprites
     private Sprite bg1, bg2, bg3, overlay;
     private Sprite hex, factory, conveyor, destination;
@@ -75,7 +77,9 @@ public class GameAssets extends Assets {
         loadTexture(CURSOR_FRAMES);
         // Fonts
         loadFont(TIMES_SQUARE);
+        loadFont(NORMAL_TIMES_SQUARE);
         loadFont(SMALL_TIMES_SQUARE);
+        loadFont(PIXEL_FONT);
         // Sprites
         loadTexture(BG_1);
         loadTexture(BG_2);
@@ -133,9 +137,16 @@ public class GameAssets extends Assets {
         // Fonts
         timesSquare = getFont(TIMES_SQUARE);
         timesSquare.getRegion().getTexture().setFilter(Linear, Linear);
+
+        normalTimesSquare = getFont(NORMAL_TIMES_SQUARE);
+        normalTimesSquare.getRegion().getTexture().setFilter(Linear, Linear);
+
         smallTimesSquare = getFont(SMALL_TIMES_SQUARE);
         smallTimesSquare.getRegion().getTexture().setFilter(Linear, Linear);
         smallTimesSquare.getData().setScale(0.75f);
+
+        pixelFont = getFont(PIXEL_FONT);
+        pixelFont.getData().setScale(2f);
         // Sprites
         bg1 = new Sprite(getTexture(BG_1));
         bg2 = new Sprite(getTexture(BG_2));
@@ -224,8 +235,16 @@ public class GameAssets extends Assets {
         return timesSquare;
     }
 
+    public BitmapFont getNormalTimesSquare() {
+        return normalTimesSquare;
+    }
+
     public BitmapFont getSmallTimesSquare() {
         return smallTimesSquare;
+    }
+
+    public BitmapFont getPixelFont() {
+        return pixelFont;
     }
 
     // Sprites

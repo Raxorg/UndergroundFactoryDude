@@ -22,7 +22,9 @@ public class GameAssetPaths {
     public static final String CONVEYOR_BELT_FRAMES = "factorydude/game/animations/conveyorBelt.png";
     // Fonts
     public static final String TIMES_SQUARE = "factorydude/game/fonts/timesSquare.fnt";
+    public static final String NORMAL_TIMES_SQUARE = "factorydude/game/fonts/normalTimesSquare.fnt";
     public static final String SMALL_TIMES_SQUARE = "factorydude/game/fonts/smallTimesSquare.fnt";
+    public static final String PIXEL_FONT = "factorydude/game/fonts/pixelFont.fnt";
     // Sprites
     public static final String BG_1 = "factorydude/game/images/gameZone/bg-1.png";
     public static final String BG_2 = "factorydude/game/images/gameZone/bg-2.png";

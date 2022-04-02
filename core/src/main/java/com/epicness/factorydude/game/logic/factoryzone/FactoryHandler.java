@@ -16,6 +16,7 @@ import com.epicness.factorydude.game.stuff.cellables.ConveyorBelt;
 import com.epicness.factorydude.game.stuff.cellables.Destination;
 import com.epicness.factorydude.game.stuff.cellables.Factory;
 import com.epicness.factorydude.game.stuff.pieces.ActionPiece;
+import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.fundamentals.stuff.grid.Cell;
 
 import java.util.ArrayList;
@@ -25,9 +26,13 @@ public class FactoryHandler {
 
     // Structure
     private GameAssets assets;
+    private SharedLogic sharedLogic;
     private GameStuff stuff;
 
     public void update(float delta) {
+        if (sharedLogic.getPauseTracker().get()) {
+            delta /= 7f;
+        }
         Cell[][] cells = stuff.getFactoryZone().getHexGrid().getCells();
         for (int column = 0; column < cells.length; column++) {
             for (int row = 0; row < cells[column].length; row++) {
@@ -96,6 +101,10 @@ public class FactoryHandler {
     // Structure
     public void setAssets(GameAssets assets) {
         this.assets = assets;
+    }
+
+    public void setSharedLogic(SharedLogic sharedLogic) {
+        this.sharedLogic = sharedLogic;
     }
 
     public void setStuff(GameStuff stuff) {

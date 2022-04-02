@@ -12,11 +12,13 @@ import com.epicness.factorydude.game.stuff.cellables.Cellable;
 import com.epicness.factorydude.game.stuff.cellables.ConveyorBelt;
 import com.epicness.factorydude.game.stuff.cellables.Destination;
 import com.epicness.factorydude.game.stuff.pieces.ActionPiece;
+import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.fundamentals.stuff.grid.Cell;
 
 public class ConveyorHandler {
 
     // Structure
+    private SharedLogic sharedLogic;
     private GameLogic logic;
     private GameStuff stuff;
 
@@ -75,6 +77,9 @@ public class ConveyorHandler {
     }
 
     public void update(float delta) {
+        if (sharedLogic.getPauseTracker().get()) {
+            delta /= 7f;
+        }
         DelayedRemovalArray<ActionPiece> pieces = stuff.getFactoryZone().getPieces();
         pieces.begin();
         for (int i = 0; i < pieces.size; i++) {
@@ -112,6 +117,10 @@ public class ConveyorHandler {
     }
 
     // Structure
+    public void setSharedLogic(SharedLogic sharedLogic) {
+        this.sharedLogic = sharedLogic;
+    }
+
     public void setLogic(GameLogic logic) {
         this.logic = logic;
     }
