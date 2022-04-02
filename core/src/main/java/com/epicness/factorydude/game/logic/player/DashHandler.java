@@ -16,14 +16,15 @@ public class DashHandler {
     }
 
     public void dash() {
+        if (cooldown > 0f) {
+            return;
+        }
         int dashes = Integer.parseInt(stuff.getPieceCounters().getDashCounter().getText());
         if (dashes <= 0) {
             return;
         }
+        logic.getDestinationHandler().reduceDash();
         stuff.getPieceCounters().getDashCounter().setText(--dashes + "");
-        if (cooldown > 0f) {
-            return;
-        }
         logic.getEffectHandler().spawnDash();
         cooldown = 2f;
         duration = 0.3f;

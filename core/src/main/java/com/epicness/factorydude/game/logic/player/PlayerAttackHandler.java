@@ -52,14 +52,14 @@ public class PlayerAttackHandler {
         if (sharedLogic.getPauseTracker().get()) {
             return;
         }
+        if (cooldown != 0f) {
+            return;
+        }
         int attacks = Integer.parseInt(stuff.getPieceCounters().getAttackCounter().getText());
         if (attacks <= 0) {
             return;
         }
-        stuff.getPieceCounters().getAttackCounter().setText(--attacks + "");
-        if (cooldown != 0f) {
-            return;
-        }
+        logic.getDestinationHandler().reduceAttack();
         logic.getPlayerAnimator().attackChange(true);
         logic.getEffectHandler().spawnSlash();
         cooldown = 1f;

@@ -30,7 +30,8 @@ public class EnemyAttackHandler {
             enemy.affectAttackCooldown(-delta);
             if (enemy.getAttackCooldown() <= 0f) {
                 shoot(enemy);
-                enemy.affectAttackCooldown(5f - enemy.getAttackCooldown());
+                float randomCooldown = MathUtils.random(3.5f, 5f);
+                enemy.affectAttackCooldown(randomCooldown - enemy.getAttackCooldown());
             }
         }
     }

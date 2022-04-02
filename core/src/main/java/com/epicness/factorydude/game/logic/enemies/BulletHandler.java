@@ -30,6 +30,7 @@ public class BulletHandler {
                 continue;
             }
             if (bullet.collides(player.getBounds())) {
+                logic.getDestinationHandler().reduceBoosters();
                 bullets.removeValue(bullet, true);
                 logic.getPlayerDamager().showDamage();
                 collisionHandled = true;

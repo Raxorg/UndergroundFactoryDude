@@ -4,6 +4,7 @@ import static com.epicness.factorydude.game.GameConstants.CELLABLE_PROPERTY;
 import static com.epicness.factorydude.game.GameConstants.HEX_GRID_COLUMNS;
 import static com.epicness.factorydude.game.GameConstants.HEX_GRID_ROWS;
 
+import com.badlogic.gdx.graphics.Color;
 import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.factorydude.game.stuff.cellables.Destination;
@@ -49,6 +50,24 @@ public class DestinationHandler {
             default:
                 counter = stuff.getPieceCounters().getChonkyCounter();
                 counter.setText(++boosters + "");
+        }
+    }
+
+    public void reduceAttack() {
+        stuff.getPieceCounters().getAttackCounter().setText(--attacks + "");
+    }
+
+    public void reduceDash() {
+        stuff.getPieceCounters().getDashCounter().setText(--dashes + "");
+    }
+
+    public void reduceBoosters() {
+        boosters -= 5;
+        stuff.getPieceCounters().getChonkyCounter().setText(boosters + "");
+        if (boosters <= 0) {
+            stuff.getMessage().setScale(5f);
+            stuff.getMessage().setText("YOU LOST");
+            stuff.getMessage().setColor(Color.RED);
         }
     }
 
