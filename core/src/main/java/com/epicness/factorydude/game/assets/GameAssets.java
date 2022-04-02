@@ -26,6 +26,7 @@ import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_NORTH_W
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SOUTH_SLASH;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.PLAYER_SOUTH_WALK;
+import static com.epicness.factorydude.game.assets.GameAssetPaths.SMALL_TIMES_SQUARE;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.SYRINGE_ICON;
 import static com.epicness.factorydude.game.assets.GameAssetPaths.TIMES_SQUARE;
 
@@ -46,7 +47,7 @@ public class GameAssets extends Assets {
             bulletFrames;
     private Sprite[] coinFrames, conveyorBeltFrames, cursorFrames;
     // Fonts
-    private BitmapFont timesSquare;
+    private BitmapFont timesSquare, smallTimesSquare;
     // Sprites
     private Sprite bg1, bg2, bg3, overlay;
     private Sprite hex, factory, conveyor, destination;
@@ -74,6 +75,7 @@ public class GameAssets extends Assets {
         loadTexture(CURSOR_FRAMES);
         // Fonts
         loadFont(TIMES_SQUARE);
+        loadFont(SMALL_TIMES_SQUARE);
         // Sprites
         loadTexture(BG_1);
         loadTexture(BG_2);
@@ -131,6 +133,9 @@ public class GameAssets extends Assets {
         // Fonts
         timesSquare = getFont(TIMES_SQUARE);
         timesSquare.getRegion().getTexture().setFilter(Linear, Linear);
+        smallTimesSquare = getFont(SMALL_TIMES_SQUARE);
+        smallTimesSquare.getRegion().getTexture().setFilter(Linear, Linear);
+        smallTimesSquare.getData().setScale(0.75f);
         // Sprites
         bg1 = new Sprite(getTexture(BG_1));
         bg2 = new Sprite(getTexture(BG_2));
@@ -217,6 +222,10 @@ public class GameAssets extends Assets {
     // Fonts
     public BitmapFont getTimesSquare() {
         return timesSquare;
+    }
+
+    public BitmapFont getSmallTimesSquare() {
+        return smallTimesSquare;
     }
 
     // Sprites

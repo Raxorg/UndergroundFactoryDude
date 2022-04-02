@@ -13,6 +13,7 @@ import com.epicness.factorydude.game.stuff.characters.Enemy;
 import com.epicness.factorydude.game.stuff.characters.Player;
 import com.epicness.factorydude.game.stuff.factoryzone.FactoryZone;
 import com.epicness.factorydude.game.stuff.hud.CoinCounter;
+import com.epicness.factorydude.game.stuff.hud.PieceCounters;
 import com.epicness.factorydude.game.stuff.waves.WaveStorage;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.SpritedAnimation;
@@ -33,7 +34,7 @@ public class GameStuff extends Stuff {
     private SpritedAnimation cursor;
     private Sprited overlay;
     private CoinCounter coinCounter;
-    private Text chonkyCount;
+    private PieceCounters pieceCounters;
     private Sprited damageOverlay;
 
     @Override
@@ -63,10 +64,7 @@ public class GameStuff extends Stuff {
 
         overlay = new Sprited(assets.getOverlay());
         coinCounter = new CoinCounter(sharedAssets.getPixel(), assets.getCoinFrames(), sharedAssets.getTimesSquare());
-
-        chonkyCount = new Text(sharedAssets.getTimesSquare());
-        chonkyCount.setText("Chonky Boosters: 0");
-        chonkyCount.setY(chonkyCount.getHeight() * 1.25f);
+        pieceCounters = new PieceCounters(sharedAssets, assets);
 
         damageOverlay = new Sprited(sharedAssets.getPixel());
         damageOverlay.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
@@ -112,12 +110,12 @@ public class GameStuff extends Stuff {
         return overlay;
     }
 
-    public Text getChonkyCount() {
-        return chonkyCount;
-    }
-
     public CoinCounter getCoinCounter() {
         return coinCounter;
+    }
+
+    public PieceCounters getPieceCounters() {
+        return pieceCounters;
     }
 
     public Sprited getDamageOverlay() {

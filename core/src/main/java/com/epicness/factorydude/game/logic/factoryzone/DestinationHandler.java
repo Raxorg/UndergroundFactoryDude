@@ -8,7 +8,7 @@ import com.epicness.factorydude.game.assets.GameAssets;
 import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.factorydude.game.stuff.cellables.Destination;
 import com.epicness.factorydude.game.stuff.pieces.ActionPiece;
-import com.epicness.fundamentals.stuff.Text;
+import com.epicness.fundamentals.stuff.IconedSpritedText;
 import com.epicness.fundamentals.stuff.grid.Cell;
 
 public class DestinationHandler {
@@ -17,7 +17,7 @@ public class DestinationHandler {
     private GameAssets assets;
     private GameStuff stuff;
     // Logic
-    private int boosters;
+    private int attacks, dashes, moves, boosters;
 
     public void spawnDestination() {
         Cell middleCell = stuff.getFactoryZone().getHexGrid().getCells()[HEX_GRID_COLUMNS / 2][HEX_GRID_ROWS / 2];
@@ -31,23 +31,24 @@ public class DestinationHandler {
     }
 
     public void gainPiece(ActionPiece piece) {
-        Text counter = stuff.getChonkyCount();
+        IconedSpritedText counter;
         switch (piece.getType()) {
             case ATTACK:
-                // TODO: 2/4/2022
-                System.out.println("attack piece gained");
+                counter = stuff.getPieceCounters().getAttackCounter();
+                counter.setText(++attacks + "");
                 break;
             case DASH:
-                // TODO: 2/4/2022
-                System.out.println("dash piece gained");
+                counter = stuff.getPieceCounters().getDashCounter();
+                counter.setText(++dashes + "");
                 break;
             case MOVE:
-                // TODO: 2/4/2022
-                System.out.println("move piece gained");
+                counter = stuff.getPieceCounters().getMoveCounter();
+                counter.setText(++moves + "");
                 break;
             case CHONKY_BOOSTER:
             default:
-                counter.setText("Chonky Boosters: " + ++boosters);
+                counter = stuff.getPieceCounters().getChonkyCounter();
+                counter.setText(++boosters + "");
         }
     }
 

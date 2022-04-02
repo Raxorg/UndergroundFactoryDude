@@ -13,6 +13,7 @@ public class IconedSpritedText implements Buttonable, Scrollable {
     private final Sprited background;
     private final Text label;
     private final Sprited icon;
+    private float iconScale;
 
     public IconedSpritedText(Sprite backgroundSprite, BitmapFont font, Sprite iconSprite) {
         background = new Sprited(backgroundSprite);
@@ -20,6 +21,7 @@ public class IconedSpritedText implements Buttonable, Scrollable {
         label.setHorizontalAlignment(Align.center);
         label.setCenterVertical(true);
         icon = new Sprited(iconSprite);
+        iconScale = 0.65f;
     }
 
     public void draw(SpriteBatch spriteBatch) {
@@ -71,9 +73,7 @@ public class IconedSpritedText implements Buttonable, Scrollable {
         background.setSize(width, height);
         label.setTextTargetWidth(width - height);
         label.setY(background.getY() + height / 2f);
-        icon.setSize(height * 0.65f);
-        icon.setX(background.getX() + width - height / 2f - icon.getWidth() / 2f);
-        icon.setY(background.getY() + height / 2f - icon.getHeight() / 2f);
+        setIconScale(iconScale);
     }
 
     public void setBackgroundColor(Color color) {
@@ -100,5 +100,13 @@ public class IconedSpritedText implements Buttonable, Scrollable {
 
     public void setText(String text) {
         label.setText(text);
+    }
+
+    public void setIconScale(float scale) {
+        float width = background.getWidth(), height = background.getHeight();
+        icon.setSize(height * scale);
+        icon.setX(background.getX() + width - height / 2f - icon.getWidth() / 2f);
+        icon.setY(background.getY() + height / 2f - icon.getHeight() / 2f);
+        iconScale = scale;
     }
 }
