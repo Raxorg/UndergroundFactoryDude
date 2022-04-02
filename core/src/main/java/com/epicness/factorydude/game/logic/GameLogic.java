@@ -140,6 +140,7 @@ public class GameLogic extends Logic {
         waveHandler.setLogic(this);
         // Factory zone
         buildingPanelHandler.setLogic(this);
+        buildingPlacer.setLogic(this);
         conveyorHandler.setLogic(this);
         hexHighlighter.setLogic(this);
         // Player
@@ -232,6 +233,7 @@ public class GameLogic extends Logic {
         hexHighlighter.setStuff(gameStuff);
         // Player
         cameraHandler.setStuff(gameStuff);
+        dashHandler.setStuff(gameStuff);
         playerAnimator.setStuff(gameStuff);
         playerAttackHandler.setStuff(gameStuff);
         playerDamager.setStuff(gameStuff);

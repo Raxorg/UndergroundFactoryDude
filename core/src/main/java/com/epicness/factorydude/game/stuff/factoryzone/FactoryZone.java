@@ -80,6 +80,10 @@ public class FactoryZone {
         }
     }
 
+    public float getScale() {
+        return background.getScale();
+    }
+
     public void setScale(float scale) {
         background.setScale(scale);
         for (int column = 0; column < hexGrid.getCells().length; column++) {

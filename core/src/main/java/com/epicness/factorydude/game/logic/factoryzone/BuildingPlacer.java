@@ -3,6 +3,7 @@ package com.epicness.factorydude.game.logic.factoryzone;
 import static com.epicness.factorydude.game.GameConstants.CELLABLE_PROPERTY;
 
 import com.epicness.factorydude.game.assets.GameAssets;
+import com.epicness.factorydude.game.logic.GameLogic;
 import com.epicness.factorydude.game.stuff.GameStuff;
 import com.epicness.factorydude.game.stuff.cellables.Cellable;
 import com.epicness.factorydude.game.stuff.cellables.ConveyorBelt;
@@ -13,9 +14,15 @@ public class BuildingPlacer {
 
     // Structure
     private GameAssets assets;
+    private GameLogic logic;
     private GameStuff stuff;
 
     public void placeCellable(Cell cell, int option) {
+        int coins = logic.getCoinHandler().getCoins();
+        if (coins <= 0) {
+            return;
+        }
+        logic.getCoinHandler().subtractCoin();
         Cellable cellable;
         switch (option) {
             case 0:
@@ -46,6 +53,10 @@ public class BuildingPlacer {
     // Structure
     public void setAssets(GameAssets assets) {
         this.assets = assets;
+    }
+
+    public void setLogic(GameLogic logic) {
+        this.logic = logic;
     }
 
     public void setStuff(GameStuff stuff) {

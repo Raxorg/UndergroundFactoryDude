@@ -3,8 +3,8 @@ package com.epicness.factorydude.game.logic.player;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.factorydude.game.logic.GameLogic;
 import com.epicness.factorydude.game.stuff.GameStuff;
-import com.epicness.factorydude.game.stuff.effects.SlashEffect;
 import com.epicness.factorydude.game.stuff.characters.Enemy;
+import com.epicness.factorydude.game.stuff.effects.SlashEffect;
 import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.fundamentals.stuff.SpritedAnimation;
 
@@ -52,6 +52,11 @@ public class PlayerAttackHandler {
         if (sharedLogic.getPauseTracker().get()) {
             return;
         }
+        int attacks = Integer.parseInt(stuff.getPieceCounters().getAttackCounter().getText());
+        if (attacks <= 0) {
+            return;
+        }
+        stuff.getPieceCounters().getAttackCounter().setText(--attacks + "");
         if (cooldown != 0f) {
             return;
         }

@@ -1,11 +1,13 @@
 package com.epicness.factorydude.game.logic.player;
 
 import com.epicness.factorydude.game.logic.GameLogic;
+import com.epicness.factorydude.game.stuff.GameStuff;
 
 public class DashHandler {
 
     // Structure
     private GameLogic logic;
+    private GameStuff stuff;
     // Logic
     private float cooldown, duration;
 
@@ -14,6 +16,11 @@ public class DashHandler {
     }
 
     public void dash() {
+        int dashes = Integer.parseInt(stuff.getPieceCounters().getDashCounter().getText());
+        if (dashes <= 0) {
+            return;
+        }
+        stuff.getPieceCounters().getDashCounter().setText(--dashes + "");
         if (cooldown > 0f) {
             return;
         }
@@ -34,5 +41,9 @@ public class DashHandler {
     // Structure
     public void setLogic(GameLogic logic) {
         this.logic = logic;
+    }
+
+    public void setStuff(GameStuff stuff) {
+        this.stuff = stuff;
     }
 }

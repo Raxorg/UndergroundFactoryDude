@@ -92,6 +92,10 @@ public class Sprited implements Buttonable, Parallaxable {
         setSize(size, size);
     }
 
+    public float getScale() {
+        return sprite.getScaleX();
+    }
+
     public void setScale(float scale) {
         sprite.setScale(scale);
     }

@@ -15,8 +15,16 @@ public class CoinHandler {
         stuff.getCoinCounter().addTime(delta);
     }
 
+    public int getCoins() {
+        return stuff.getCoinCounter().getCoins();
+    }
+
     public void addCoin() {
-        stuff.getCoinCounter().addCoin();
+        stuff.getCoinCounter().setCoins(stuff.getCoinCounter().getCoins() + 1);
+    }
+
+    public void subtractCoin() {
+        stuff.getCoinCounter().setCoins(stuff.getCoinCounter().getCoins() - 1);
     }
 
     // Structure

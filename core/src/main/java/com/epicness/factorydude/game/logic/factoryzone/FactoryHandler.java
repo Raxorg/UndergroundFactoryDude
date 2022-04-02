@@ -80,6 +80,7 @@ public class FactoryHandler {
         int random = MathUtils.random(candidates.size() - 1);
         Cell destination = candidates.get(random);
         ActionPiece piece = produceRandomPiece(factoryCell, destination);
+        piece.setScale(stuff.getFactoryZone().getScale());
         stuff.getFactoryZone().getPieces().add(piece);
     }
 
